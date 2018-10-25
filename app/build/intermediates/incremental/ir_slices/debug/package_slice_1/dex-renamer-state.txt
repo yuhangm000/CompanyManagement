@@ -1,4 +1,4 @@
-#Fri Oct 19 09:07:19 CST 2018
-base.0=C\:\\Users\\15222_000\\Desktop\\tinyworld\\222\\TinyWorld\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\2
+#Thu Oct 25 15:55:56 CST 2018
+base.0=F\:\\companymanagement\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
 path.0=classes.dex
 renamed.0=classes.dex

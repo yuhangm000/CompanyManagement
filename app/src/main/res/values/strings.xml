@@ -50,4 +50,8 @@
         <item>其他</item>
     </string-array>
     <string name="title_activity_world">WorldActivity</string>
+    <string name="material_apply">材料申请</string>
+    <string name="material_in_warehouse">材料入库</string>
+    <string name="materail_turn_back">材料归还</string>
+    <string name="get_matrial">材料领取</string>
 </resources>

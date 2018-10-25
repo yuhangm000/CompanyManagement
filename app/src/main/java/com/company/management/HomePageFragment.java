@@ -1,6 +1,7 @@
 package com.company.management;
 
 import android.content.Context;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -30,6 +31,7 @@ import com.company.management.R;
  */
 
 public class HomePageFragment extends Fragment {
+    ImageView material_apply, in_warehouse, material_turn_back, get_material;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,6 +42,10 @@ public class HomePageFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        material_apply = (ImageView) view.findViewById(R.id.material_apply);
+        in_warehouse = (ImageView) view.findViewById(R.id.material_in_warehouse);
+        material_turn_back = (ImageView) view.findViewById(R.id.material_turn_back);
+        get_material = (ImageView) view.findViewById(R.id.meterial_get);
     }
 
     // 简单消息提示框
