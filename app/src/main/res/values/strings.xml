@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Management</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    <!--TODO:尽量将一些不要用的词汇进行提出，放到配置文件中，做到易维护-->
+    <!--TODO: 检查，删除不要用的配置-->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_bottom_navigation">BottomNavigation</string>
     <string name="title_home">Home</string>
@@ -39,6 +39,19 @@
     </string>
     <string name="title_activity_register">Register</string>
     <string name="condition_prompt">搜索条件</string>
+    <string name="title_activity_world">WorldActivity</string>
+
+    <!--Alphebet for home page-->
+    <string name="material_apply">材料申请</string>
+    <string name="material_in_warehouse">材料入库</string>
+    <string name="materail_turn_back">材料归还</string>
+    <string name="get_matrial">材料领取</string>
+
+    <!--Alphebet for form-list page-->
+    <string name="title">表名</string>
+    <string name="digest">内容预览</string>
+    <string name="time">创建时间</string>
+
     <string-array name="search_conditions">
         <item>姓名</item>
         <item>昵称</item>
@@ -49,9 +62,5 @@
         <item>女</item>
         <item>其他</item>
     </string-array>
-    <string name="title_activity_world">WorldActivity</string>
-    <string name="material_apply">材料申请</string>
-    <string name="material_in_warehouse">材料入库</string>
-    <string name="materail_turn_back">材料归还</string>
-    <string name="get_matrial">材料领取</string>
+
 </resources>

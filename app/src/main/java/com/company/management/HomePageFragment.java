@@ -1,6 +1,7 @@
 package com.company.management;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -29,7 +30,7 @@ import com.company.management.R;
 /**
  * Created by 24448 on 2018/6/12.
  */
-
+// TODO: 完成设置title
 public class HomePageFragment extends Fragment {
     ImageView material_apply, in_warehouse, material_turn_back, get_material;
     @Override
@@ -46,8 +47,26 @@ public class HomePageFragment extends Fragment {
         in_warehouse = (ImageView) view.findViewById(R.id.material_in_warehouse);
         material_turn_back = (ImageView) view.findViewById(R.id.material_turn_back);
         get_material = (ImageView) view.findViewById(R.id.meterial_get);
+        material_apply.setOnClickListener(new ChangeToFormList());
     }
-
+//    TODO： 完成具体的跳转
+    class ChangeToFormList implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent();
+            intent.setClassName(getActivity().getPackageName(),
+                    getActivity().getPackageName() + ".FormList");
+            PackageManager packageManager = getActivity().getPackageManager();
+            try{
+                if (intent.resolveActivity(packageManager) != null) {
+                    startActivity(intent);
+                }
+            }
+            catch (Exception e){
+                Log.e("tag",e.getMessage().toString());
+            }
+        }
+    }
     // 简单消息提示框
     private void showDialog(String resultMsg) {
         new AlertDialog.Builder(getContext())

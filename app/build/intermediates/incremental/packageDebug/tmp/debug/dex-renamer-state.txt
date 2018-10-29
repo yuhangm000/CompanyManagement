@@ -1,4 +1,4 @@
-#Thu Oct 25 15:56:05 CST 2018
+#Fri Oct 26 17:45:36 CST 2018
 base.0=F\:\\companymanagement\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\12
 path.1=classes.dex
 renamed.1=classes2.dex
