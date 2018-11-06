@@ -52,6 +52,10 @@
     <string name="digest">内容预览</string>
     <string name="time">创建时间</string>
 
+    <!-- string for form detail-->
+    <string name="status">状态</string>
+    <string name="pass">通过</string>
+    <string name="reject">拒绝</string>
     <string-array name="search_conditions">
         <item>姓名</item>
         <item>昵称</item>
