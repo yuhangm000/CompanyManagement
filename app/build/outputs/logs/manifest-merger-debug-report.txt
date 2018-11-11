@@ -1,199 +1,203 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:2:1-57:12
-MERGED from [com.android.support:design:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\239deca88195cb5b0680ce1b659544f7\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\c4fcf2b6fabefcf46532c5e24f9c1880\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\cb2a82a6be32afe09f545a1fd70f027c\AndroidManifest.xml:2:1-11:12
-MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\769ac49c1b2369d0ce40c08be7c66e84\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\98427d45046b1bbe117a1b27e002b574\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\dd7dd938b14780d3ebf9af54520ac496\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-v4:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\e81104e17073779b45ee4e4b255a2a35\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\26e5e3c8d92aef55deb46ca2ad49dd29\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\3005f0109eac7598b52063edb9873be7\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\1d91a4f22f6a36a3f70cf4dcd0811379\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\f2ab066724aade4fa3295b261ca34fd2\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:transition:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\78e217672d1bb4ce3a76a8f054660230\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\150ce917ddf5c7641deebaff72213c07\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\97d50eddb0c2568ed4af095150fdb310\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\1d7b565080c9c9ffb7ee5913a779c5cc\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\36bcbf928c10734f71447d51540083df\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\3462ad71d43e6e915b874ed7594706e3\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.core:runtime:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\a1857d5efbe847c976f75a819bcad03f\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:2:1-57:12
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
+MERGED from [com.android.support:design:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\946b57bcec9fef3aa368153bf3473761\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\3326d2b657175d87b70e4ba3d44e7ee4\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\ae3bce8923bb2cd74a107d7dade6d0d8\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\910f9af882e3735ee5209da503195b06\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\204a1bec9d862a426cdaa1f5a1e35ee7\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\a44c5b185c45121c8cd098eb0420540f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\47f2cede027f1d4855df972fb1f89133\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\2a50d6ce56dd1f86c5716518a48a805e\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\6d930b1de7319698b8198b6827f065cd\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\9c5abe7fdf4ce99d39a48c485c226600\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\e7900c82f8f149faeda25695027dfdf9\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\4db658e17d9226d25d8660abf40bf3d1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\0c27a2c8e1dd06494a42fd1c5cb1eed7\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\0a71798a5103486b4d0e5f5b82b3fc56\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\1638eb7935c75e20c0fd73ef72fc2452\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\53a7c08c25549a9a59c9f23b580fa621\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\222d41c40bbb49d3b10455ed5ff4783f\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\30cdf08196c4aa52915a47e5b0abf2b1\AndroidManifest.xml:17:1-22:12
+INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
 	package
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:3:5-37
-		INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:3:5-37
+		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
+		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:2:1-57:12
-		INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
+		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
+		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:2:1-57:12
-		INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
+		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
+		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.GET_ACCOUNTS
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:6:5-71
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:6:5-71
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:6:22-68
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:6:22-68
 uses-permission#android.permission.READ_PROFILE
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:7:5-71
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:7:5-71
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:7:22-68
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:7:22-68
 uses-permission#android.permission.READ_CONTACTS
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:8:5-72
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:8:5-72
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:8:22-69
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:8:22-69
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:9:5-67
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:9:5-67
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:9:22-64
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:9:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:10:5-79
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:10:5-79
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:10:22-76
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:10:22-76
 application
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:12:5-55:19
-MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\cb2a82a6be32afe09f545a1fd70f027c\AndroidManifest.xml:9:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\cb2a82a6be32afe09f545a1fd70f027c\AndroidManifest.xml:9:5-20
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:12:5-56:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\ae3bce8923bb2cd74a107d7dade6d0d8\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\ae3bce8923bb2cd74a107d7dade6d0d8\AndroidManifest.xml:9:5-20
 	android:supportsRtl
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:18:9-35
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:18:9-35
 	android:label
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:16:9-41
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:16:9-41
 	android:roundIcon
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:17:9-54
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:17:9-54
 	android:icon
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:15:9-43
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:15:9-43
 	android:allowBackup
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:14:9-35
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:14:9-35
 	android:theme
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:19:9-40
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:19:9-40
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:13:9-52
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:13:9-30
 activity#com.company.management.BottomNavigation
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:20:9-30:20
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:20:9-30:20
 	android:screenOrientation
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:23:13-49
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:23:13-49
 	android:label
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:22:13-45
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:22:13-45
 	android:theme
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:24:13-44
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:24:13-44
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:21:13-67
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:21:13-45
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:25:13-29:29
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:25:13-29:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:26:17-69
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:26:17-69
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:26:25-66
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:26:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:28:17-77
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:28:17-77
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:28:27-74
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:28:27-74
 activity#com.company.management.myinformation
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:31:9-33:52
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:31:9-33:52
 	android:screenOrientation
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:33:13-49
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:33:13-49
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:32:13-64
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:32:13-42
 activity#com.company.management.LoginActivity
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:34:9-37:52
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:34:9-37:52
 	android:screenOrientation
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:37:13-49
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:37:13-49
 	android:label
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:36:13-57
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:36:13-57
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:35:13-64
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:35:13-42
 activity#com.company.management.RegisterActivity
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:38:9-41:52
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:38:9-41:52
 	android:screenOrientation
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:41:13-49
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:41:13-49
 	android:label
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:40:13-58
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:40:13-58
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:39:13-67
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:39:13-45
 activity#com.company.management.ChangePassword
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:42:9-44:52
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:42:9-44:52
 	android:screenOrientation
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:44:13-49
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:44:13-49
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:43:13-65
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:43:13-43
 activity#com.company.management.ChangeNickName
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:45:9-47:52
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:45:9-47:52
 	android:screenOrientation
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:47:13-49
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:47:13-49
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:46:13-65
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:46:13-43
 activity#com.company.management.EditGender
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:48:9-50:52
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:48:9-50:52
 	android:screenOrientation
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:50:13-49
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:50:13-49
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:49:13-61
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:49:13-39
 activity#com.company.management.EditAddress
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:51:9-53:52
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:51:9-53:52
 	android:screenOrientation
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:53:13-49
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:53:13-49
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:52:13-62
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:52:13-40
 activity#com.company.management.EditName
-ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:54:9-77
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:54:9-46
 	android:name
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml:54:19-65
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:54:19-43
+activity#com.company.management.FormList
+ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:55:9-55
+	android:name
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:55:19-43
 uses-sdk
-INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
-MERGED from [com.android.support:design:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\239deca88195cb5b0680ce1b659544f7\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:design:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\239deca88195cb5b0680ce1b659544f7\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\c4fcf2b6fabefcf46532c5e24f9c1880\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\c4fcf2b6fabefcf46532c5e24f9c1880\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\cb2a82a6be32afe09f545a1fd70f027c\AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\cb2a82a6be32afe09f545a1fd70f027c\AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\769ac49c1b2369d0ce40c08be7c66e84\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\769ac49c1b2369d0ce40c08be7c66e84\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\98427d45046b1bbe117a1b27e002b574\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\98427d45046b1bbe117a1b27e002b574\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\dd7dd938b14780d3ebf9af54520ac496\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\dd7dd938b14780d3ebf9af54520ac496\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\e81104e17073779b45ee4e4b255a2a35\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\e81104e17073779b45ee4e4b255a2a35\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\26e5e3c8d92aef55deb46ca2ad49dd29\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\26e5e3c8d92aef55deb46ca2ad49dd29\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\3005f0109eac7598b52063edb9873be7\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\3005f0109eac7598b52063edb9873be7\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\1d91a4f22f6a36a3f70cf4dcd0811379\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\1d91a4f22f6a36a3f70cf4dcd0811379\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\f2ab066724aade4fa3295b261ca34fd2\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\f2ab066724aade4fa3295b261ca34fd2\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\78e217672d1bb4ce3a76a8f054660230\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\78e217672d1bb4ce3a76a8f054660230\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\150ce917ddf5c7641deebaff72213c07\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\150ce917ddf5c7641deebaff72213c07\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\97d50eddb0c2568ed4af095150fdb310\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.1.1] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\97d50eddb0c2568ed4af095150fdb310\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\1d7b565080c9c9ffb7ee5913a779c5cc\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\1d7b565080c9c9ffb7ee5913a779c5cc\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\36bcbf928c10734f71447d51540083df\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\36bcbf928c10734f71447d51540083df\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\3462ad71d43e6e915b874ed7594706e3\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\3462ad71d43e6e915b874ed7594706e3\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\a1857d5efbe847c976f75a819bcad03f\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.0] C:\Users\15222_000\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\a1857d5efbe847c976f75a819bcad03f\AndroidManifest.xml:20:5-44
-INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
+INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
+INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:design:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\946b57bcec9fef3aa368153bf3473761\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\946b57bcec9fef3aa368153bf3473761\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\3326d2b657175d87b70e4ba3d44e7ee4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\3326d2b657175d87b70e4ba3d44e7ee4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\ae3bce8923bb2cd74a107d7dade6d0d8\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\ae3bce8923bb2cd74a107d7dade6d0d8\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\910f9af882e3735ee5209da503195b06\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\910f9af882e3735ee5209da503195b06\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\204a1bec9d862a426cdaa1f5a1e35ee7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\204a1bec9d862a426cdaa1f5a1e35ee7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\a44c5b185c45121c8cd098eb0420540f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\a44c5b185c45121c8cd098eb0420540f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\47f2cede027f1d4855df972fb1f89133\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\47f2cede027f1d4855df972fb1f89133\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\2a50d6ce56dd1f86c5716518a48a805e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\2a50d6ce56dd1f86c5716518a48a805e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\6d930b1de7319698b8198b6827f065cd\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\6d930b1de7319698b8198b6827f065cd\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\9c5abe7fdf4ce99d39a48c485c226600\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\9c5abe7fdf4ce99d39a48c485c226600\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\e7900c82f8f149faeda25695027dfdf9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\e7900c82f8f149faeda25695027dfdf9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\4db658e17d9226d25d8660abf40bf3d1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\4db658e17d9226d25d8660abf40bf3d1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\0c27a2c8e1dd06494a42fd1c5cb1eed7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\0c27a2c8e1dd06494a42fd1c5cb1eed7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\0a71798a5103486b4d0e5f5b82b3fc56\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\0a71798a5103486b4d0e5f5b82b3fc56\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\1638eb7935c75e20c0fd73ef72fc2452\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\1638eb7935c75e20c0fd73ef72fc2452\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\53a7c08c25549a9a59c9f23b580fa621\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\53a7c08c25549a9a59c9f23b580fa621\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\222d41c40bbb49d3b10455ed5ff4783f\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\222d41c40bbb49d3b10455ed5ff4783f\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\30cdf08196c4aa52915a47e5b0abf2b1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\30cdf08196c4aa52915a47e5b0abf2b1\AndroidManifest.xml:20:5-44
+INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
+INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
+		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml
+		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\15222_000\Desktop\tinyworld\222\TinyWorld\app\src\main\AndroidManifest.xml
+		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
+		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml
+		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml

@@ -60,6 +60,7 @@
             android:name="com.company.management.EditAddress"
             android:screenOrientation="portrait" />
         <activity android:name="com.company.management.EditName" />
+        <activity android:name="com.company.management.FormList" />
     </application>
 
 </manifest>
