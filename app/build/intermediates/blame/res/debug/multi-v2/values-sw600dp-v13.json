@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "F:\\companymanagement\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+            "outputFile": "F:\\CompanyManagement\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
             "map": [
                 {
                     "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\946b57bcec9fef3aa368153bf3473761\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",

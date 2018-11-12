@@ -1,11 +1,11 @@
 #Internal package file, do not edit.
-#Thu Oct 25 15:56:05 CST 2018
-1.base=F\:\\companymanagement\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\12
+#Mon Nov 12 20:03:58 CST 2018
+1.base=F\:\\CompanyManagement\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\12
 0.baseType=DIRECTORY
 1.baseType=DIRECTORY
 count=2
 1.set=DEX
 0.path=classes.dex
 0.set=DEX
-0.base=F\:\\companymanagement\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\11
+0.base=F\:\\CompanyManagement\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\11
 1.path=classes.dex

@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
-INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
-INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
-INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:2:1-58:12
 MERGED from [com.android.support:design:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\946b57bcec9fef3aa368153bf3473761\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\3326d2b657175d87b70e4ba3d44e7ee4\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\ae3bce8923bb2cd74a107d7dade6d0d8\AndroidManifest.xml:2:1-11:12
@@ -22,139 +22,139 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\lenovo\.gradle
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\53a7c08c25549a9a59c9f23b580fa621\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\222d41c40bbb49d3b10455ed5ff4783f\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\30cdf08196c4aa52915a47e5b0abf2b1\AndroidManifest.xml:17:1-22:12
-INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
-INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
-INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:2:1-58:12
 	package
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:3:5-37
-		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
-		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:3:5-37
+		INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml
+		INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
-		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
+		INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:2:1-58:12
+		INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:1-58:12
-		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
+		INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:2:1-58:12
+		INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.GET_ACCOUNTS
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:6:5-71
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:6:5-71
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:6:22-68
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:6:22-68
 uses-permission#android.permission.READ_PROFILE
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:7:5-71
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:7:5-71
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:7:22-68
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:7:22-68
 uses-permission#android.permission.READ_CONTACTS
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:8:5-72
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:8:5-72
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:8:22-69
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:8:22-69
 uses-permission#android.permission.INTERNET
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:9:5-67
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:9:5-67
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:9:22-64
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:9:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:10:5-79
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:10:5-79
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:10:22-76
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:10:22-76
 application
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:12:5-56:19
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:12:5-56:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\ae3bce8923bb2cd74a107d7dade6d0d8\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\ae3bce8923bb2cd74a107d7dade6d0d8\AndroidManifest.xml:9:5-20
 	android:supportsRtl
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:18:9-35
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:18:9-35
 	android:label
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:16:9-41
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:16:9-41
 	android:roundIcon
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:17:9-54
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:17:9-54
 	android:icon
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:15:9-43
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:15:9-43
 	android:allowBackup
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:14:9-35
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:14:9-35
 	android:theme
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:19:9-40
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:19:9-40
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:13:9-30
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:13:9-30
 activity#com.company.management.BottomNavigation
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:20:9-30:20
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:20:9-30:20
 	android:screenOrientation
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:23:13-49
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:23:13-49
 	android:label
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:22:13-45
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:22:13-45
 	android:theme
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:24:13-44
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:24:13-44
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:21:13-45
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:21:13-45
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:25:13-29:29
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:25:13-29:29
 action#android.intent.action.MAIN
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:26:17-69
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:26:17-69
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:26:25-66
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:26:25-66
 category#android.intent.category.LAUNCHER
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:28:17-77
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:28:17-77
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:28:27-74
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:28:27-74
 activity#com.company.management.myinformation
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:31:9-33:52
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:31:9-33:52
 	android:screenOrientation
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:33:13-49
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:33:13-49
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:32:13-42
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:32:13-42
 activity#com.company.management.LoginActivity
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:34:9-37:52
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:34:9-37:52
 	android:screenOrientation
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:37:13-49
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:37:13-49
 	android:label
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:36:13-57
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:36:13-57
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:35:13-42
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:35:13-42
 activity#com.company.management.RegisterActivity
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:38:9-41:52
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:38:9-41:52
 	android:screenOrientation
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:41:13-49
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:41:13-49
 	android:label
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:40:13-58
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:40:13-58
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:39:13-45
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:39:13-45
 activity#com.company.management.ChangePassword
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:42:9-44:52
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:42:9-44:52
 	android:screenOrientation
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:44:13-49
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:44:13-49
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:43:13-43
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:43:13-43
 activity#com.company.management.ChangeNickName
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:45:9-47:52
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:45:9-47:52
 	android:screenOrientation
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:47:13-49
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:47:13-49
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:46:13-43
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:46:13-43
 activity#com.company.management.EditGender
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:48:9-50:52
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:48:9-50:52
 	android:screenOrientation
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:50:13-49
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:50:13-49
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:49:13-39
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:49:13-39
 activity#com.company.management.EditAddress
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:51:9-53:52
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:51:9-53:52
 	android:screenOrientation
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:53:13-49
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:53:13-49
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:52:13-40
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:52:13-40
 activity#com.company.management.EditName
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:54:9-46
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:54:9-46
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:54:19-43
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:54:19-43
 activity#com.company.management.FormList
-ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:55:9-55
+ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:55:9-55
 	android:name
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml:55:19-43
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml:55:19-43
 uses-sdk
-INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
-INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
+INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml
+INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml
 MERGED from [com.android.support:design:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\946b57bcec9fef3aa368153bf3473761\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:design:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\946b57bcec9fef3aa368153bf3473761\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\3326d2b657175d87b70e4ba3d44e7ee4\AndroidManifest.xml:20:5-44
@@ -191,13 +191,13 @@ MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\lenovo\.gradle\cache
 MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\222d41c40bbb49d3b10455ed5ff4783f\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\30cdf08196c4aa52915a47e5b0abf2b1\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.0] C:\Users\lenovo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\30cdf08196c4aa52915a47e5b0abf2b1\AndroidManifest.xml:20:5-44
-INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
-INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
+INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml
+INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml
-		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
+		INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml
+		INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
-		ADDED from F:\companymanagement\app\src\main\AndroidManifest.xml
-		INJECTED from F:\companymanagement\app\src\main\AndroidManifest.xml
+		INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml
+		ADDED from F:\CompanyManagement\app\src\main\AndroidManifest.xml
+		INJECTED from F:\CompanyManagement\app\src\main\AndroidManifest.xml

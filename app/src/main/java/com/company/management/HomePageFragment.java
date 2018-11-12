@@ -50,7 +50,7 @@ public class HomePageFragment extends Fragment {
         public void onClick(View v) {
             Intent intent = new Intent();
             Bundle bundle = new Bundle();
-            bundle.putInt("page", target);
+            bundle.putInt("target_page", target);
             bundle.putString("user", username);
             intent.putExtras(bundle);
             intent.setClassName(getActivity().getPackageName(),
