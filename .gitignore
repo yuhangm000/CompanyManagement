@@ -2,3 +2,7 @@
 app/build/intermediates/transforms/dexMerger/debug/10/classes\.dex
 app/build/*
 CompanyManagement\.iml
+
+\.gradle/4\.4/fileHashes/*
+
+\.gradle/4\.4/fileHashes/
