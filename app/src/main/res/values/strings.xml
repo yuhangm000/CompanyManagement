@@ -53,9 +53,14 @@
     <string name="time">创建时间</string>
 
     <!-- string for form detail-->
-    <string name="status">状态</string>
-    <string name="pass">通过</string>
-    <string name="reject">拒绝</string>
+    <string name="form_detail_status">状态</string>
+    <string name="form_detail_pass">通过</string>
+    <string name="form_detail_reject">拒绝</string>
+    <string name="form_detail_time">创建时间</string>
+    <string name="form_detail_creator">创建者</string>
+    <string name="form_detail_table_head_material_name">材料名称</string>
+    <string name="form_detail_table_head_material_size">材料规格</string>
+    <string name="form_detail_table_head_material_get_number">申请数量</string>
     <string-array name="search_conditions">
         <item>姓名</item>
         <item>昵称</item>

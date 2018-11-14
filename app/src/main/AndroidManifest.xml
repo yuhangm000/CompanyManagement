@@ -52,7 +52,9 @@
             android:name=".EditAddress"
             android:screenOrientation="portrait" />
         <activity android:name=".EditName" />
-        <activity android:name=".FormList"></activity>
+        <activity android:name=".FormList" />
+        <activity android:name=".FormDetail" />
+        <activity android:name=".FormCreate"></activity>
     </application>
 
 </manifest>

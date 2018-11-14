@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:ignore="MissingDefaultResource">
+    tools:context=".FormDetail">
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -21,26 +21,40 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginBottom="50dp">
-        <LinearLayout
+        <android.support.v7.widget.CardView
+            android:layout_height="85dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            app:cardCornerRadius="5dp"
+            app:cardBackgroundColor="@color/lightGray"
+            android:layout_margin="5dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical">
             <TextView
                 android:id="@+id/form_detail_creator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/creator"/>
+                android:layout_marginTop="5dp"
+                android:textSize="15dp"
+                android:text="@string/form_detail_creator"/>
             <TextView
                 android:id="@+id/form_detail_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/time"/>
+                android:layout_marginTop="5dp"
+                android:textSize="15dp"
+                android:text="@string/form_detail_time"/>
             <TextView
                 android:id="@+id/form_detail_status"
-                android:text="@string/status"
+                android:text="@string/form_detail_status"
+                android:layout_marginTop="5dp"
+                android:textSize="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textStyle="bold"
-                android:text="@string/table_head_material_name"/>
+                android:text="@string/form_detail_table_head_material_name"/>
             <TextView
                 android:id="@+id/table_head_size"
                 android:layout_weight="1.0"
@@ -60,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textStyle="bold"
-                android:text="@string/table_head_material_size"/>
+                android:text="@string/form_detail_table_head_material_size"/>
             <TextView
                 android:id="@+id/table_head_operation"
                 android:layout_weight="1.0"
@@ -68,11 +82,11 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textStyle="bold"
-                android:text="@string/table_head_material_get_number"/>
+                android:text="@string/form_detail_table_head_material_get_number"/>
         </LinearLayout>
         <ListView
             android:id="@+id/material_list"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:minHeight="50dp">
@@ -87,7 +101,7 @@
         android:layout_height="wrap_content"
         android:maxHeight="50dp"
         android:minWidth="160dp"
-        android:text="@string/pass"
+        android:text="@string/form_detail_pass"
         android:background="@color/green"/>
     <Button
         android:id="@+id/reject"
@@ -98,6 +112,6 @@
         android:layout_height="wrap_content"
         android:minWidth="160dp"
         android:background="@color/yellow"
-        android:text="@string/reject"
+        android:text="@string/form_detail_reject"
         android:maxHeight="50dp"/>
 </android.support.constraint.ConstraintLayout>

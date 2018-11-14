@@ -3,6 +3,7 @@ package com.company.management;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +62,7 @@ public class ListContentAdapter extends BaseAdapter {
 //        设置数据
         viewHolder.mName.setText(mData.get(position));
         viewHolder.mSize.setText(mSize.get(position));
-        viewHolder.mNumber.setText(mNumber.get(position));
+        viewHolder.mNumber.setText(mNumber.get(position).toString());
         return convertView;
     }
     static class ViewHolder {
@@ -83,7 +84,8 @@ public class ListContentAdapter extends BaseAdapter {
 
         @Override
         public void afterTextChanged(Editable s) {
-            viewHolder.mNumber.setText(s);
+//            viewHolder.mNumber.setText(s.toString());
+            Log.i("after edit", s.toString());
         }
     }
 }
