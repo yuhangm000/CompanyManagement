@@ -26,7 +26,9 @@ public class FormCreate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_create);
         init();
-        // TODO: 使用spiner 实现下拉框
+        spinner_material_name.add(spinner);
+        spinner_material_size.add(spinner);
+        material_number.add("0");
         spinner_material_name.add(spinner);
         spinner_material_size.add(spinner);
         material_number.add("0");

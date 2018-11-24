@@ -64,6 +64,7 @@ public class FormListListViewContentAdapter extends BaseAdapter {
     static class ViewHolder {
         TextView table_name, table_abstract, table_create_time;
     }
+    // TODO: 去除点击事件
     private class ListViewClickListener implements View.OnClickListener {
 
         @Override

@@ -6,6 +6,11 @@
         android:icon="@drawable/homepage"
         android:title="功能" />
     <item
+        android:id="@+id/navigation_remind"
+        android:icon="@drawable/remind"
+        android:title="消息"
+        />
+    <item
         android:id="@+id/navigation_mine"
         android:icon="@drawable/mine"
         android:title="我的"/>

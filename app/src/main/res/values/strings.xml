@@ -16,6 +16,7 @@
     <string name="prompt_name">姓名</string>
     <string name="prompt_gender">性别</string>
     <string name="prompt_phone">手机号码</string>
+    <string name="prompt_account">账号</string>
     <string name="prompt_password">密码</string>
     <string name="password_again">确认密码</string>
     <string name="prompt_verification">验证码</string>
@@ -61,6 +62,9 @@
     <string name="form_detail_table_head_material_name">材料名称</string>
     <string name="form_detail_table_head_material_size">材料规格</string>
     <string name="form_detail_table_head_material_get_number">申请数量</string>
+    <!-- string for form create -->
+    <string name="form_create_cancel">取消</string>
+    <string name="form_create_complete">完成</string>
     <string-array name="search_conditions">
         <item>姓名</item>
         <item>昵称</item>
@@ -71,5 +75,8 @@
         <item>女</item>
         <item>其他</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

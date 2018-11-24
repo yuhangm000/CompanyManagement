@@ -1,21 +1,40 @@
 package com.company.management;
 
 import android.content.Intent;
+import android.support.annotation.VisibleForTesting;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+/**
+ * 1. this page show the table list.
+ * 2. check out whether has the permission to create with username, pagename.
+ */
 public class FormList extends AppCompatActivity {
+    /**
+     * 常量区
+     */
+    private final String permissionForward = "CREATE_TABLE_";
+    /**
+     * 变量区域
+     */
     FloatingActionButton create;
     ListView form_list;
     int target_page;
-
+    private String username;
+    private String permissionBackward;
+    private Map<Integer, String> pageMap;
+    private List<String> idList;
+    private ACL acl;
     List<String> item_title = new ArrayList<>(), item_abstract = new ArrayList<>(), item_create_time = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,46 +42,59 @@ public class FormList extends AppCompatActivity {
         setContentView(R.layout.activity_form_list);
 //        初始化完成数据获取，得到相应的数据，并且从后台获得表单数据
         init();
-//        TODO: 完成展示功能
-        if (!authenticate(""))
+        /**
+         * 如果没有权限则不展示创建按钮
+         */
+        if (!acl.hasPermission(username, permissionForward+permissionBackward))
             create.setVisibility(View.INVISIBLE);
-        create.setOnClickListener(new ChangeToCreatePage(target_page));
-        setForm_list();
+        else
+            create.setOnClickListener(new ChangeToCreatePage(target_page));
+        /**
+         * 设置ListView的点击监听事件
+         */
+        form_list.setOnItemClickListener(new ItemClickListener());
+//        setForm_list();
     }
     void init(){
+        acl = (ACL) getApplicationContext();
+        pageMap = new HashMap<>();
+        pageMap.put(R.string.material_apply, "apply");
+        pageMap.put(R.string.material_turn_back, "turn_back");
+        pageMap.put(R.string.get_matrial, "receive");
+        pageMap.put(R.string.material_in_warehouse, "in_warehouse");
         form_list = (ListView) findViewById(R.id.form_list);
         create = (FloatingActionButton) findViewById(R.id.form_list_create);
+        try {
+            Intent intent = getIntent();
+            Bundle bundle = intent.getExtras();
+            target_page = bundle.getInt("target_page");
+            UserWR userWR = new UserWR();
+            username = userWR.getUserName(getApplicationContext());
+            permissionBackward = pageMap.get(target_page);
+        } catch (Exception e) {
+            Log.e("FORM_LIST_INIT",e.getMessage());
+        }
 //    TODO: 完成从后台获取数据
+        getDataFromBackward();
+//        将数据放到list中
+        setForm_list();
+        // 获取数据
+
+    }
+    public void getDataFromBackward() {
+
+    }
+//    TODO: 完成数据填充， 删除无用代码
+    void setForm_list() {
         String text = "test";
         item_title.add(text);
         item_abstract.add(text);
         item_create_time.add(text);
         FormListListViewContentAdapter formListListViewContentAdapter = new FormListListViewContentAdapter(item_title, item_abstract, item_create_time);
         form_list.setAdapter(formListListViewContentAdapter);
-//    TODO: 完成activity之间需要传递的数据确认
-        try {
-            Intent intent = getIntent();
-            Bundle bundle = intent.getExtras();
-            target_page = bundle.getInt("target_page");
-        } catch (Exception e) {
-            Log.e("FORM_LIST_INIT",e.getMessage());
-        }
-    }
-//    TODO： 完善create按钮的显示判断作用
-    Boolean authenticate(String user) {
-//        TODO: 完成之后这个地方需要去除
-        return true;
-//        if (user == "admin")
-//            return true;
-//        return false;
-    }
-//    TODO: 完成数据填充
-    void setForm_list() {
-
     }
 
-//    Description: 完成跳转的界面
-//  TODO: 完成list的适配器
+//    create 按钮的跳转相应事件
     class ChangeToCreatePage implements View.OnClickListener {
         int target_page;
         public ChangeToCreatePage(int target_page){
@@ -71,11 +103,31 @@ public class FormList extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent();
-    String packagename = getPackageName();
+            Bundle bundle = new Bundle();
+            bundle.putInt("originalPage", this.target_page);
+            intent.putExtras(bundle);
+            String packagename = getPackageName();
             intent.setClassName(packagename, packagename + ".FormCreate" );
             if (intent.resolveActivity(getPackageManager()) != null) {
-        startActivity(intent);
+                startActivity(intent);
+            }
+        }
     }
-}
+    class ItemClickListener implements AdapterView.OnItemClickListener{
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Intent intent = new Intent();
+            Bundle bundle = new Bundle();
+            // TODO: 添加tableId 一列
+            bundle.putString("tableId", idList.get(position));
+            bundle.putString("username", username);
+            intent.putExtras(bundle);
+            String packageName = getPackageName();
+            intent.setClassName(packageName, packageName + ".FormDetail");
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
+        }
     }
 }

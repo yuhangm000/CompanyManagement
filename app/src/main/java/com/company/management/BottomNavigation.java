@@ -1,6 +1,7 @@
 package com.company.management;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -15,6 +16,9 @@ import java.util.ArrayList;
 
 import com.company.management.R;
 
+/**
+ * this page just show the basic function & no need to checkout user's access permission.
+ */
 public class BottomNavigation extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
 
     private ViewPager vpager;
@@ -31,8 +35,11 @@ public class BottomNavigation extends AppCompatActivity implements View.OnClickL
                 case R.id.navigation_home:
                     vpager.setCurrentItem(0);
                     break;
-                case R.id.navigation_mine:
+                case R.id.navigation_remind:
                     vpager.setCurrentItem(1);
+                    break;
+                case R.id.navigation_mine:
+                    vpager.setCurrentItem(2);
                     break;
             }
             return true;
@@ -52,9 +59,13 @@ public class BottomNavigation extends AppCompatActivity implements View.OnClickL
         aList = new ArrayList<Fragment>();
         LayoutInflater li = getLayoutInflater();
         aList.add(new HomePageFragment());
+        aList.add(new MassageRemind());
         aList.add(new MineFragment());
         mAdapter = new MultiPages(getSupportFragmentManager(),aList);
         vpager.setAdapter(mAdapter);
+        ColorStateList colorStateList = (ColorStateList) getResources().getColorStateList(R.color.navigation_menu_item_color);
+        navigation.setItemTextColor(colorStateList);
+        navigation.setItemIconTintList(colorStateList);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         vpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

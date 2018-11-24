@@ -14,6 +14,8 @@ import android.util.Log;
 import android.widget.*;
 /**
  * Created by 24448 on 2018/6/12.
+ * this page support user with four choice,
+ * 1. click each one of four choices will change into a list view corresponding to it.
  */
 // TODO: 完成设置title
 public class HomePageFragment extends Fragment {
@@ -37,21 +39,16 @@ public class HomePageFragment extends Fragment {
         material_turn_back.setOnClickListener(new ChangeToFormList(R.string.material_turn_back));
         get_material.setOnClickListener(new ChangeToFormList(R.string.get_matrial));
     }
-//    TODO：需要进行测试
     class ChangeToFormList implements View.OnClickListener {
         int  target;
-        String username;
         public ChangeToFormList(int target) {
             this.target = target;
-            UserInfoSaveAndRead userinfo = new UserInfoSaveAndRead();
-            username = userinfo.getUserInfo(getActivity().getApplicationContext());
         }
         @Override
         public void onClick(View v) {
             Intent intent = new Intent();
             Bundle bundle = new Bundle();
             bundle.putInt("target_page", target);
-            bundle.putString("user", username);
             intent.putExtras(bundle);
             intent.setClassName(getActivity().getPackageName(),
                     getActivity().getPackageName() + ".FormList");

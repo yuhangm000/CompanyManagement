@@ -2,6 +2,10 @@ package com.company.management;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.database.DataSetObservable;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +27,11 @@ public class FormCreateListContentAdapter extends BaseAdapter {
     private Context context = null;
     private ViewHolder viewHolder;
     private ArrayAdapter<String> arrayAdapterName;
-    private ArrayAdapter<String> arrayAdapterSize;
     private ArrayList<String> name_list;
     private ArrayList<String> size_list;
     private List<MaterialSize> materialSize;
+    private int list_size;
+    private int old_selection;
     class MaterialSize {
         String material;
         String material_size;
@@ -35,16 +40,39 @@ public class FormCreateListContentAdapter extends BaseAdapter {
             material_size = mz;
         }
     }
+    private Handler  handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            ArrayAdapter<String> arrayAdapterSize = (ArrayAdapter<String>) msg.obj;
+            arrayAdapterSize.clear();
+            size_list.clear();
+            for (int i = 0; i < materialSize.size(); i++) {
+                if(materialSize.get(i).material.equals(name_list.get(old_selection))) {
+//                    arrayAdapterSize.remove(materialSize.get(i).material_size);
+                    size_list.add(materialSize.get(i).material_size);
+                    arrayAdapterSize.add(materialSize.get(i).material_size);
+                }
+            }
+            Log.i("in handle", String.valueOf(arrayAdapterSize.getCount()));
+            arrayAdapterSize.notifyDataSetChanged();
+//            arrayAdapterSize = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, size);
+//            arrayAdapterSize.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//            viewHolder.size.setAdapter(arrayAdapterSize);
+        }
+    };
     public FormCreateListContentAdapter() {
         material_name = new ArrayList<>();
         material_size = new ArrayList<>();
         material_number = new ArrayList<>();
+        old_selection = 0;
         // TODO: 此处添加从后台获得材料及其规格的函数
         materialSize = new ArrayList<>();
         materialSize.add(new MaterialSize("yanhua","1"));
         materialSize.add(new MaterialSize("yanhua", "2"));
         materialSize.add(new MaterialSize("meng yuhang","3"));
         materialSize.add(new MaterialSize("meng yuhang", "4"));
+        list_size = materialSize.size();
     }
     public FormCreateListContentAdapter(List<Spinner> name, List<Spinner> size, List<String> number) {
         this.material_name = name;
@@ -70,7 +98,7 @@ public class FormCreateListContentAdapter extends BaseAdapter {
     }
     @Override
     public int getCount() {
-        return material_name == null ? 0 : material_name.size();
+        return list_size;
     }
 
     @Override
@@ -99,41 +127,50 @@ public class FormCreateListContentAdapter extends BaseAdapter {
         viewHolder = (ViewHolder) convertView.getTag();
         viewHolder.number.setText("0");
         initSpinnerContent();
+        // 初始化材料名的adapter
         arrayAdapterName = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, name_list);
         arrayAdapterName.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         viewHolder.name.setAdapter(arrayAdapterName);
-        viewHolder.name.setOnItemSelectedListener(new SpinnerNameListenser());
-
-        arrayAdapterSize = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, size_list);
+        viewHolder.name.setSelection(old_selection);
+        // 初始化材料规格的adapter
+        final ArrayAdapter<String> arrayAdapterSize = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, size_list);
         arrayAdapterSize.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        viewHolder.size.setAdapter(arrayAdapterName);
+        viewHolder.size.setAdapter(arrayAdapterSize);
+        // 设置监听器
+        viewHolder.name.setOnItemSelectedListener(new SpinnerNameListener(arrayAdapterSize));
+        // 设置编辑框监听器
+
         return convertView;
     }
     // 此处获得spinner 的内容
     void initSpinnerContent() {
         name_list = new ArrayList<>();
+        size_list = new ArrayList<>();
         for (int i = 0; i < materialSize.size(); i++) {
             name_list.add(materialSize.get(i).material);
         }
         HashSet h = new HashSet(name_list);
         name_list.clear();
         name_list.addAll(h);
+        size_list.clear();
+        for (int i = 0; i < materialSize.size(); i++) {
+            if (name_list.get(old_selection).equals(materialSize.get(i).material)) {
+                size_list.add(materialSize.get(i).material_size);
+            }
+        }
     }
-    class SpinnerNameListenser implements AdapterView.OnItemSelectedListener {
-
-        @SuppressLint("WrongConstant")
+    class SpinnerNameListener implements AdapterView.OnItemSelectedListener {
+        private ArrayAdapter<String> arrayAdapter;
+        public SpinnerNameListener(ArrayAdapter<String> arrayAdapter) {
+            this.arrayAdapter = arrayAdapter;
+        }
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            size_list = new ArrayList<>();
-            for (int i = 0; i < materialSize.size(); i++) {
-                if(materialSize.get(i).material.equals(name_list.get(position))) {
-                    size_list.add(materialSize.get(i).material_size);
-                }
-            }
-            arrayAdapterSize = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, size_list);
-            arrayAdapterSize.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            viewHolder.size.setAdapter(arrayAdapterSize);
-            Toast.makeText(context, name_list.get(position), 2000).show();
+//            size_list.clear();
+            Message msg = handler.obtainMessage();
+            old_selection = position;
+            msg.obj = arrayAdapter;
+            handler.sendMessage(msg);
         }
 
         @Override
@@ -141,6 +178,7 @@ public class FormCreateListContentAdapter extends BaseAdapter {
 
         }
     }
+
     class ViewHolder{
         Spinner name;
         Spinner size;

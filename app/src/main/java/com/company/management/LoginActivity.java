@@ -42,6 +42,14 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via phone/password.
  */
+
+/**
+ * this page just do tasks as follows:
+ * 1. input account & password
+ * 2. check out account & password
+ * 3. save the login status
+ * 4. change to basic functional display page.
+ */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
     //Id to identity READ_CONTACTS permission request.
     private static final int REQUEST_READ_CONTACTS = 0;
@@ -207,23 +215,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String phone = mPhoneView.getText().toString();
+        String account = mPhoneView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
-        /*
+        /* TODO: 此处后端有数据之后需要删除注释
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
         }
-
-        if (TextUtils.isEmpty(phone)) {
+        if (TextUtils.isEmpty(account)) {
             mPhoneView.setError(getString(R.string.error_field_required));
             focusView = mPhoneView;
             cancel = true;
-        } else if (!isPhoneValid(phone)) {
+        } else if (!isPhoneValid(account)) {
             mPhoneView.setError(getString(R.string.error_invalid_phone));
             focusView = mPhoneView;
             cancel = true;
@@ -237,7 +244,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            Login(phone, password);
+            Login(account, password);
         }
     }
 
@@ -393,7 +400,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             emails.add(cursor.getString(ProfileQuery.ADDRESS));
             cursor.moveToNext();
         }
-
         addEmailsToAutoComplete(emails);
     }
 
@@ -420,12 +426,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     public void Login(String username, String password){
-        myApp.isIn = true;
-        myApp.user_id = 1;
+        /**
+         * 1. 成功登录之后保存用户登录状态
+         */
+        UserWR userWR = new UserWR();
+        userWR.saveUserLogin(username, true, getApplicationContext());
+        /**
+         * 2. 跳转到功能页
+         */
         Intent intent = new Intent(LoginActivity.this,BottomNavigation.class);
         startActivity(intent);
     }
-
     public void Reset(String phone, String password, String verifycode){
         Intent intent = new Intent();
         intent.setClass(LoginActivity.this,BottomNavigation.class);
