@@ -12,15 +12,13 @@ public class EditAddress extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyApp myApp;
-        myApp = (MyApp) getApplication();
         setContentView(R.layout.activity_edit_address);
         Context context = getBaseContext();
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("data");
         editText = (EditText) findViewById(R.id.edit_address);
         editText.setText(bundle.getString("data"));
-        editText.addTextChangedListener(new UpdateUserInfo.MyTextWatcher("address",myApp));
+//        editText.addTextChangedListener(new UpdateUserInfo.MyTextWatcher("address",myApp));
     }
     @Override
     public void onBackPressed() {

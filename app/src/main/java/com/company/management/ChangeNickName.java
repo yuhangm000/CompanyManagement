@@ -16,9 +16,7 @@ public class ChangeNickName extends AppCompatActivity {
         Bundle bundle = intent.getBundleExtra("data");
         editText = (EditText) findViewById(R.id.edit_nickname);
         editText.setText(bundle.getString("data"));
-        MyApp myApp;
-        myApp = (MyApp) getApplication();
-        editText.addTextChangedListener(new UpdateUserInfo.MyTextWatcher("nickname",myApp));
+//        editText.addTextChangedListener(new UpdateUserInfo.MyTextWatcher("nickname",myApp));
     }
 
     @Override

@@ -25,8 +25,6 @@ public class BottomNavigation extends AppCompatActivity implements View.OnClickL
     private ArrayList<Fragment> aList;
     private MultiPages mAdapter;
     private BottomNavigationView navigation;
-    private MyApp myApp;
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -51,7 +49,6 @@ public class BottomNavigation extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation);
-        myApp = (MyApp) getApplication();
         CheckIn();
 
         navigation = (BottomNavigationView) findViewById(R.id.bottomNavi);
@@ -116,7 +113,8 @@ public class BottomNavigation extends AppCompatActivity implements View.OnClickL
     }
 
     private void CheckIn() {
-        if(!myApp.isIn) {
+        UserWR userWR = new UserWR();
+        if(!userWR.isLogin(getApplicationContext())) {
             Intent intent = new Intent();
             intent.setClass(BottomNavigation.this,LoginActivity.class);
             startActivity(intent);

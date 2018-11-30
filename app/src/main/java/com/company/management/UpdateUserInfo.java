@@ -7,9 +7,7 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.company.management.Conn;
-import com.company.management.MyApp;
-import com.company.management.R;
+import java.io.IOException;
 
 /**
  * Created by 24448 on 2018/6/20.
@@ -19,11 +17,11 @@ public class UpdateUserInfo {
     static class MyTextWatcher implements TextWatcher {
         private String url = "/userinfo/update_userinfo";
         private String keys;
-        private MyApp myApp;
-        MyTextWatcher(String keys,MyApp myApp){
-            this.keys = keys;
-            this.myApp = myApp;
-        }
+//        private MyApp myApp;
+//        MyTextWatcher(String keys,MyApp myApp){
+//            this.keys = keys;
+//            this.myApp = myApp;
+//        }
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         }
@@ -34,7 +32,11 @@ public class UpdateUserInfo {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            Integer user_id = myApp.user_id;
+//            Integer user_id = myApp.user_id;
+            /**
+             * TODO: 需要更改
+             */
+            int user_id = 1;
             String query_condition =  "{\"id\":"+String.valueOf(user_id)+",\"Attributes\":" +
                     "{"+keys+":"+ editable.toString() +"}}";
             JSONObject jsonObject = null;
@@ -57,7 +59,11 @@ public class UpdateUserInfo {
         }
         @Override
         public void run() {
-            Conn.doJsonPost(url,jsonObject);
+            try {
+                Conn.doJsonPost(url,jsonObject);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

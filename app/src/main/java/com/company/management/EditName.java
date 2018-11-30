@@ -16,9 +16,7 @@ public class EditName extends AppCompatActivity {
         Bundle bundle = intent.getBundleExtra("data");
         editText = (EditText) findViewById(R.id.edit_name);
         editText.setText(bundle.getString("data"));
-        MyApp myApp;
-        myApp = (MyApp) getApplication();
-        editText.addTextChangedListener(new UpdateUserInfo.MyTextWatcher("name",myApp));
+//        editText.addTextChangedListener(new UpdateUserInfo.MyTextWatcher("name",myApp));
     }
     @Override
     public void onBackPressed() {

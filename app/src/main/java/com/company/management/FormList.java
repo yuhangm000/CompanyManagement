@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,15 +29,19 @@ public class FormList extends AppCompatActivity {
     /**
      * 变量区域
      */
+    private ACL acl;
+    int target_page;
+
     FloatingActionButton create;
     ListView form_list;
-    int target_page;
     private String username;
     private String permissionBackward;
     private Map<Integer, String> pageMap;
-    private List<String> idList;
-    private ACL acl;
-    List<String> item_title = new ArrayList<>(), item_abstract = new ArrayList<>(), item_create_time = new ArrayList<>();
+
+    private List<String> item_id = new ArrayList<>();
+    private List<String> item_title = new ArrayList<>();
+    private List<String> item_abstract = new ArrayList<>();
+    private List<String> item_create_time = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +51,7 @@ public class FormList extends AppCompatActivity {
         /**
          * 如果没有权限则不展示创建按钮
          */
-        if (!acl.hasPermission(username, permissionForward+permissionBackward))
+        if (!acl.hasPermission(username, permissionForward+permissionBackward) && false)
             create.setVisibility(View.INVISIBLE);
         else
             create.setOnClickListener(new ChangeToCreatePage(target_page));
@@ -53,15 +59,21 @@ public class FormList extends AppCompatActivity {
          * 设置ListView的点击监听事件
          */
         form_list.setOnItemClickListener(new ItemClickListener());
-//        setForm_list();
+        setForm_list();
     }
     void init(){
         acl = (ACL) getApplicationContext();
+        /**
+         * 初始化，映射参数
+         */
         pageMap = new HashMap<>();
         pageMap.put(R.string.material_apply, "apply");
         pageMap.put(R.string.material_turn_back, "turn_back");
         pageMap.put(R.string.get_matrial, "receive");
         pageMap.put(R.string.material_in_warehouse, "in_warehouse");
+        /**
+         * 初始化页面控件
+         */
         form_list = (ListView) findViewById(R.id.form_list);
         create = (FloatingActionButton) findViewById(R.id.form_list_create);
         try {
@@ -74,26 +86,33 @@ public class FormList extends AppCompatActivity {
         } catch (Exception e) {
             Log.e("FORM_LIST_INIT",e.getMessage());
         }
-//    TODO: 完成从后台获取数据
-        getDataFromBackward();
-//        将数据放到list中
-        setForm_list();
-        // 获取数据
+        getDataFromBackward(target_page);
 
     }
-    public void getDataFromBackward() {
-
+    public void getDataFromBackward(int target_page) {
+        /**
+         * TODO： 联通后端api后需要取消注释
+         */
+//        new GetData(target_page).run();
     }
 //    TODO: 完成数据填充， 删除无用代码
     void setForm_list() {
         String text = "test";
+        item_id.add(text);
         item_title.add(text);
         item_abstract.add(text);
         item_create_time.add(text);
-        FormListListViewContentAdapter formListListViewContentAdapter = new FormListListViewContentAdapter(item_title, item_abstract, item_create_time);
+        FormListListViewContentAdapter formListListViewContentAdapter;
+        formListListViewContentAdapter= new FormListListViewContentAdapter(item_id,
+                item_title,
+                item_abstract,
+                item_create_time);
         form_list.setAdapter(formListListViewContentAdapter);
     }
 
+    /**
+     * 类声明区域
+     */
 //    create 按钮的跳转相应事件
     class ChangeToCreatePage implements View.OnClickListener {
         int target_page;
@@ -119,15 +138,34 @@ public class FormList extends AppCompatActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent intent = new Intent();
             Bundle bundle = new Bundle();
-            // TODO: 添加tableId 一列
-            bundle.putString("tableId", idList.get(position));
-            bundle.putString("username", username);
+            // TODO: 添加item_id 一列
+            bundle.putString("tableId", item_id.get(position));
+//            bundle.putString("username", username);
+            bundle.putString("username", "yanhua");
+            bundle.putInt("originalPage", target_page);
             intent.putExtras(bundle);
             String packageName = getPackageName();
             intent.setClassName(packageName, packageName + ".FormDetail");
             if (intent.resolveActivity(getPackageManager()) != null) {
                 startActivity(intent);
             }
+        }
+    }
+    class GetData extends Thread{
+        int target_page;
+        public GetData(int target_page) {
+            this.target_page = target_page;
+        }
+        @Override
+        public void run() {
+            try {
+                // TODO： 联通后端api获取内容, 使用handler来更新界面
+                Conn.get("/getFormList", pageMap.get(this.target_page));
+                setForm_list();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            super.run();
         }
     }
 }

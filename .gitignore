@@ -2,9 +2,26 @@
 app/build/intermediates/transforms/dexMerger/debug/10/classes\.dex
 app/build/*
 CompanyManagement\.iml
-
+app/build/*
 \.gradle/4\.4/fileHashes/*
 
 \.gradle/4\.4/fileHashes/
 
 \.idea/workspace\.xml
+*.class
+*.dex
+*.bin
+
+*.jar
+
+*.lock
+
+*.txt
+
+*.json
+
+*.apk
+
+*.ap_
+
+*.flat

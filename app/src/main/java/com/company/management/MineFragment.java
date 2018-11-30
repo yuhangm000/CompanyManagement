@@ -20,6 +20,8 @@ import com.company.management.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+
 
 public class MineFragment extends Fragment {
     private InformationView change_password;
@@ -30,7 +32,7 @@ public class MineFragment extends Fragment {
     private InformationView check_update;
     private TextView signing;
     private Context context;
-    private MyApp myApp;
+//    private MyApp myApp;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,7 +42,7 @@ public class MineFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        myApp = (MyApp) getActivity().getApplication();
+//        myApp = (MyApp) getActivity().getApplication();
         imageView = (CircleImageView) view.findViewById(R.id.imageBox);
         signing = (TextView)view.findViewById(R.id.sign);
         check_information =(InformationView) view.findViewById(R.id.check_information);
@@ -88,7 +90,7 @@ public class MineFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myApp.isIn = false;
+//                myApp.isIn = false;
                 Intent intent = new Intent();
                 intent.setClassName("com.company.management",
                         "com.company.management.LoginActivity");
@@ -111,7 +113,11 @@ public class MineFragment extends Fragment {
     class getUserInfoSignature extends Thread{
         @Override
         public void run() {
-            Integer user_id = myApp.user_id;
+//            Integer user_id = myApp.user_id;
+            /**
+             * TODO: 需要更改
+             */
+            int user_id = 1;
             try {
                 JSONObject jsonObject = new JSONObject("{\"id\":"+String.valueOf(user_id)+",\"Attributes\":\"signature\"}");
                 JSONObject answer = Conn.doJsonPost("/userinfo/get_userinfo",jsonObject);
@@ -121,6 +127,8 @@ public class MineFragment extends Fragment {
                 msg.obj = signature;
                 handler.sendMessage(msg);
             } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
 

@@ -17,16 +17,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import com.company.management.R;
 
+import java.io.IOException;
+
 public class ChangePassword extends AppCompatActivity {
     private TextInputEditText old_password,new_password,re_password;
     Button save,cancel;
     private Context context;
-    private MyApp myApp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
-        myApp = (MyApp) getApplication();
         context = getBaseContext();
         old_password = (TextInputEditText) findViewById(R.id.old_password);
         new_password = (TextInputEditText) findViewById(R.id.new_password);
@@ -76,7 +76,11 @@ public class ChangePassword extends AppCompatActivity {
         }
         @Override
         public void run() {
-            Integer user_id = myApp.user_id;
+//            Integer user_id = myApp.user_id;
+            /**
+             * TODO: 需要更改
+             */
+            Integer user_id = 1;
             try {
                 JSONObject params = new JSONObject("{\"id\":"+String.valueOf(user_id)+",\"oldpassword\":"+old_pass+",\"newpassword\":"+pass+"}");
                 JSONObject answer =  Conn.doJsonPost("/users/modifyPassword",params);
@@ -84,6 +88,8 @@ public class ChangePassword extends AppCompatActivity {
                 msg.obj = answer;
                 handle.sendMessage(msg);
             } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

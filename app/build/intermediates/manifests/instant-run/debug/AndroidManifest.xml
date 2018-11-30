@@ -16,7 +16,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.company.management.MyApp"
+        android:name="com.company.management.ACL"
         android:allowBackup="true"
         android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
@@ -61,6 +61,8 @@
             android:screenOrientation="portrait" />
         <activity android:name="com.company.management.EditName" />
         <activity android:name="com.company.management.FormList" />
+        <activity android:name="com.company.management.FormDetail" />
+        <activity android:name="com.company.management.FormCreate" />
 
         <provider
             android:name="com.android.tools.ir.server.InstantRunContentProvider"

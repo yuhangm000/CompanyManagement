@@ -73,13 +73,13 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
     private View mProgressView;
     private View mRegisterFormView;
 
-    private MyApp myApp;
+//    private MyApp myApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        myApp = (MyApp) getApplication();
+//        myApp = (MyApp) getApplication();
         // Set up the register form.
         mNicknameView = (EditText) findViewById(R.id.Rnickname);
         mPhoneView = (EditText) findViewById(R.id.Rphone);
@@ -213,7 +213,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             focusView = mPhoneView;
             cancel = true;
         } else if (!isPhoneValid(phone)) {
-            mPhoneView.setError(getString(R.string.error_invalid_phone));
+            mPhoneView.setError(getString(R.string.error_invalid_account));
             focusView = mPhoneView;
             cancel = true;
         }
@@ -247,7 +247,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             mPhoneView.setError(getString(R.string.error_field_required));
             mPhoneView.requestFocus();
         } else if (!isPhoneValid(phone)) {
-            mPhoneView.setError(getString(R.string.error_invalid_phone));
+            mPhoneView.setError(getString(R.string.error_invalid_account));
             mPhoneView.requestFocus();
         } else {
             mVerifyTask = new GetVerifyTask(phone);
@@ -390,9 +390,9 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                 //System.out.println(res);
                 if(code == 200) {
                     Integer userId = obj.getInt("result");
-                    myApp.user_id = userId;
-                    myApp.center_id = userId;
-                    myApp.isIn = true;
+//                    myApp.user_id = userId;
+//                    myApp.center_id = userId;
+//                    myApp.isIn = true;
                     return true;
                 } else {
                     System.out.println(msg);

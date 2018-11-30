@@ -19,6 +19,7 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.security.PrivateKey;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -28,14 +29,12 @@ public class myinformation extends AppCompatActivity {
     private CircleImageView circleImageView;
     private Bitmap bitmap;
     private Context context;
-    private InformationView level,account,gender,signings,address,hoby;
-    private MyApp myApp;
+    private InformationView level,account,gender,address;
     private InformationView name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myinformation);
-        myApp = (MyApp) getApplication();
         context = getBaseContext();
         circleImageView = (CircleImageView) findViewById(R.id.imageBox);
         level = (InformationView) findViewById(R.id.level);
@@ -64,9 +63,9 @@ public class myinformation extends AppCompatActivity {
             name.setText("姓名:" + content.getString("name"));
             level.setOnClickListener(new InformaitonClickLIstern(".ChangeNickName",content.getString("nickname")));
             gender.setOnClickListener(new InformaitonClickLIstern(".EditGender",content.getString("gender")));
-            signings.setOnClickListener(new InformaitonClickLIstern(".EditSigning",content.getString("signature")));
+//            signings.setOnClickListener(new InformaitonClickLIstern(".EditSigning",content.getString("signature")));
             address.setOnClickListener(new InformaitonClickLIstern(".EditAddress",content.getString("address")));
-            hoby.setOnClickListener(new InformaitonClickLIstern(".EditHoby",content.getString("habit")));
+//            hoby.setOnClickListener(new InformaitonClickLIstern(".EditHoby",content.getString("habit")));
             name.setOnClickListener(new InformaitonClickLIstern(".EditName",content.getString("name")));
         }
         catch (Exception e){
@@ -76,7 +75,11 @@ public class myinformation extends AppCompatActivity {
     class  GetContent extends Thread{
         @Override
         public void run() {
-            Integer user_id = myApp.user_id;
+//            Integer user_id = myApp.user_id;
+            /**
+             * TODO: 需要更改
+             */
+            int user_id = 1;
             try {
                 JSONObject param = new JSONObject("{\"id\":"+String.valueOf(user_id)+"}");
                 JSONObject jsonObject = Conn.doJsonPost("/userinfo/get_userinfo_all",param);
@@ -85,6 +88,8 @@ public class myinformation extends AppCompatActivity {
                 msg.obj = jsonObject;
                 handler.sendMessage(msg);
             } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

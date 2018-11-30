@@ -20,12 +20,14 @@ public class EditGender extends AppCompatActivity {
         setContentView(R.layout.activity_edit_gender);
         Intent intent = getIntent();
         Spinner editText = (Spinner) findViewById(R.id.edit_gender);
-        final MyApp myApp;
-        myApp = (MyApp) getApplication();
         editText.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Integer user_id = myApp.user_id;
+//                Integer user_id = myApp.user_id;
+                /**
+                 * TODO: 需要更改一下
+                 */
+                int user_id = 1;
                 String gender;
                 if(id == 0){
                     gender = "male";

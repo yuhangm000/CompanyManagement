@@ -18,41 +18,47 @@
             android:orientation="horizontal"
             android:layout_gravity="center"
             android:layout_margin="10dp"
+            android:layout_weight="1"
             android:padding="5dp">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_weight="1">
                 <ImageView
                     android:id="@+id/material_apply"
-                    android:src="@drawable/out_warehouse"
+                    android:src="@drawable/material_purchase"
                     android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_height="wrap_content"
                     android:padding="5dp"
+                    android:layout_weight="3"
                     android:layout_marginRight="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/material_apply"
+                    android:text="@string/material_purchase_apply"
                     android:layout_gravity="center"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_weight="1">
+
                 <ImageView
-                    android:src="@drawable/get_meterial"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
                     android:id="@+id/meterial_get"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:padding="5dp"/>
+                    android:layout_weight="3"
+                    android:padding="5dp"
+                    android:src="@drawable/out_warehouse" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/get_matrial"
+                    android:text="@string/material_out_warehouse"
                     android:layout_gravity="center"/>
             </LinearLayout>
         </LinearLayout>
@@ -63,20 +69,23 @@
             android:orientation="horizontal"
             android:layout_gravity="center"
             android:layout_margin="10dp"
+            android:layout_weight="1"
             android:padding="5dp"
             >
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_weight="1"
                 android:layout_gravity="center">
                 <ImageView
                     android:src="@drawable/in_warehouse"
                     android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_height="wrap_content"
                     android:id="@+id/material_in_warehouse"
                     android:layout_marginRight="10dp"
                     android:layout_gravity="center"
+                    android:layout_weight="3"
                     android:padding="5dp"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -88,22 +97,56 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_weight="1"
                 android:layout_gravity="center">
                 <ImageView
                     android:src="@drawable/material_turn_back"
                     android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_height="wrap_content"
                     android:id="@+id/material_turn_back"
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center"
+                    android:layout_weight="3"
                     android:padding="5dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_weight="0"
                     android:text="@string/material_turn_back"/>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/third_line"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:padding="5dp"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <ImageView
+                    android:src="@drawable/material_info"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mateial_info"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:padding="5dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/material_information"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </FrameLayout>

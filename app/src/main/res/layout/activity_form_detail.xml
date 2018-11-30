@@ -92,6 +92,16 @@
             android:minHeight="50dp">
         </ListView>
     </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/form_detail_turn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/add"/>
     <Button
         android:id="@+id/pass"
         app:layout_constraintBottom_toBottomOf="parent"

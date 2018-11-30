@@ -5,6 +5,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +22,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
+import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,8 +36,10 @@ import android.widget.Toast;
 
 import com.company.management.R;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,14 +84,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private TextView mForget;
     private TextView mRegister;
 
-    private MyApp myApp;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        myApp = (MyApp)getApplication();
         mPhoneView = (EditText) findViewById(R.id.phone);
         mPasswordView = (EditText) findViewById(R.id.password);
         SignInButton = (Button) findViewById(R.id.sign_in_button);
@@ -106,7 +109,41 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         SignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptLogin();
+                // Reset errors.
+                mPhoneView.setError(null);
+                mPasswordView.setError(null);
+
+                    // Store values at the time of the login attempt.
+                String account = mPhoneView.getText().toString();
+                String password = mPasswordView.getText().toString();
+
+                boolean cancel = false;
+                View focusView = null;
+                if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+                    mPasswordView.setError(getString(R.string.error_invalid_password));
+                    focusView = mPasswordView;
+                    cancel = true;
+                }
+                if (TextUtils.isEmpty(account)) {
+                    mPhoneView.setError(getString(R.string.error_field_required));
+                    focusView = mPhoneView;
+                    cancel = true;
+    //            } else if (!isPhoneValid(account)) {
+                } else if (false) {
+                    mPhoneView.setError(getString(R.string.error_invalid_account));
+                    focusView = mPhoneView;
+                    cancel = true;
+                }
+                if (cancel) {
+                    // There was an error; don't attempt login and focus the first
+                    // form field with an error.
+                    focusView.requestFocus();
+                } else {
+                    // Show a progress spinner, and kick off a background task to
+                    // perform the user login attempt.
+                    showProgress(true);
+                    new AttemptLogin().start();
+                }
             }
         });
 
@@ -132,7 +169,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
+                    new AttemptLogin().start();
                     return true;
                 }
                 return false;
@@ -203,51 +240,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
 
-    /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
-     */
-    private void attemptLogin() {
-
-        // Reset errors.
-        mPhoneView.setError(null);
-        mPasswordView.setError(null);
-
-        // Store values at the time of the login attempt.
-        String account = mPhoneView.getText().toString();
-        String password = mPasswordView.getText().toString();
-
-        boolean cancel = false;
-        View focusView = null;
-        /* TODO: 此处后端有数据之后需要删除注释
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel = true;
-        }
-        if (TextUtils.isEmpty(account)) {
-            mPhoneView.setError(getString(R.string.error_field_required));
-            focusView = mPhoneView;
-            cancel = true;
-        } else if (!isPhoneValid(account)) {
-            mPhoneView.setError(getString(R.string.error_invalid_phone));
-            focusView = mPhoneView;
-            cancel = true;
-        }
-        */
-        if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
-            focusView.requestFocus();
-        } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-            showProgress(true);
-            Login(account, password);
-        }
-    }
-
     private void attemptReset() {
         // Reset errors.
         RPhoneView.setError(null);
@@ -312,7 +304,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             RPhoneView.setError(getString(R.string.error_field_required));
             RPhoneView.requestFocus();
         } else if (!isPhoneValid(phone)) {
-            RPhoneView.setError(getString(R.string.error_invalid_phone));
+            RPhoneView.setError(getString(R.string.error_invalid_account));
             RPhoneView.requestFocus();
         } else {
             mVerifyTask = new GetVerifyTask(phone);
@@ -425,17 +417,27 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int IS_PRIMARY = 1;
     }
 
-    public void Login(String username, String password){
+    public void login(JSONObject username, int isLogin){
         /**
          * 1. 成功登录之后保存用户登录状态
          */
         UserWR userWR = new UserWR();
-        userWR.saveUserLogin(username, true, getApplicationContext());
+        userWR.saveUserLogin(username, isLogin == 1, getApplicationContext());
         /**
-         * 2. 跳转到功能页
+         * 2. 获取用户的权限列表
+         */
+        ACL acl = (ACL) getApplicationContext();
+//        TODO: 链接后端api需要取消注释
+//        new AclGet(username).start();
+        /**
+         * 3. 跳转到功能页
          */
         Intent intent = new Intent(LoginActivity.this,BottomNavigation.class);
-        startActivity(intent);
+//        intent.setClassName(getPackageName(), getPackageName()+".BottomNavigation");
+        if (intent.resolveActivity(getPackageManager()) != null){
+            startActivity(intent);
+            Log.i("login", "success");
+        }
     }
     public void Reset(String phone, String password, String verifycode){
         Intent intent = new Intent();
@@ -473,6 +475,83 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected void onCancelled() {
             super.onCancelled();
             mVerifyTask = null;
+        }
+    }
+
+    /**
+     * 此处声明异步函数区
+     */
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            JSONObject a_p = (JSONObject) msg.obj;
+            try {
+                login(a_p, a_p.getInt("status"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+    /**
+     * 此处时类申明区域
+     */
+    class RolePermissionList {
+
+        List< Pair<String, String> > rolePermissions;
+        public RolePermissionList() {
+            rolePermissions = new ArrayList<>();
+        }
+        public Pair<String, String> get(int position) {
+            return rolePermissions.get(position);
+        }
+        public void setRolePermissions(String role, String permission) {
+            rolePermissions.add(new Pair<String, String>(role, permission));
+        }
+    }
+    class AclGet extends Thread {
+        String username;
+        public AclGet(String username) {
+            this.username = username;
+        }
+        @Override
+        public void run() {
+            try {
+                JSONObject jsonObject =  Conn.get("/getAcl", username);
+                // TODO: 添加往ROLE2ACL放数据的代码
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            super.run();
+        }
+    }
+    /**
+     * Attempts to sign in or register the account specified by the login form.
+     * If there are form errors (invalid email, missing fields, etc.), the
+     * errors are presented and no actual login attempt is made.
+     */
+    private class AttemptLogin extends Thread {
+        @Override
+        public void run() {
+            String account = mPhoneView.getText().toString();
+            String password = mPasswordView.getText().toString();
+            try {;
+                JSONObject a_p = new JSONObject();
+                a_p.put("userID", account);
+                a_p.put("password", password);
+                JSONObject result = Conn.post("/app/login", a_p);
+                int status = result.getInt("status");
+                if (status == 1) {
+                    Message msg = handler.obtainMessage();
+                    a_p.put("status", status);
+                    a_p.put("userinfo", result.getJSONObject("params"));
+                    msg.obj = a_p;
+                    handler.sendMessage(msg);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

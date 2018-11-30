@@ -29,7 +29,7 @@
     <string name="action_sign_in_short">登录</string>
     <string name="action_register_short">注册</string>
     <string name="get_verification">获取验证码</string>
-    <string name="error_invalid_phone">电话号码错误</string>
+    <string name="error_invalid_account">账号错误</string>
     <string name="error_invalid_password">密码长度不能少于6位</string>
     <string name="error_incorrect_password">密码错误</string>
     <string name="error_different_password">两次密码不一致</string>
@@ -43,12 +43,14 @@
     <string name="title_activity_world">WorldActivity</string>
 
     <!--Alphebet for home page-->
-    <string name="material_apply">材料申请</string>
+    <string name="material_purchase_apply">采购申请</string>
     <string name="material_in_warehouse">材料入库</string>
     <string name="material_turn_back">材料归还</string>
-    <string name="get_matrial">材料领取</string>
+    <string name="material_out_warehouse">材料出库</string>
+    <string name="material_information">材料总况</string>
 
     <!--Alphebet for form-list page-->
+    <string name="form_list_table_id">id</string>
     <string name="title">表名</string>
     <string name="digest">内容预览</string>
     <string name="time">创建时间</string>
