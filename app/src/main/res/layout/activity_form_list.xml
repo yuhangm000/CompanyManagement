@@ -51,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_weight="1.0"
-                    android:text="@string/digest"
+                    android:text="@string/form_detail_creator"
                     android:textAlignment="center"
                     android:textSize="20dp"
                     android:textStyle="bold" />

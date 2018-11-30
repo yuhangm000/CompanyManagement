@@ -15,16 +15,16 @@ public class FormListListViewContentAdapter extends BaseAdapter {
     // 列表项的内容
     private List<String> item_id;
     private List<String> item_title;
-    private List<String> item_abstract;
+    private List<String> item_creator;
     private List<String> item_create_time;
 //    上下文信息
     private Context context = null;
 
     ViewHolder viewHolder = null;
-    public FormListListViewContentAdapter(List<String> item_id, List<String> item_title, List<String> item_abstract, List<String> item_create_time) {
+    public FormListListViewContentAdapter(List<String> item_id, List<String> item_title, List<String> item_creator, List<String> item_create_time) {
         this.item_id = item_id;
         this.item_title = item_title;
-        this.item_abstract = item_abstract;
+        this.item_creator = item_creator;
         this.item_create_time = item_create_time;
 //        this.context = context;
     }
@@ -53,20 +53,20 @@ public class FormListListViewContentAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.table_id = (TextView) convertView.findViewById(R.id.form_list_list_view_table_id);
             viewHolder.table_name = (TextView) convertView.findViewById(R.id.form_list_list_view_table_name);
-            viewHolder.table_abstract = (TextView) convertView.findViewById(R.id.form_list_list_view_abstract);
+            viewHolder.table_creator = (TextView) convertView.findViewById(R.id.form_list_list_view_creator);
             viewHolder.table_create_time = (TextView) convertView.findViewById(R.id.form_list_list_view_create_time);
             convertView.setTag(viewHolder);
         }
         viewHolder = (ViewHolder) convertView.getTag();
         viewHolder.table_id.setText(item_id.get(position));
         viewHolder.table_name.setText(item_title.get(position));
-        viewHolder.table_abstract.setText(item_abstract.get(position));
+        viewHolder.table_creator.setText(item_creator.get(position));
         viewHolder.table_create_time.setText(item_create_time.get(position));
         viewHolder.table_name.setOnClickListener(new ListViewClickListener());
         return convertView;
     }
     static class ViewHolder {
-        TextView table_id,table_name, table_abstract, table_create_time;
+        TextView table_id,table_name, table_creator, table_create_time;
     }
     // TODO: 去除点击事件
     private class ListViewClickListener implements View.OnClickListener {

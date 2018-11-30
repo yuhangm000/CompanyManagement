@@ -71,6 +71,5 @@ public class UserWR {
         SharedPreferences sp = context.getSharedPreferences(USERFILE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.clear();
-        editor.commit();
-    }
+        editor.commit();    }
 }

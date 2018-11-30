@@ -6,9 +6,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -23,6 +27,12 @@ import java.util.Map;
  */
 public class FormList extends AppCompatActivity {
     /**
+     * 控件区域
+     */
+    FloatingActionButton create;
+    ListView form_list;
+    private PopupMenu popupMenu;
+    /**
      * 常量区
      */
     private final String permissionForward = "CREATE_TABLE_";
@@ -31,17 +41,15 @@ public class FormList extends AppCompatActivity {
      */
     private ACL acl;
     int target_page;
-
-    FloatingActionButton create;
-    ListView form_list;
+    private List<String> item_id = new ArrayList<>();
+    private List<String> item_title = new ArrayList<>();
+    private List<String> item_creator = new ArrayList<>();
+    private List<String> item_create_time = new ArrayList<>();
     private String username;
     private String permissionBackward;
     private Map<Integer, String> pageMap;
+    private Map<Integer, List<String>> popMenuItem;
 
-    private List<String> item_id = new ArrayList<>();
-    private List<String> item_title = new ArrayList<>();
-    private List<String> item_abstract = new ArrayList<>();
-    private List<String> item_create_time = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +59,7 @@ public class FormList extends AppCompatActivity {
         /**
          * 如果没有权限则不展示创建按钮
          */
-        if (!acl.hasPermission(username, permissionForward+permissionBackward) && false)
+        if (target_page == R.string.material_information || !acl.hasPermission(username, permissionForward+permissionBackward) && false)
             create.setVisibility(View.INVISIBLE);
         else
             create.setOnClickListener(new ChangeToCreatePage(target_page));
@@ -67,19 +75,40 @@ public class FormList extends AppCompatActivity {
          * 初始化，映射参数
          */
         pageMap = new HashMap<>();
-        pageMap.put(R.string.material_apply, "apply");
+        pageMap.put(R.string.material_information, "information");
         pageMap.put(R.string.material_turn_back, "turn_back");
-        pageMap.put(R.string.get_matrial, "receive");
+        pageMap.put(R.string.material_out_warehouse, "out_warehouse");
         pageMap.put(R.string.material_in_warehouse, "in_warehouse");
+        pageMap.put(R.string.material_purchase_apply, "purchase_apply");
+
+        popMenuItem = new HashMap<>();
+        List<String> createOption = new ArrayList<>();
+        createOption.add("物料采购申请表");
+        popMenuItem.put(R.string.material_purchase_apply, createOption);
+        List<String> createOption1 = new ArrayList<>();
+        createOption1.add("出库单");
+        createOption1.add("领料单");
+        popMenuItem.put(R.string.material_out_warehouse, createOption1);
+        List<String> createOption2 = new ArrayList<>();
+        createOption2.add("入库单");
+        popMenuItem.put(R.string.material_in_warehouse, createOption2);
+        List<String> createOption3 = new ArrayList<>();
+        createOption3.add("结余材料申请表");
+        createOption3.add("废旧材料登记表");
+        createOption3.add("单站工程材料考核表");
+        popMenuItem.put(R.string.material_turn_back, createOption3);
+        Log.i("popItems", popMenuItem.toString());
         /**
          * 初始化页面控件
          */
         form_list = (ListView) findViewById(R.id.form_list);
         create = (FloatingActionButton) findViewById(R.id.form_list_create);
+
         try {
             Intent intent = getIntent();
             Bundle bundle = intent.getExtras();
             target_page = bundle.getInt("target_page");
+            Log.i("popPages", String.valueOf(target_page));
             UserWR userWR = new UserWR();
             username = userWR.getUserName(getApplicationContext());
             permissionBackward = pageMap.get(target_page);
@@ -93,20 +122,22 @@ public class FormList extends AppCompatActivity {
         /**
          * TODO： 联通后端api后需要取消注释
          */
-//        new GetData(target_page).run();
+//        new GetData(target_page).start();
     }
 //    TODO: 完成数据填充， 删除无用代码
     void setForm_list() {
         String text = "test";
         item_id.add(text);
         item_title.add(text);
-        item_abstract.add(text);
+        item_creator.add(text);
         item_create_time.add(text);
         FormListListViewContentAdapter formListListViewContentAdapter;
-        formListListViewContentAdapter= new FormListListViewContentAdapter(item_id,
+        formListListViewContentAdapter= new FormListListViewContentAdapter(
+                item_id,
                 item_title,
-                item_abstract,
-                item_create_time);
+                item_creator,
+                item_create_time
+        );
         form_list.setAdapter(formListListViewContentAdapter);
     }
 
@@ -121,15 +152,29 @@ public class FormList extends AppCompatActivity {
         }
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent();
-            Bundle bundle = new Bundle();
-            bundle.putInt("originalPage", this.target_page);
-            intent.putExtras(bundle);
-            String packagename = getPackageName();
-            intent.setClassName(packagename, packagename + ".FormCreate" );
-            if (intent.resolveActivity(getPackageManager()) != null) {
-                startActivity(intent);
+            popupMenu = new PopupMenu(getApplicationContext(), v);
+            Menu menu = popupMenu.getMenu();
+            List<String> menuOption = popMenuItem.get(target_page);
+            for (int i = 0; menuOption != null && i < menuOption.size(); i++) {
+                menu.add(0, i, i, menuOption.get(i));
             }
+            popupMenu.show();
+            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    Intent intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("form-title", (String) item.getTitle());
+                    intent.putExtras(bundle);
+                    String packagename = getPackageName();
+                    intent.setClassName(packagename, packagename + ".FormCreate" );
+                    if (intent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(intent);
+                    }
+                    return false;
+                }
+            });
+
         }
     }
     class ItemClickListener implements AdapterView.OnItemClickListener{

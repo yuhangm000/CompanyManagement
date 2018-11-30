@@ -17,9 +17,8 @@ import android.widget.*;
  * this page support user with four choice,
  * 1. click each one of four choices will change into a list view corresponding to it.
  */
-// TODO: 完成设置title
 public class HomePageFragment extends Fragment {
-    ImageView material_apply, in_warehouse, material_turn_back, get_material;
+    ImageView material_info, in_warehouse, material_turn_back, out_warehouse, material_purchase;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -30,14 +29,21 @@ public class HomePageFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        material_apply = (ImageView) view.findViewById(R.id.material_apply);
-        in_warehouse = (ImageView) view.findViewById(R.id.material_in_warehouse);
-        material_turn_back = (ImageView) view.findViewById(R.id.material_turn_back);
-        get_material = (ImageView) view.findViewById(R.id.meterial_get);
-        material_apply.setOnClickListener(new ChangeToFormList(R.string.material_apply));
+        init(view);
+        material_purchase.setOnClickListener(new ChangeToFormList(R.string.material_purchase_apply));
         in_warehouse.setOnClickListener(new ChangeToFormList(R.string.material_in_warehouse));
         material_turn_back.setOnClickListener(new ChangeToFormList(R.string.material_turn_back));
-        get_material.setOnClickListener(new ChangeToFormList(R.string.get_matrial));
+        out_warehouse.setOnClickListener(new ChangeToFormList(R.string.material_out_warehouse));
+        material_info.setOnClickListener(new ChangeToFormList(R.string.material_information));
+    }
+
+    public void init(View view) {
+        material_purchase = (ImageView) view.findViewById(R.id.material_purchase);
+        in_warehouse = (ImageView) view.findViewById(R.id.material_in_warehouse);
+        material_turn_back = (ImageView) view.findViewById(R.id.material_turn_back);
+        out_warehouse = (ImageView) view.findViewById(R.id.meterial_out_warehouse);
+        material_info = (ImageView) view.findViewById(R.id.material_info);
+
     }
     class ChangeToFormList implements View.OnClickListener {
         int  target;

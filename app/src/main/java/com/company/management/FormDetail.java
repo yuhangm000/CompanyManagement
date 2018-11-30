@@ -76,13 +76,13 @@ public class FormDetail extends AppCompatActivity {
         username = bundle.getString("username");
         tableId = bundle.getInt("tableId");
         int originalPage = bundle.getInt("originalPage");
-        if (originalPage == R.string.material_apply) {
+        if (originalPage == R.string.material_purchase_apply) {
             tableHeadOperation.setText("申请数量");
         } else if (originalPage == R.string.material_in_warehouse){
             tableHeadOperation.setText("入库数量");
         } else if (originalPage == R.string.material_turn_back) {
             tableHeadOperation.setText("归还数量");
-        } else if (originalPage == R.string.get_matrial) {
+        } else if (originalPage == R.string.material_out_warehouse) {
             tableHeadOperation.setText("领取数量");
         }
         if (!showCheckoutButton(username, tableId)) {
@@ -108,7 +108,7 @@ public class FormDetail extends AppCompatActivity {
         }
     }
     public boolean showCheckoutButton(String username, int page) {
-        if (page == R.string.material_apply) {
+        if (page == R.string.material_purchase_apply) {
             if (acl.hasPermission(username, "apply_table_check") && !status_info.equals("pending")) {
                 return true;
             } else {
