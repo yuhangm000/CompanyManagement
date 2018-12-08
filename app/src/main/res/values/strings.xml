@@ -48,7 +48,7 @@
     <string name="material_turn_back">材料归还</string>
     <string name="material_out_warehouse">材料出库</string>
     <string name="material_information">材料总况</string>
-
+    <string name="material_picking">生产领料</string>
     <!--Alphebet for form-list page-->
     <string name="form_list_table_id">id</string>
     <string name="title">表名</string>
