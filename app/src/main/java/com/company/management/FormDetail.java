@@ -2,6 +2,8 @@ package com.company.management;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -40,20 +43,22 @@ public class FormDetail extends AppCompatActivity {
     private Button agree;
     private Button refuse;
     private FloatingActionButton go_return;
+    private ListContentAdapter lca;
     int originalPage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_detail);
-        init();
-        // TODO：需要完成数据获取
+        init(); // 进行页面控件初始化
+        // TODO：需要完成数据获取 @meng
         getDataFromBackward();
-        setTableBasicInfo();
+        setTableBasicInfo(); // 完成连通后以下两行删除
+        setTableMaterilaList();
         /**
          * 设置相应的listview适配器
          */
-        ListContentAdapter lca = new ListContentAdapter(mData, mSize, mNumber);
-        listView.setAdapter(lca);
+
+
         if (originalPage == R.string.material_picking && showReturnButton(username, status_info, creator_info)) {
             go_return.setVisibility(View.VISIBLE);
             go_return.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +92,6 @@ public class FormDetail extends AppCompatActivity {
         refuse = (Button) findViewById(R.id.reject);
         go_return = (FloatingActionButton) findViewById(R.id.form_detail_turn_back);
         go_return.setVisibility(View.INVISIBLE);
-
         creator_title = getString(R.string.form_detail_creator);
         create_time_title = getString(R.string.form_detail_time);
         status_title = getString(R.string.form_detail_status);
@@ -108,9 +112,15 @@ public class FormDetail extends AppCompatActivity {
         } else if (originalPage == R.string.material_out_warehouse) {
             tableHeadOperation.setText("领取数量");
         }
+        /**
+         * 判断是否显示审查按钮
+         */
         if (!showCheckoutButton(username, tableId)) {
             agree.setVisibility(View.INVISIBLE);
             refuse.setVisibility(View.INVISIBLE);
+            if (showReturnButton(username, status_info, creator_info)) {
+                go_return.setVisibility(View.VISIBLE);
+            }
         } else {
             agree.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -131,6 +141,13 @@ public class FormDetail extends AppCompatActivity {
         }
     }
 
+    /**
+     * 判断是否显示归还按钮
+     * @param username
+     * @param status
+     * @param creator
+     * @return
+     */
     public boolean showReturnButton(String username, String status, String creator) {
         if (username.equals(creator) && status.equals("success")) {
             return true;
@@ -151,13 +168,13 @@ public class FormDetail extends AppCompatActivity {
         }
     }
     public void getDataFromBackward() {
-//        new GetFormDetail(String.valueOf(tableId)).run();
+//        new GetFormDetail(String.valueOf(tableId)).start();
         mData.add("1");
         mSize.add("20*20mm");
         mNumber.add(0);
     }
     public void setTableBasicInfo() {
-        // TODO: 填充完成数据之后，需要删除以下三行代码
+        // TODO: 填充完成数据之后，需要删除以下三行代码 @meng
         create_time_info = "2018.11.11 00:00:00";
         creator_info = "yanhua";
         status_info = "pass";
@@ -165,7 +182,41 @@ public class FormDetail extends AppCompatActivity {
         tableCreateTime.setText(create_time_title + divider + create_time_info);
         tableStatus.setText(status_title + divider + status_info);
     }
+    public void setTableMaterilaList() {
+        lca= new ListContentAdapter(mData, mSize, mNumber);
+        listView.setAdapter(lca);
+    }
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            JSONObject table_msg = (JSONObject) msg.obj;
+            try {
+                /**
+                 * 获取表的基本信息
+                 */
+                creator_info = table_msg.getString("creator");
+                create_time_info = table_msg.getString("time");
+                status_info = table_msg.getString("status");
+                /**
+                 * 获取表的内容
+                 */
+                JSONArray jsonArray = table_msg.getJSONArray("material_list");
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    mData.add(jsonObject.getString("material_name"));
+                    mSize.add(jsonObject.getString("material_size"));
+                    mNumber.add(Integer.valueOf(jsonObject.getString("material_number")));
+                }
+                setTableBasicInfo();
+                setTableMaterilaList();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
+
+        }
+    };
     /**
      * 类声明区域
      */
@@ -179,8 +230,26 @@ public class FormDetail extends AppCompatActivity {
         @Override
         public void run() {
             try {
-                // TODO: 联通后台api，获取数据格式，然后进行填充（handler）
-                Conn.get("/formDtail", this.form_id);
+                // TODO: 联通后台api，获取数据格式，然后进行填充（handler） @meng
+                /**
+                 * result 中需要有   表格的基本信息和材料的所有信息
+                 * result {
+                 *     creator_info: 创建者
+                 *     time: 创建时间
+                 *     status: 表格状态(pengding|success|reject)
+                 *     material_list: [
+                 *     {
+                 *     material_name:
+                 *     material_size:
+                 *     material_number:
+                 *     }
+                 *     ]
+                 */
+                JSONObject result = Conn.get("/formDtail", this.form_id);
+                Message msg = handler.obtainMessage();
+                msg.obj = result;
+                handler.sendMessage(msg);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

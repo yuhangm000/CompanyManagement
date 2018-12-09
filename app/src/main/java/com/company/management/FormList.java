@@ -75,7 +75,7 @@ public class FormList extends AppCompatActivity {
          */
         form_list.setOnItemClickListener(new ItemClickListener());
         /**
-         * TODO: @meng 此函数填充表格内容
+         * TODO: @meng 此函数填充表格内容,与后端链接完成后删掉
          */
         setForm_list(null);
     }
@@ -184,6 +184,9 @@ public class FormList extends AppCompatActivity {
             JSONObject jsonObject = (JSONObject) msg.obj;
             try {
                 if (jsonObject.getInt("status") == 1) {
+                    /**
+                     * 此处才是真正填充表格的地方 TODO:@meng
+                     */
                     setForm_list(jsonObject);
                 } else {
                     Toast.makeText(getApplicationContext(), "获取列表错误", Toast.LENGTH_LONG).show();
@@ -262,14 +265,27 @@ public class FormList extends AppCompatActivity {
                 if (routes != null) {
                     UserWR userWR = new UserWR();
                     String userId = userWR.getUserID(getApplicationContext());
+                    /**
+                     * 此处json应该是如下形式
+                     * {
+                     * ...
+                     * param: {
+                     * table_id:
+                     * creator:
+                     * createt_time:
+                     * ...
+                     * }
+                     */
                     json = Conn.get(routes, userId);
                     Message message = handler.obtainMessage();
-                    message.obj = json;
+                    message.obj = json.getJSONObject("param");
                     handler.sendMessage(message);
                 } else {
                     Log.e("FormList","Illegel params.");
                 }
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
         }

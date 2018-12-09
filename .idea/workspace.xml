@@ -16,37 +16,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a58f4b2-8b6e-40cf-bd88-57004e2e5ebe" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/TableItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/compat/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/compat/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/constraint/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/constraint/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/coreui/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/coreui/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/coreutils/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/coreutils/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/design/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/design/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/fragment/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/fragment/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/graphics/drawable/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/graphics/drawable/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/graphics/drawable/animated/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/graphics/drawable/animated/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v4/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v4/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/appcompat/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/appcompat/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/recyclerview/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/recyclerview/R.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/build-info/debug/build-info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/build-info/debug/build-info.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/BottomNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/BottomNavigation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/Conn.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/Conn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreate.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreate2ListContentAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreateListContentAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreateListContentAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/HomePageFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/HomePageFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/MineFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/MineFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/Router.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/Router.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/UserWR.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/UserWR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_form_create2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/form_create2_list_view.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/form_create_list_content.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/form_create_list_content.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -85,17 +59,22 @@
       <file leaf-file-name="FormDetail.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="988">
-              <caret line="69" column="21" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
+            <state relative-caret-position="-1539">
+              <caret line="54" column="43" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="43" />
+              <folding>
+                <element signature="method#init#0;class#FormDetail#0" />
+                <element signature="method#run#0;class#GetFormDetail#0;class#FormDetail#0" />
+                <element signature="class#TableStatus#0;class#FormDetail#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FormCreate.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FormCreate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="67" column="11" lean-forward="true" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
+            <state relative-caret-position="1005">
+              <caret line="98" column="51" lean-forward="true" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1522#1709#0" expanded="true" />
@@ -179,15 +158,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FormList.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FormList.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="143" column="39" selection-start-line="143" selection-start-column="39" selection-end-line="143" selection-end-column="39" />
+            <state relative-caret-position="214">
+              <caret line="148" column="50" selection-start-line="148" selection-start-column="41" selection-end-line="148" selection-end-column="50" />
               <folding>
+                <element signature="method#onCreate#0;class#FormList#0" />
                 <element signature="method#init#0;class#FormList#0" />
                 <element signature="method#getDataFromBackward#0;class#FormList#0" />
+                <element signature="docComment;field#handler#0;class#FormList#0" />
+                <element signature="e#6254#6761#0" expanded="true" />
+                <element signature="e#6760#6761#0" expanded="true" />
                 <element signature="method#onClick#0;class#ChangeToCreatePage#0;class#FormList#0" />
+                <element signature="e#9045#9046#0" expanded="true" />
+                <element signature="e#9099#9100#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -4045,7 +4030,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/material_out_warehouse.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_form_list.xml" />
@@ -4093,9 +4077,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/TableItem.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/ACL.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreateListContentAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreate.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java" />
       </list>
     </option>
   </component>
@@ -4177,6 +4162,15 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CompanyManagement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CompanyManagement" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="management" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CompanyManagement" type="b2602c69:ProjectViewProjectNode" />
@@ -4364,7 +4358,7 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24329759" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49932975" weight="0.3352354" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49932975" visible="true" weight="0.3352354" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289256" />
       <window_info anchor="right" id="Gradle" order="5" weight="0.3297587" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -4417,7 +4411,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -4556,13 +4550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-27/android/os/Handler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="535" column="25" selection-start-line="535" selection-start-column="25" selection-end-line="535" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/MineFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2204">
@@ -4622,13 +4609,6 @@
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="988">
-          <caret line="69" column="21" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/form_create2_list_view.xml" />
@@ -4790,14 +4770,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/TableItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="143" column="39" selection-start-line="143" selection-start-column="39" selection-end-line="143" selection-end-column="39" />
+        <state relative-caret-position="342">
+          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-27/android/os/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="535" column="25" selection-start-line="535" selection-start-column="25" selection-end-line="535" selection-end-column="36" />
           <folding>
-            <element signature="method#init#0;class#FormList#0" />
-            <element signature="method#getDataFromBackward#0;class#FormList#0" />
-            <element signature="method#onClick#0;class#ChangeToCreatePage#0;class#FormList#0" />
+            <element signature="e#22023#22024#0" expanded="true" />
+            <element signature="e#22072#22073#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -4815,17 +4801,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/TableItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="67" column="11" lean-forward="true" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
+        <state relative-caret-position="1005">
+          <caret line="98" column="51" lean-forward="true" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1522#1709#0" expanded="true" />
@@ -4833,6 +4812,36 @@
             <element signature="docComment;field#handler#0;class#FormCreate#0" />
             <element signature="e#3420#3583#0" expanded="true" />
             <element signature="e#3582#3583#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1539">
+          <caret line="54" column="43" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="43" />
+          <folding>
+            <element signature="method#init#0;class#FormDetail#0" />
+            <element signature="method#run#0;class#GetFormDetail#0;class#FormDetail#0" />
+            <element signature="class#TableStatus#0;class#FormDetail#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="148" column="50" selection-start-line="148" selection-start-column="41" selection-end-line="148" selection-end-column="50" />
+          <folding>
+            <element signature="method#onCreate#0;class#FormList#0" />
+            <element signature="method#init#0;class#FormList#0" />
+            <element signature="method#getDataFromBackward#0;class#FormList#0" />
+            <element signature="docComment;field#handler#0;class#FormList#0" />
+            <element signature="e#6254#6761#0" expanded="true" />
+            <element signature="e#6760#6761#0" expanded="true" />
+            <element signature="method#onClick#0;class#ChangeToCreatePage#0;class#FormList#0" />
+            <element signature="e#9045#9046#0" expanded="true" />
+            <element signature="e#9099#9100#0" expanded="true" />
           </folding>
         </state>
       </provider>

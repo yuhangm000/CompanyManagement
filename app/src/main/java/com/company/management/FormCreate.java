@@ -51,6 +51,13 @@ public class FormCreate extends AppCompatActivity {
         add_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<TableItem> data = new ArrayList<>();
+                for (int i = 0; i < items.size(); i++) {
+                    data.add(items.get(i));
+                }
+                data.add(new TableItem());
+                items.clear();
+                items.addAll(data);
                 formCreateListContentAdapter.addItem(items);
             }
         });
@@ -91,7 +98,7 @@ public class FormCreate extends AppCompatActivity {
         formCreateListContentAdapter = new FormCreateListContentAdapter(getBaseContext(),items);
         form_create_title.setText("新建"+form_title);
         status.setText(status_forward + "申请中");
-    }
+}
     /**
      * 异步函数区域
      */
