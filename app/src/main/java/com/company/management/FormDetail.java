@@ -2,6 +2,7 @@ package com.company.management;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,7 +37,10 @@ public class FormDetail extends AppCompatActivity {
     String status_title = null;
     String divider = " : ";
     String creator_info, create_time_info, status_info;
-    private Button agree, refuse;
+    private Button agree;
+    private Button refuse;
+    private FloatingActionButton go_return;
+    int originalPage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,23 @@ public class FormDetail extends AppCompatActivity {
          */
         ListContentAdapter lca = new ListContentAdapter(mData, mSize, mNumber);
         listView.setAdapter(lca);
+        if (originalPage == R.string.material_picking && showReturnButton(username, status_info, creator_info)) {
+            go_return.setVisibility(View.VISIBLE);
+            go_return.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("tableId", tableId);
+                    bundle.putString("form-title", "还料表");
+                    intent.putExtras(bundle);
+                    intent.setClassName(getPackageName(), getPackageName() + ".FormCreate");
+                    if(intent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(intent);
+                    }
+                }
+            });
+        }
     }
     public void init() {
         context = getBaseContext();
@@ -61,9 +82,11 @@ public class FormDetail extends AppCompatActivity {
         tableCreator = (TextView) findViewById(R.id.form_detail_creator);
         tableCreateTime = (TextView) findViewById(R.id.form_detail_time);
         tableStatus  = (TextView) findViewById(R.id.form_detail_status);
+        tableHeadOperation = (TextView) findViewById(R.id.table_head_operation);
         agree = (Button) findViewById(R.id.pass);
         refuse = (Button) findViewById(R.id.reject);
-        tableHeadOperation = (TextView) findViewById(R.id.table_head_operation);
+        go_return = (FloatingActionButton) findViewById(R.id.form_detail_turn_back);
+        go_return.setVisibility(View.INVISIBLE);
 
         creator_title = getString(R.string.form_detail_creator);
         create_time_title = getString(R.string.form_detail_time);
@@ -75,7 +98,7 @@ public class FormDetail extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         username = bundle.getString("username");
         tableId = bundle.getInt("tableId");
-        int originalPage = bundle.getInt("originalPage");
+        originalPage = bundle.getInt("originalPage");
         if (originalPage == R.string.material_purchase_apply) {
             tableHeadOperation.setText("申请数量");
         } else if (originalPage == R.string.material_in_warehouse){
@@ -107,6 +130,15 @@ public class FormDetail extends AppCompatActivity {
             });
         }
     }
+
+    public boolean showReturnButton(String username, String status, String creator) {
+        if (username.equals(creator) && status.equals("success")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public boolean showCheckoutButton(String username, int page) {
         if (page == R.string.material_purchase_apply) {
             if (acl.hasPermission(username, "apply_table_check") && !status_info.equals("pending")) {

@@ -1,6 +1,7 @@
 package com.company.management;
 
 import android.content.pm.PackageManager;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,7 +19,12 @@ import android.widget.*;
  * 1. click each one of four choices will change into a list view corresponding to it.
  */
 public class HomePageFragment extends Fragment {
-    ImageView material_info, in_warehouse, material_turn_back, out_warehouse, material_purchase;
+    ImageView material_info,
+            in_warehouse,
+            material_turn_back,
+            out_warehouse,
+            material_purchase,
+            material_picking;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -35,6 +41,7 @@ public class HomePageFragment extends Fragment {
         material_turn_back.setOnClickListener(new ChangeToFormList(R.string.material_turn_back));
         out_warehouse.setOnClickListener(new ChangeToFormList(R.string.material_out_warehouse));
         material_info.setOnClickListener(new ChangeToFormList(R.string.material_information));
+        material_picking.setOnClickListener(new ChangeToFormList(R.string.material_picking));
     }
 
     public void init(View view) {
@@ -43,7 +50,7 @@ public class HomePageFragment extends Fragment {
         material_turn_back = (ImageView) view.findViewById(R.id.material_turn_back);
         out_warehouse = (ImageView) view.findViewById(R.id.meterial_out_warehouse);
         material_info = (ImageView) view.findViewById(R.id.material_info);
-
+        material_picking = (ImageView) view.findViewById(R.id.material_picking);
     }
     class ChangeToFormList implements View.OnClickListener {
         int  target;

@@ -86,6 +86,7 @@ public class Conn {
         BufferedReader reader = null;
         String result = null;
         conn.connect();
+        Log.d("GET_connect", conn.toString());
         if (conn.getResponseCode() == 200) {
             reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             result = reader.readLine();
@@ -93,15 +94,22 @@ public class Conn {
         else{
             result = "{'code':500, 'msg':'未知错误1'}";
         }
-        reader.close();
+        if (reader != null)
+            reader.close();
+        Log.d("requestGET", result.toString());
         return result;
     }
     public static JSONObject get(String api, String params) throws IOException {
-        HttpURLConnection conn;
-        conn = openConnection(api + "/" + params, GET);
-        String result = requestGET(conn);
-        JSONObject jsonObject = parse(result);
-        return jsonObject;
+        try {
+            HttpURLConnection conn;
+            conn = openConnection(api + "/" + params, GET);
+            String result = requestGET(conn);
+            JSONObject jsonObject = parse(result);
+            return jsonObject;
+        } catch (IOException e) {
+            Log.e("GET_ERROR", e.getMessage());
+            return null;
+        }
     }
     public static JSONObject post(String urlPath, JSONObject JsonObj) throws IOException {
         String result = "";

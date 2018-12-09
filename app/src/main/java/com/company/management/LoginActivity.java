@@ -22,6 +22,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.JsonReader;
 import android.util.Log;
 import android.util.Pair;
 import android.view.KeyEvent;
@@ -40,6 +41,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.security.acl.Acl;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -426,8 +428,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         /**
          * 2. 获取用户的权限列表
          */
-        ACL acl = (ACL) getApplicationContext();
-//        TODO: 链接后端api需要取消注释
+//        TODO: 链接后端api需要取消注释 @meng
 //        new AclGet(username).start();
         /**
          * 3. 跳转到功能页
@@ -486,7 +487,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         public void handleMessage(Message msg) {
             JSONObject a_p = (JSONObject) msg.obj;
             try {
-                login(a_p, a_p.getInt("status"));
+                login(a_p.getJSONObject("userinfo"), a_p.getInt("status"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -516,8 +517,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         public void run() {
             try {
+                ACL acl = (ACL) getApplicationContext();
                 JSONObject jsonObject =  Conn.get("/getAcl", username);
-                // TODO: 添加往ROLE2ACL放数据的代码
+                // TODO: 添加往ROLE2ACL放数据的代码 @meng
+                /**
+                 * 这里对ACL进行设置username到role的映射
+                 */
+                // acl.setUser2Role(username, role);
+                /**
+                 * 这里设置role的所有权限
+                 */
+//                for (int i = 0; i < permissions.size(); i++) {
+//                    acl.setRole2Acl(role, permissions.get(i));
+//                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -538,18 +550,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 JSONObject a_p = new JSONObject();
                 a_p.put("userID", account);
                 a_p.put("password", password);
-                JSONObject result = Conn.post("/app/login", a_p);
+                JSONObject result = Conn.post(Router.LOGIN, a_p);
+                Log.i("Login result", result.toString());
                 int status = result.getInt("status");
                 if (status == 1) {
                     Message msg = handler.obtainMessage();
                     a_p.put("status", status);
-                    a_p.put("userinfo", result.getJSONObject("params"));
+                    /**
+                     * TODO： @meng 这个地方好像没有办法获取param这个json对象
+                     */
+                    JSONObject userinfoObject = result.getJSONObject("param");
+                    a_p.put("userinfo", userinfoObject);
                     msg.obj = a_p;
                     handler.sendMessage(msg);
                 }
             } catch (JSONException e) {
+                Log.e("error in userinfo", e.getMessage());
                 e.printStackTrace();
             } catch (IOException e) {
+                Log.e("error in userinfo", e.getMessage());
                 e.printStackTrace();
             }
         }

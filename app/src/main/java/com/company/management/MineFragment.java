@@ -91,6 +91,8 @@ public class MineFragment extends Fragment {
             @Override
             public void onClick(View view) {
 //                myApp.isIn = false;
+                UserWR userWR = new UserWR();
+                userWR.removeUserLogin(getContext());
                 Intent intent = new Intent();
                 intent.setClassName("com.company.management",
                         "com.company.management.LoginActivity");

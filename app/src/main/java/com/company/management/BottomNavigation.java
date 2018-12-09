@@ -115,10 +115,10 @@ public class BottomNavigation extends AppCompatActivity implements View.OnClickL
     private void CheckIn() {
         UserWR userWR = new UserWR();
         if(!userWR.isLogin(getApplicationContext())) {
-            Intent intent = new Intent();
-            intent.setClass(BottomNavigation.this,LoginActivity.class);
-            startActivity(intent);
-            finish();
+//            Intent intent = new Intent();
+//            intent.setClass(BottomNavigation.this,LoginActivity.class);
+//            startActivity(intent);
+//            finish();
         }
     }
 }
