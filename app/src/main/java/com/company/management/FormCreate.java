@@ -51,26 +51,34 @@ public class FormCreate extends AppCompatActivity {
         add_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<TableItem> data = new ArrayList<>();
-                for (int i = 0; i < items.size(); i++) {
-                    data.add(items.get(i));
-                }
-                data.add(new TableItem());
-                items.clear();
-                items.addAll(data);
-                formCreateListContentAdapter.addItem(items);
+                items.add(new TableItem());
+                formCreateListContentAdapter.notifyDataSetChanged();
             }
         });
         complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /**
-                 * TODO: 添加获取listview所有内容的代码
+                 * TODO: 添加获取listview所有内容的代码, 并且向后端发送请求
                  */
                 int size = formCreateListContentAdapter.getCount();
                 for (int i = 0; i < size; i++) {
-                    formCreateListContentAdapter.getItem(i);
+                    TableItem item = (TableItem) formCreateListContentAdapter.getItem(i);
+                    View view = material_list.getChildAt(i);
+                    view.findViewById(R.id.form_create_list_content_show_material).setEnabled(false);
+                    view.findViewById(R.id.form_create_list_content_show_size).setEnabled(false);
+                    view.findViewById(R.id.form_create_list_content_show_number).setEnabled(false);
                 }
+                complete.setVisibility(View.INVISIBLE);
+                cancel.setVisibility(View.INVISIBLE);
+                add_item.setVisibility(View.INVISIBLE);
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                items.clear();
+                formCreateListContentAdapter.notifyDataSetChanged();
             }
         });
     }

@@ -54,7 +54,7 @@ public class ListContentAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.mName = (TextView) convertView.findViewById(R.id.list_content_material_name);
             viewHolder.mSize = (TextView) convertView.findViewById(R.id.list_content_size);
-            viewHolder.mNumber = (EditText) convertView.findViewById(R.id.list_content_number);
+            viewHolder.mNumber = (TextView) convertView.findViewById(R.id.list_content_number);
             viewHolder.mNumber.addTextChangedListener(new NumberTextWather());
             convertView.setTag(viewHolder);
         }
@@ -68,7 +68,7 @@ public class ListContentAdapter extends BaseAdapter {
     static class ViewHolder {
         TextView mName;
         TextView mSize;
-        EditText mNumber;
+        TextView mNumber;
     }
     class NumberTextWather implements TextWatcher {
 

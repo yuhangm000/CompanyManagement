@@ -1,5 +1,6 @@
 package com.company.management;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -24,6 +25,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -76,16 +78,6 @@ public class FormCreateListContentAdapter extends BaseAdapter {
     public Object getItem(int position) {
         return items.get(position);
     }
-
-    public void addItem(List<TableItem> items) {
-//        items.add(new TableItem());
-//        List<TableItem> new_items = items;
-////        new_items.add(new TableItem());
-//        items.clear();
-//        items.addAll(new_items);
-        this.items = items;
-        notifyDataSetChanged();
-    }
     @Override
     public long getItemId(int position) {
         return position;
@@ -109,17 +101,11 @@ public class FormCreateListContentAdapter extends BaseAdapter {
         viewHolder.name.setText(items.get(position).material);
         viewHolder.size.setText(items.get(position).size);
         // 初始化材料名的adapter
-        viewHolder.name.setOnClickListener(new OnClickListener(position));
+        viewHolder.name.setOnClickListener(new OnClickListenerForName(position));
         // 初始化材料规格的adapter
-        viewHolder.size.setOnClickListener(new View.OnClickListener() {
-            String selected = null;
-            @Override
-            public void onClick(View v) {
-                String material_name = viewHolder.name.getText().toString();
-                size_list = (ArrayList<String>) getCorrespondingSize(material_name);
-            }
-        });
-        // 设置编辑框监听器
+        viewHolder.size.setOnClickListener(new OnClickListenerForSize(position));
+        // 设置材料数量的adapter
+        viewHolder.number.setOnClickListener(new OnClickListenerForNum(position));
         return convertView;
     }
     public void initMaterilaSizeList() {
@@ -131,12 +117,12 @@ public class FormCreateListContentAdapter extends BaseAdapter {
         materialSize.add(4, new MaterialSize("meng", "5"));
         name_list.add("yanhua");
         name_list.add("meng");
-
     }
     // 设置可选内容
     public void setMaterialSize(List<MaterialSize> ms) {
         this.materialSize = ms;
     }
+
     class ViewHolder{
         TextView name;
         TextView size;
@@ -150,10 +136,10 @@ public class FormCreateListContentAdapter extends BaseAdapter {
             material_size = mz;
         }
     }
-    class OnClickListener implements View.OnClickListener {
+    class OnClickListenerForName implements View.OnClickListener {
         String selected = null;
         int item_position;
-        public OnClickListener(int item_position) {
+        public OnClickListenerForName(int item_position) {
             this.item_position = item_position;
         }
         @RequiresApi(api = Build.VERSION_CODES.M)
@@ -173,8 +159,8 @@ public class FormCreateListContentAdapter extends BaseAdapter {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         selected = name_list.get(position);
                         text.setText(selected);
-
                         popupWindow.dismiss();
+                        items.get(item_position).setMaterial(selected);
                     }
                 });
                 popupWindow.setOutsideTouchable(true);
@@ -182,6 +168,88 @@ public class FormCreateListContentAdapter extends BaseAdapter {
             } catch (Exception e) {
                 Log.e("error in create onclick", e.getMessage());
             }
+        }
+    }
+    class OnClickListenerForSize implements View.OnClickListener {
+        String selected = null;
+        int item_position;
+        public OnClickListenerForSize(int item_position) {
+            this.item_position = item_position;
+        }
+        @RequiresApi(api = Build.VERSION_CODES.M)
+        @SuppressLint("WrongConstant")
+        @Override
+        public void onClick(View v) {
+            String material_name = items.get(item_position).getMaterial();
+            if (material_name == null || material_name.equals("点击选择")) {
+                Toast.makeText(context, "请先选择材料名称", 1000).show();
+                return;
+            }
+            size_list = (ArrayList<String>) getCorrespondingSize(material_name);
+            final ListView lv = new ListView(context);
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, size_list);
+            lv.setAdapter(arrayAdapter);
+            final PopupWindow popupWindow = new PopupWindow(lv, 400, 500);
+            popupWindow.setFocusable(true);
+//                    popupWindow.setBackgroundDrawable(new ColorDrawable(Color.argb(1, 147,151,147)));
+            lv.setBackgroundColor(context.getColor(R.color.lightGray));
+            final TextView text = (TextView) v.findViewById(R.id.form_create_list_content_show_size);
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    selected = size_list.get(position);
+                    text.setText(selected);
+                    popupWindow.dismiss();
+                    items.get(item_position).setSize(selected);
+                }
+            });
+            popupWindow.setOutsideTouchable(true);
+            popupWindow.showAtLocation(v, 1, 50, 50);
+        }
+    }
+    class OnClickListenerForNum implements View.OnClickListener{
+        int item_position;
+        public OnClickListenerForNum(int item_position) {
+            this.item_position = item_position;
+        }
+        @RequiresApi(api = Build.VERSION_CODES.M)
+        @SuppressLint("WrongConstant")
+        @Override
+        public void onClick(View v) {
+            String name = items.get(item_position).getMaterial();
+            String size = items.get(item_position).getSize();
+            if (name == null || name.equals("点击选择")) {
+                Toast.makeText(context, "请先选择材料名称", 1000).show();
+                return;
+            }
+            if (size == null  || size.equals("点击选择")) {
+                Toast.makeText(context, "请先选择材料规格", 1000).show();
+                return;
+            }
+            final EditText et = new EditText(context);
+            final PopupWindow popupWindow = new PopupWindow(et, 700, 200);
+            popupWindow.setFocusable(true);
+            et.setBackgroundColor(context.getColor(R.color.lightGray));
+            final TextView text = (TextView) v.findViewById(R.id.form_create_list_content_show_number);
+            et.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    text.setText(s.toString());
+                    items.get(item_position).setNumber(text.getText().toString());
+                }
+            });
+            popupWindow.setOutsideTouchable(true);
+            popupWindow.showAtLocation(v, 1, 50, 50);
         }
     }
 }

@@ -57,8 +57,6 @@ public class FormDetail extends AppCompatActivity {
         /**
          * 设置相应的listview适配器
          */
-
-
         if (originalPage == R.string.material_picking && showReturnButton(username, status_info, creator_info)) {
             go_return.setVisibility(View.VISIBLE);
             go_return.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +74,20 @@ public class FormDetail extends AppCompatActivity {
                 }
             });
         }
+        go_return.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString("tableId", String.valueOf(tableId));
+                bundle.putString("form-title", "还料表");
+                intent.putExtras(bundle);
+                intent.setClassName(getPackageName(), getPackageName()+".FormCreate");
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent);
+                }
+            }
+        });
     }
     public void init() {
         context = getBaseContext();
@@ -109,7 +121,7 @@ public class FormDetail extends AppCompatActivity {
             tableHeadOperation.setText("入库数量");
         } else if (originalPage == R.string.material_turn_back) {
             tableHeadOperation.setText("归还数量");
-        } else if (originalPage == R.string.material_out_warehouse) {
+        } else if (originalPage == R.string.material_picking) {
             tableHeadOperation.setText("领取数量");
         }
         /**
@@ -118,7 +130,10 @@ public class FormDetail extends AppCompatActivity {
         if (!showCheckoutButton(username, tableId)) {
             agree.setVisibility(View.INVISIBLE);
             refuse.setVisibility(View.INVISIBLE);
-            if (showReturnButton(username, status_info, creator_info)) {
+//            if (showReturnButton(username, status_info, creator_info)) {
+//                go_return.setVisibility(View.VISIBLE);
+//            }
+            if (showReturnButton("root", "success", "root")) {
                 go_return.setVisibility(View.VISIBLE);
             }
         } else {
@@ -149,7 +164,7 @@ public class FormDetail extends AppCompatActivity {
      * @return
      */
     public boolean showReturnButton(String username, String status, String creator) {
-        if (username.equals(creator) && status.equals("success")) {
+        if (username.equals(creator) && status.equals("success") && originalPage == R.string.material_picking) {
             return true;
         } else {
             return false;

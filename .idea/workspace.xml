@@ -17,10 +17,14 @@
   <component name="ChangeListManager">
     <list default="true" id="3a58f4b2-8b6e-40cf-bd88-57004e2e5ebe" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/build-info/debug/build-info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/build-info/debug/build-info.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreate.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreateListContentAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreateListContentAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/ListContentAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/ListContentAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/management/TableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/management/TableItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/form_create_list_content.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/form_create_list_content.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_content.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_content.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -59,10 +63,33 @@
       <file leaf-file-name="FormDetail.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1539">
-              <caret line="54" column="43" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="43" />
+            <state relative-caret-position="95">
+              <caret line="200" column="32" selection-start-line="200" selection-start-column="32" selection-end-line="200" selection-end-column="32" />
               <folding>
-                <element signature="method#init#0;class#FormDetail#0" />
+                <element signature="e#1855#1880#0" expanded="true" />
+                <element signature="e#2033#2665#0" expanded="true" />
+                <element signature="e#2664#2665#0" expanded="true" />
+                <element signature="e#2715#3313#0" expanded="true" />
+                <element signature="e#3312#3313#0" expanded="true" />
+                <element signature="e#4097#4136#0" expanded="true" />
+                <element signature="e#4166#4202#0" expanded="true" />
+                <element signature="e#4227#4265#0" expanded="true" />
+                <element signature="e#4572#4604#0" expanded="true" />
+                <element signature="e#4691#4721#0" expanded="true" />
+                <element signature="e#4807#4834#0" expanded="true" />
+                <element signature="e#4921#4946#0" expanded="true" />
+                <element signature="e#5541#5839#0" expanded="true" />
+                <element signature="e#5838#5839#0" expanded="true" />
+                <element signature="e#5880#6180#0" expanded="true" />
+                <element signature="e#6179#6180#0" expanded="true" />
+                <element signature="e#6534#6559#0" expanded="true" />
+                <element signature="method#showCheckoutButton#0;class#FormDetail#0" />
+                <element signature="e#6735#6767#0" expanded="true" />
+                <element signature="method#getDataFromBackward#0;class#FormDetail#0" />
+                <element signature="method#setTableBasicInfo#0;class#FormDetail#0" />
+                <element signature="e#7792#8958#0" expanded="true" />
+                <element signature="e#8957#8958#0" expanded="true" />
+                <element signature="class#GetFormDetail#0;class#FormDetail#0" />
                 <element signature="method#run#0;class#GetFormDetail#0;class#FormDetail#0" />
                 <element signature="class#TableStatus#0;class#FormDetail#0" />
               </folding>
@@ -70,109 +97,107 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="ListContentAdapter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/ListContentAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="75" column="52" selection-start-line="75" selection-start-column="52" selection-end-line="75" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list_content.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_content.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="113">
+              <caret line="17" column="13" lean-forward="true" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_form_create.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_form_create.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="85" column="54" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form_create_list_content.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/form_create_list_content.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-191">
+              <caret column="18" selection-start-column="18" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_form_detail.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_form_detail.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="87" column="42" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="42" />
+              <folding>
+                <element signature="e#5459#5487#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomePageFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/HomePageFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="106">
+              <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="FormCreate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1005">
-              <caret line="98" column="51" lean-forward="true" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
+            <state relative-caret-position="399">
+              <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1522#1709#0" expanded="true" />
-                <element signature="e#1708#1709#0" expanded="true" />
+                <element signature="e#1461#1638#0" expanded="true" />
+                <element signature="e#1637#1638#0" expanded="true" />
+                <element signature="e#2313#2477#0" expanded="true" />
+                <element signature="e#2476#2477#0" expanded="true" />
+                <element signature="method#init#0;class#FormCreate#0" />
                 <element signature="docComment;field#handler#0;class#FormCreate#0" />
-                <element signature="e#3420#3583#0" expanded="true" />
-                <element signature="e#3582#3583#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BottomNavigation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/BottomNavigation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1200">
-              <caret line="120" column="23" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserWR.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/UserWR.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TableItem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/TableItem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FormCreateListContentAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreateListContentAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="85" column="27" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#getCorrespondingSize#0;class#FormCreateListContentAdapter#0" />
-                <element signature="class#ViewHolder#0;class#FormCreateListContentAdapter#0" />
-                <element signature="class#OnClickListener#0;class#FormCreateListContentAdapter#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/LoginActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1189">
-              <caret line="429" column="11" selection-start-line="429" selection-start-column="11" selection-end-line="429" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#populateAutoComplete#0;class#LoginActivity#0" />
-                <element signature="method#mayRequestContacts#0;class#LoginActivity#0" />
-                <element signature="method#onRequestPermissionsResult#0;class#LoginActivity#0" />
-                <element signature="method#attemptReset#0;class#LoginActivity#0" />
-                <element signature="method#getVerifyCode#0;class#LoginActivity#0" />
-                <element signature="docComment;method#showProgress#0;class#LoginActivity#0" />
-                <element signature="method#showProgress#0;class#LoginActivity#0" />
-                <element signature="method#showReset#0;class#LoginActivity#0" />
-                <element signature="method#onCreateLoader#0;class#LoginActivity#0" />
-                <element signature="method#onLoadFinished#0;class#LoginActivity#0" />
-                <element signature="method#addEmailsToAutoComplete#0;class#LoginActivity#0" />
-                <element signature="class#ProfileQuery#0;class#LoginActivity#0" />
-                <element signature="method#Reset#0;class#LoginActivity#0" />
-                <element signature="class#GetVerifyTask#0;class#LoginActivity#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FormList.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FormList.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="148" column="50" selection-start-line="148" selection-start-column="41" selection-end-line="148" selection-end-column="50" />
+            <state relative-caret-position="257">
+              <caret line="247" selection-start-line="247" selection-end-line="247" />
               <folding>
                 <element signature="method#onCreate#0;class#FormList#0" />
                 <element signature="method#init#0;class#FormList#0" />
                 <element signature="method#getDataFromBackward#0;class#FormList#0" />
+                <element signature="method#setForm_list#0;class#FormList#0" />
                 <element signature="docComment;field#handler#0;class#FormList#0" />
-                <element signature="e#6254#6761#0" expanded="true" />
-                <element signature="e#6760#6761#0" expanded="true" />
+                <element signature="class#ChangeToCreatePage#0;class#FormList#0" />
                 <element signature="method#onClick#0;class#ChangeToCreatePage#0;class#FormList#0" />
-                <element signature="e#9045#9046#0" expanded="true" />
-                <element signature="e#9099#9100#0" expanded="true" />
+                <element signature="class#GetData#0;class#FormList#0" />
               </folding>
             </state>
           </provider>
@@ -207,6 +232,7 @@
       <find>handler</find>
       <find>router</find>
       <find>form_create_</find>
+      <find>listview</find>
     </findStrings>
     <replaceStrings>
       <replace>company.management</replace>
@@ -4030,14 +4056,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_form_list.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreate.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_form_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_homepage.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/HomePageFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/Router.java" />
@@ -4081,6 +4099,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreate.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/form_create_list_content.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreate.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/TableItem.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreateListContentAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/list_content.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/company/management/ListContentAdapter.java" />
       </list>
     </option>
   </component>
@@ -4095,7 +4121,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -4123,7 +4148,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -4175,12 +4199,31 @@
             <path>
               <item name="CompanyManagement" type="b2602c69:ProjectViewProjectNode" />
               <item name="CompanyManagement" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CompanyManagement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CompanyManagement" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CompanyManagement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CompanyManagement" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="gradle" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -4358,13 +4401,12 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24329759" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49932975" visible="true" weight="0.3352354" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3289256" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49932975" weight="0.3352354" />
       <window_info anchor="right" id="Gradle" order="5" weight="0.3297587" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Device File Explorer" order="8" side_tool="true" weight="0.3297587" />
       <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39942938" />
       <window_info id="Favorites" order="7" side_tool="true" weight="0.3297587" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -4372,6 +4414,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289256" />
     </layout>
     <layout-to-restore>
       <window_info anchor="bottom" id="Build" order="7" weight="0.3352354" />
@@ -4390,7 +4433,6 @@
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="right" id="Preview" order="4" weight="0.3297587" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3289256" />
       <window_info anchor="right" id="Device File Explorer" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Logcat" order="10" weight="0.3281027" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3289256" />
@@ -4403,6 +4445,7 @@
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289256" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
     </layout-to-restore>
   </component>
@@ -4411,38 +4454,24 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java</url>
+          <line>112</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java</url>
+          <line>247</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="8" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/CircleImageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="45" column="29" lean-forward="true" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/EditAddress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/EditName.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/InformationView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/MultiPages.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
@@ -4514,39 +4543,32 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/material_out_warehouse.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/material_in_warehouse.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_form_list.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
           <caret line="74" column="55" lean-forward="true" selection-start-line="74" selection-start-column="55" selection-end-line="74" selection-end-column="55" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_homepage.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_homepage.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
           <caret line="167" column="27" selection-start-line="167" selection-start-column="27" selection-end-line="167" selection-end-column="27" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/navigation.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/navigation.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/HomePageFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
-          <caret line="49" column="84" selection-start-line="49" selection-start-column="84" selection-end-line="49" selection-end-column="84" />
         </state>
       </provider>
     </entry>
@@ -4594,34 +4616,34 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/mine.xml">
-      <provider selected="true" editor-type-id="text-editor">
+      <provider editor-type-id="android-designer2">
         <state />
       </provider>
-      <provider editor-type-id="android-designer2">
+      <provider selected="true" editor-type-id="text-editor">
         <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/message_remind_list_view.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/form_create2_list_view.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_form_create2.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreate2ListContentAdapter.java" />
     <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-27/data/res/layout/simple_list_item_1.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="21" column="37" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="37" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/NameChoiceAdapter.java" />
@@ -4643,33 +4665,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_massage_remind.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/form_list_list_view_content.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/form_create_list_content.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-27/android/widget/PopupWindow.java">
@@ -4690,46 +4692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_form_create.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="55" lean-forward="true" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="55" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_form_detail.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="124" column="49" selection-start-line="124" selection-start-column="49" selection-end-line="124" selection-end-column="49" />
-          <folding>
-            <element signature="e#5459#5487#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/BottomNavigation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="120" column="23" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/UserWR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/ACL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="122">
@@ -4746,9 +4708,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-27/android/os/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="535" column="25" selection-start-line="535" selection-start-column="25" selection-end-line="535" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/TableItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="method#TableItem#0;class#TableItem#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/UserWR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/BottomNavigation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="120" column="23" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1189">
+        <state relative-caret-position="-735">
           <caret line="429" column="11" selection-start-line="429" selection-start-column="11" selection-end-line="429" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -4770,79 +4766,167 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/TableItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-27/android/os/Handler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="535" column="25" selection-start-line="535" selection-start-column="25" selection-end-line="535" selection-end-column="36" />
-          <folding>
-            <element signature="e#22023#22024#0" expanded="true" />
-            <element signature="e#22072#22073#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreateListContentAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="85" column="27" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="27" />
+        <state relative-caret-position="220">
+          <caret line="216" column="17" lean-forward="true" selection-start-line="216" selection-start-column="17" selection-end-line="216" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getCorrespondingSize#0;class#FormCreateListContentAdapter#0" />
             <element signature="class#ViewHolder#0;class#FormCreateListContentAdapter#0" />
-            <element signature="class#OnClickListener#0;class#FormCreateListContentAdapter#0" />
+            <element signature="class#OnClickListenerForName#0;class#FormCreateListContentAdapter#0" />
+            <element signature="method#onClick#0;class#OnClickListenerForSize#0;class#FormCreateListContentAdapter#0" />
+            <element signature="method#onClick#0;class#OnClickListenerForNum#0;class#FormCreateListContentAdapter#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/form_list_list_view_content.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormCreate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="98" column="51" lean-forward="true" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
+        <state relative-caret-position="399">
+          <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1522#1709#0" expanded="true" />
-            <element signature="e#1708#1709#0" expanded="true" />
+            <element signature="e#1461#1638#0" expanded="true" />
+            <element signature="e#1637#1638#0" expanded="true" />
+            <element signature="e#2313#2477#0" expanded="true" />
+            <element signature="e#2476#2477#0" expanded="true" />
+            <element signature="method#init#0;class#FormCreate#0" />
             <element signature="docComment;field#handler#0;class#FormCreate#0" />
-            <element signature="e#3420#3583#0" expanded="true" />
-            <element signature="e#3582#3583#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/HomePageFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-26/android/widget/AbsListView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="4169" selection-start-line="4169" selection-end-line="4169" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-26/android/widget/AdapterView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="329" selection-start-line="329" selection-end-line="329" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="247" selection-start-line="247" selection-end-line="247" />
+          <folding>
+            <element signature="method#onCreate#0;class#FormList#0" />
+            <element signature="method#init#0;class#FormList#0" />
+            <element signature="method#getDataFromBackward#0;class#FormList#0" />
+            <element signature="method#setForm_list#0;class#FormList#0" />
+            <element signature="docComment;field#handler#0;class#FormList#0" />
+            <element signature="class#ChangeToCreatePage#0;class#FormList#0" />
+            <element signature="method#onClick#0;class#ChangeToCreatePage#0;class#FormList#0" />
+            <element signature="class#GetData#0;class#FormList#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_form_create.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="85" column="54" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/form_create_list_content.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-191">
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_form_detail.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="87" column="42" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="42" />
+          <folding>
+            <element signature="e#5459#5487#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormDetail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1539">
-          <caret line="54" column="43" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="43" />
+        <state relative-caret-position="95">
+          <caret line="200" column="32" selection-start-line="200" selection-start-column="32" selection-end-line="200" selection-end-column="32" />
           <folding>
-            <element signature="method#init#0;class#FormDetail#0" />
+            <element signature="e#1855#1880#0" expanded="true" />
+            <element signature="e#2033#2665#0" expanded="true" />
+            <element signature="e#2664#2665#0" expanded="true" />
+            <element signature="e#2715#3313#0" expanded="true" />
+            <element signature="e#3312#3313#0" expanded="true" />
+            <element signature="e#4097#4136#0" expanded="true" />
+            <element signature="e#4166#4202#0" expanded="true" />
+            <element signature="e#4227#4265#0" expanded="true" />
+            <element signature="e#4572#4604#0" expanded="true" />
+            <element signature="e#4691#4721#0" expanded="true" />
+            <element signature="e#4807#4834#0" expanded="true" />
+            <element signature="e#4921#4946#0" expanded="true" />
+            <element signature="e#5541#5839#0" expanded="true" />
+            <element signature="e#5838#5839#0" expanded="true" />
+            <element signature="e#5880#6180#0" expanded="true" />
+            <element signature="e#6179#6180#0" expanded="true" />
+            <element signature="e#6534#6559#0" expanded="true" />
+            <element signature="method#showCheckoutButton#0;class#FormDetail#0" />
+            <element signature="e#6735#6767#0" expanded="true" />
+            <element signature="method#getDataFromBackward#0;class#FormDetail#0" />
+            <element signature="method#setTableBasicInfo#0;class#FormDetail#0" />
+            <element signature="e#7792#8958#0" expanded="true" />
+            <element signature="e#8957#8958#0" expanded="true" />
+            <element signature="class#GetFormDetail#0;class#FormDetail#0" />
             <element signature="method#run#0;class#GetFormDetail#0;class#FormDetail#0" />
             <element signature="class#TableStatus#0;class#FormDetail#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/FormList.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_content.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="148" column="50" selection-start-line="148" selection-start-column="41" selection-end-line="148" selection-end-column="50" />
-          <folding>
-            <element signature="method#onCreate#0;class#FormList#0" />
-            <element signature="method#init#0;class#FormList#0" />
-            <element signature="method#getDataFromBackward#0;class#FormList#0" />
-            <element signature="docComment;field#handler#0;class#FormList#0" />
-            <element signature="e#6254#6761#0" expanded="true" />
-            <element signature="e#6760#6761#0" expanded="true" />
-            <element signature="method#onClick#0;class#ChangeToCreatePage#0;class#FormList#0" />
-            <element signature="e#9045#9046#0" expanded="true" />
-            <element signature="e#9099#9100#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="113">
+          <caret line="17" column="13" lean-forward="true" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/company/management/ListContentAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="75" column="52" selection-start-line="75" selection-start-column="52" selection-end-line="75" selection-end-column="52" />
         </state>
       </provider>
     </entry>

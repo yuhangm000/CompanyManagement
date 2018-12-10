@@ -5,9 +5,9 @@ public class TableItem {
     public String size;
     public String number;
     public TableItem(){
-        material = "";
-        size = "";
-        number = "0";
+        material = "点击选择";
+        size = "点击选择";
+        number = "点击输入";
     }
     public void setMaterial(String m) {
         material = m;
