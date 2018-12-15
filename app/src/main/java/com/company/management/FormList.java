@@ -1,5 +1,6 @@
 package com.company.management;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
@@ -79,6 +80,7 @@ public class FormList extends AppCompatActivity {
          */
         setForm_list(null);
     }
+    @SuppressLint("WrongConstant")
     void init(){
         acl = (ACL) getApplicationContext();
         /**
@@ -127,7 +129,16 @@ public class FormList extends AppCompatActivity {
         } catch (Exception e) {
             Log.e("FORM_LIST_INIT",e.getMessage());
         }
-        getDataFromBackward(target_page);
+        try {
+            getDataFromBackward(target_page);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "服务器休息了，请稍后重试", 1000).show();
+            Intent intent = new Intent();
+            intent.setClassName(getPackageName(), getPackageName() + ".BottomNavigation");
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
+        }
     }
     public void getDataFromBackward(int target_page) {
         /**
@@ -179,8 +190,13 @@ public class FormList extends AppCompatActivity {
      * 子线程更新界面
      */
     Handler handler = new Handler() {
+        @SuppressLint("WrongConstant")
         @Override
         public void handleMessage(Message msg) {
+            if (msg.arg1 == 1) {
+                Toast.makeText(getApplicationContext(), "服务器开小差了~", 1000).show();
+                return;
+            }
             JSONObject jsonObject = (JSONObject) msg.obj;
             try {
                 if (jsonObject.getInt("status") == 1) {
@@ -254,6 +270,7 @@ public class FormList extends AppCompatActivity {
         public GetData(int target_page) {
             this.target_page = target_page;
         }
+        @SuppressLint("WrongConstant")
         @Override
         public void run() {
             try {
@@ -277,9 +294,16 @@ public class FormList extends AppCompatActivity {
                      * }
                      */
                     json = Conn.get(routes, userId);
-                    Message message = handler.obtainMessage();
-                    message.obj = json.getJSONObject("param");
-                    handler.sendMessage(message);
+                    if (json != null) {
+                        Log.i("GET TABLES", json.toString());
+                        Message message = handler.obtainMessage();
+                        message.obj = json.getJSONObject("param");
+                        handler.sendMessage(message);
+                    } else {
+                        Message message = handler.obtainMessage();
+                        message.arg1 = 1;
+                        handler.sendMessage(message);
+                    }
                 } else {
                     Log.e("FormList","Illegel params.");
                 }
