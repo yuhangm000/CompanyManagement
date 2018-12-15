@@ -11,18 +11,15 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
-
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
-import android.util.JsonReader;
 import android.util.Log;
 import android.util.Pair;
 import android.view.KeyEvent;
@@ -34,14 +31,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.company.management.R;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
-import java.security.acl.Acl;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -487,7 +479,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         public void handleMessage(Message msg) {
             JSONObject a_p = (JSONObject) msg.obj;
             try {
-                login(a_p.getJSONObject("userinfo"), a_p.getInt("status"));
+                login(a_p.getJSONObject("id"), a_p.getInt("status"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -555,15 +547,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 int status = result.getInt("status");
                 if (status == 1) {
                     Message msg = handler.obtainMessage();
+                    JSONObject param = JsonUtils.GetParam(result);
+                    if (param == null){
+                        //todo 这里怎么处理
+                        return;
+                    }
+                    int id = param.getInt("id");
+                    String position = param.getString("position");
                     a_p.put("status", status);
-                    /**
-                     * TODO： @meng 这个地方好像没有办法获取param这个json对象
-                     */
-                    JSONObject userinfoObject = result.getJSONObject("param");
-                    a_p.put("userinfo", userinfoObject);
+                    a_p.put("id", id);
+                    a_p.put("position", position);
+                    Log.i("+===================+", position);
                     msg.obj = a_p;
                     handler.sendMessage(msg);
                 }
+                // todo  status != 1
             } catch (JSONException e) {
                 Log.e("error in userinfo", e.getMessage());
                 e.printStackTrace();

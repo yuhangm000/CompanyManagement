@@ -138,6 +138,7 @@ public class FormList extends AppCompatActivity {
 
     void setForm_list(JSONObject jsonObject) {
         try {
+            JSONObject obj = Conn.get("/material/apply", null);
             /**
              * TODO: 测试并且完善从后端取数据 @meng
              */
@@ -164,6 +165,8 @@ public class FormList extends AppCompatActivity {
                 item_create_time.add(text);
             }
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         FormListListViewContentAdapter formListListViewContentAdapter;
