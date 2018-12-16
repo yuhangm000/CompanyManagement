@@ -522,7 +522,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 String role = userWR.getRole(getApplicationContext());
                 String username = userWR.getUserName(getApplicationContext());
                 ACL acl = (ACL) getApplicationContext();
-                JSONObject obj =  Conn.get(Router.ACL_LIST, "role=" + role);
+                JSONObject params = new JSONObject();
+                params.put("role", role);
+                JSONObject obj =  Conn.get(Router.ACL_LIST, params);
                 JSONArray permissions = obj.getJSONArray("param");
                 acl.setUser2Role(username, role);
                 for (int i = 0; i < permissions.length(); i++) {
