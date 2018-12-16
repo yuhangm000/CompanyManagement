@@ -13,6 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.ResultSet;
+import java.util.Iterator;
 
 /**
  * 连接远程服务器，传入请求路径,和JSONObject，返回JSONObject
@@ -99,15 +100,28 @@ public class Conn {
         Log.d("requestGET", result.toString());
         return result;
     }
-    public static JSONObject get(String api, String params) throws IOException {
+    public static JSONObject get(String api, JSONObject jsonObject) throws IOException {
         try {
             HttpURLConnection conn;
-            conn = openConnection(api + "?" + params, GET);
+            String params = "";
+            Iterable<String> keys = (Iterable<String>) jsonObject.keys();
+            while(((Iterator) keys).hasNext()) {
+                String key = ((Iterator) keys).next().toString();
+                if (params == "")
+                    params = params + key + "=" + jsonObject.get(key);
+                else {
+                    params = params  + " &" + key + "=" + jsonObject.get(key);
+                }
+            }
+            conn = openConnection(api + "？" + params, GET);
             String result = requestGET(conn);
-            JSONObject jsonObject = parse(result);
-            return jsonObject;
+            JSONObject jObject = parse(result);
+            return jObject;
         } catch (IOException e) {
             Log.e("GET_ERROR", e.getMessage());
+            return null;
+        } catch (JSONException e) {
+            e.printStackTrace();
             return null;
         }
     }
