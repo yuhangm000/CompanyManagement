@@ -59,7 +59,14 @@ public class JsonUtils {
      */
     public static JSONArray GetJsonArrayParam(JSONObject obj){
         try{
-            JSONArray array = obj.getJSONArray("param");
+            String paramStr = obj.getString("param");
+            if (paramStr.startsWith("\ufeff")) {
+                paramStr = paramStr.substring(1);
+            }
+            if (paramStr == ""){
+                return null;
+            }
+            JSONArray array = new JSONArray(paramStr);
             return array;
         }catch (JSONException e){
             Log.e("parse json error", e.getMessage());
@@ -74,7 +81,14 @@ public class JsonUtils {
      */
     public static JSONArray GetJsonArray(JSONObject obj, String key){
         try{
-            JSONArray array = obj.getJSONArray(key);
+            String paramStr = obj.getString(key);
+            if (paramStr.startsWith("\ufeff")) {
+                paramStr = paramStr.substring(1);
+            }
+            if (paramStr == ""){
+                return null;
+            }
+            JSONArray array = new JSONArray(paramStr);
             return array;
         }catch (JSONException e){
             Log.e("parse json error", e.getMessage());
