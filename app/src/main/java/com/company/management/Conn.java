@@ -103,17 +103,21 @@ public class Conn {
     public static JSONObject get(String api, JSONObject jsonObject) throws IOException {
         try {
             HttpURLConnection conn;
-            String params = "";
-            Iterable<String> keys = (Iterable<String>) jsonObject.keys();
-            while(((Iterator) keys).hasNext()) {
-                String key = ((Iterator) keys).next().toString();
-                if (params == "")
-                    params = params + key + "=" + jsonObject.get(key);
-                else {
-                    params = params  + " &" + key + "=" + jsonObject.get(key);
+            if (jsonObject != null) {
+                String params = "";
+                Iterator<String> keys = jsonObject.keys();
+                while (((Iterator) keys).hasNext()) {
+                    String key = ((Iterator) keys).next().toString();
+                    if (params == "")
+                        params = params + key + "=" + jsonObject.get(key);
+                    else {
+                        params = params + " &" + key + "=" + jsonObject.get(key);
+                    }
                 }
+                conn = openConnection(api + "?" + params, GET);
+            }else{
+                conn = openConnection(api, GET);
             }
-            conn = openConnection(api + "？" + params, GET);
             String result = requestGET(conn);
             JSONObject jObject = parse(result);
             return jObject;

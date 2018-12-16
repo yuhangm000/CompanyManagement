@@ -2,6 +2,7 @@ package com.company.management;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,7 +30,7 @@ public class JsonUtils {
     }
 
     /**
-     * 根据key取得嵌套json
+     * 根据key取得嵌套json, 返回为null的话，证明出错
      * @param obj
      * @param key
      * @return
@@ -46,6 +47,36 @@ public class JsonUtils {
             JSONObject param = new JSONObject(paramStr);
             return param;
         } catch (JSONException e){
+            Log.e("parse json error", e.getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * 如果param是个list，可以用此方法
+     * @param obj
+     * @return
+     */
+    public static JSONArray GetJsonArrayParam(JSONObject obj){
+        try{
+            JSONArray array = obj.getJSONArray("param");
+            return array;
+        }catch (JSONException e){
+            Log.e("parse json error", e.getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * 获取嵌套json的list，可以用此方法
+     * @param obj
+     * @return
+     */
+    public static JSONArray GetJsonArray(JSONObject obj, String key){
+        try{
+            JSONArray array = obj.getJSONArray(key);
+            return array;
+        }catch (JSONException e){
             Log.e("parse json error", e.getMessage());
             return null;
         }

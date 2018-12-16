@@ -147,20 +147,13 @@ public class FormList extends AppCompatActivity {
         new GetData(target_page).start();
     }
 
-    void setForm_list(JSONObject jsonObject) {
+    void setForm_list(JSONArray jsonArray) {
         try {
-            JSONObject obj = Conn.get("/material/apply", null);
-            /**
-             * TODO: 测试并且完善从后端取数据 @meng
-             */
-            JSONArray jsonArray = null;
-            if (jsonObject != null)
-                jsonArray = jsonObject.getJSONArray("param");
             if (jsonArray != null) {
                 for(int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jObject = jsonArray.getJSONObject(i);
                     item_id.add(jObject.getString("table_id"));
-                    if (jsonObject.getString("table_name") != null)
+                    if (jObject.getString("table_name") != null)
                         item_title.add(jObject.getString("table_name"));
                     else
                         item_title.add(jObject.getString("table_id"));
@@ -168,16 +161,14 @@ public class FormList extends AppCompatActivity {
                     item_create_time.add(jObject.getString("create_time"));
                 }
             }
-            else {
-                String text = "test";
-                item_id.add(text);
-                item_title.add(text);
-                item_creator.add(text);
-                item_create_time.add(text);
-            }
+//            else {
+//                String text = "test";
+//                item_id.add(text);
+//                item_title.add(text);
+//                item_creator.add(text);
+//                item_create_time.add(text);
+//            }
         } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
         FormListListViewContentAdapter formListListViewContentAdapter;
@@ -200,19 +191,8 @@ public class FormList extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "服务器开小差了~", 1000).show();
                 return;
             }
-            JSONObject jsonObject = (JSONObject) msg.obj;
-            try {
-                if (jsonObject.getInt("status") == 1) {
-                    /**
-                     * 此处才是真正填充表格的地方 TODO:@meng
-                     */
-                    setForm_list(jsonObject);
-                } else {
-                    Toast.makeText(getApplicationContext(), "获取列表错误", Toast.LENGTH_LONG).show();
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            JSONArray array = (JSONArray) msg.obj;
+            setForm_list(array);
         }
     };
     /**
@@ -285,23 +265,18 @@ public class FormList extends AppCompatActivity {
                 if (routes != null) {
                     UserWR userWR = new UserWR();
                     String userId = userWR.getUserID(getApplicationContext());
-                    /**
-                     * 此处json应该是如下形式
-                     * {
-                     * ...
-                     * param: {
-                     * table_id:
-                     * creator:
-                     * createt_time:
-                     * ...
-                     * }
-                     */
-                    json = Conn.get(routes, userId);
+
+                    json = Conn.get(routes, null);
                     if (json != null) {
                         Log.i("GET TABLES", json.toString());
                         Message message = handler.obtainMessage();
-                        message.obj = json.getJSONObject("param");
-                        handler.sendMessage(message);
+                        if (!JsonUtils.StatusOk(json)){
+                            message.arg1 = 1;
+                            handler.sendMessage(message);
+                        } else {
+                            message.obj = JsonUtils.GetJsonArrayParam(json);
+                            handler.sendMessage(message);
+                        }
                     } else {
                         Message message = handler.obtainMessage();
                         message.arg1 = 1;
@@ -311,8 +286,6 @@ public class FormList extends AppCompatActivity {
                     Log.e("FormList","Illegel params.");
                 }
             } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
                 e.printStackTrace();
             }
         }

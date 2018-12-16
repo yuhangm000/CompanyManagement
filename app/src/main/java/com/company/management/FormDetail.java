@@ -260,12 +260,16 @@ public class FormDetail extends AppCompatActivity {
                  *     }
                  *     ]
                  */
-                JSONObject result = Conn.get("/formDtail", this.form_id);
+                JSONObject params = new JSONObject();
+                params.put("table_id", this.form_id);
+                JSONObject result = Conn.get(Router.MATERIAL_IN_WAREHOUSE_DETAIL, params);
                 Message msg = handler.obtainMessage();
                 msg.obj = result;
                 handler.sendMessage(msg);
 
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
             super.run();
