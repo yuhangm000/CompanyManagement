@@ -102,7 +102,7 @@ public class Conn {
     public static JSONObject get(String api, String params) throws IOException {
         try {
             HttpURLConnection conn;
-            conn = openConnection(api + "/" + params, GET);
+            conn = openConnection(api + "?" + params, GET);
             String result = requestGET(conn);
             JSONObject jsonObject = parse(result);
             return jsonObject;

@@ -2,6 +2,7 @@ package com.company.management;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -31,6 +32,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
@@ -411,17 +414,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int IS_PRIMARY = 1;
     }
 
-    public void login(JSONObject username, int isLogin){
+    public void login(JSONObject user, int isLogin){
         /**
          * 1. 成功登录之后保存用户登录状态
          */
         UserWR userWR = new UserWR();
-        userWR.saveUserLogin(username, isLogin == 1, getApplicationContext());
+        userWR.saveUserLogin(user, isLogin == 1, getApplicationContext());
         /**
          * 2. 获取用户的权限列表
          */
 //        TODO: 链接后端api需要取消注释 @meng
-//        new AclGet(username).start();
+        new AclGet().start();
         /**
          * 3. 跳转到功能页
          */
@@ -475,11 +478,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * 此处声明异步函数区
      */
     Handler handler = new Handler() {
+        @SuppressLint("WrongConstant")
         @Override
         public void handleMessage(Message msg) {
+            if (msg.arg1 == 1) {
+                Toast.makeText(getApplicationContext(), "登陆失败，请稍后重试", 1000).show();
+                return;
+            } else if (msg.arg1 == 2) {
+                Toast.makeText(getApplicationContext(), "用户信息错误", 1000).show();
+                return;
+            }
             JSONObject a_p = (JSONObject) msg.obj;
             try {
-                login(a_p.getJSONObject("id"), a_p.getInt("status"));
+                login(a_p, a_p.getInt("status"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -502,27 +513,24 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
     class AclGet extends Thread {
-        String username;
-        public AclGet(String username) {
-            this.username = username;
+        public AclGet() {
         }
         @Override
         public void run() {
             try {
+                UserWR userWR = new UserWR();
+                String role = userWR.getRole(getApplicationContext());
+                String username = userWR.getUserName(getApplicationContext());
                 ACL acl = (ACL) getApplicationContext();
-                JSONObject jsonObject =  Conn.get("/getAcl", username);
-                // TODO: 添加往ROLE2ACL放数据的代码 @meng
-                /**
-                 * 这里对ACL进行设置username到role的映射
-                 */
-                // acl.setUser2Role(username, role);
-                /**
-                 * 这里设置role的所有权限
-                 */
-//                for (int i = 0; i < permissions.size(); i++) {
-//                    acl.setRole2Acl(role, permissions.get(i));
-//                }
+                JSONObject obj =  Conn.get(Router.ACL_LIST, "role=" + role);
+                JSONArray permissions = obj.getJSONArray("param");
+                acl.setUser2Role(username, role);
+                for (int i = 0; i < permissions.length(); i++) {
+                    acl.setRole2Acl(role, permissions.get(i).toString());
+                }
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
             super.run();
@@ -550,6 +558,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     JSONObject param = JsonUtils.GetParam(result);
                     if (param == null){
                         //todo 这里怎么处理
+                        msg.arg1 = 2;
+                        handler.sendMessage(msg);
                         return;
                     }
                     int id = param.getInt("id");
@@ -557,11 +567,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     a_p.put("status", status);
                     a_p.put("id", id);
                     a_p.put("position", position);
-                    Log.i("+===================+", position);
+                    a_p.put("employee_name", param.getString("employee_name"));
+                    a_p.put("sex", param.getString("sex"));
                     msg.obj = a_p;
                     handler.sendMessage(msg);
+                } else {
+                    Message msg = handler.obtainMessage();
+                    msg.arg1 = 1;
+                    handler.sendMessage(msg);
                 }
-                // todo  status != 1
             } catch (JSONException e) {
                 Log.e("error in userinfo", e.getMessage());
                 e.printStackTrace();

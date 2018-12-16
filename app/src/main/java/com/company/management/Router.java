@@ -56,4 +56,8 @@ public final class Router {
      * TODO: 完成路由表的配置
      */
     public static final String MATERIAL_LIST = "/material/"; // 获取材料列表的路由
+    /**
+     * 获取权限列表的路由
+     */
+    public static final String ACL_LIST = "/app/permission";
 }

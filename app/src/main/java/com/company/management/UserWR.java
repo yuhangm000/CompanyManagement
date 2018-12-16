@@ -2,6 +2,7 @@ package com.company.management;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,11 +18,11 @@ public class UserWR {
     private final String gender = "gender";
     private final String role = "role";
     public UserWR() {
-
     }
     public void saveUserLogin(JSONObject user, boolean login, Context context) {
         SharedPreferences sp = context.getSharedPreferences(USERFILE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
+        Log.i("user infor", user.toString());
         try {
             editor.putString(this.username, user.getString("employee_name"));
             editor.putString(this.gender, user.getString("sex"));
@@ -50,7 +51,10 @@ public class UserWR {
     }
     public String getRole(Context context) {
         SharedPreferences sp = context.getSharedPreferences(USERFILE, Context.MODE_PRIVATE);
-        String role = sp.getString(this.role, null);
+        String role = sp.getString(this.role, "root");
+        String username = sp.getString(this.username, null);
+        Log.i("username", username);
+        Log.i("role", role);
         return role;
     }
     public String getGender (Context context) {

@@ -21,8 +21,12 @@ CompanyManagement\.iml
 
 *.json
 
+*.iml
+
 *.apk
 
 *.ap_
 
 *.flat
+
+local.*

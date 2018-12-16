@@ -28,6 +28,29 @@ public class JsonUtils {
         }
     }
 
+    /**
+     * 根据key取得嵌套json
+     * @param obj
+     * @param key
+     * @return
+     */
+    public static JSONObject GetJsonObj(JSONObject obj, String key){
+        try {
+            String paramStr = obj.getString(key);
+            if (paramStr.startsWith("\ufeff")) {
+                paramStr = paramStr.substring(1);
+            }
+            if (paramStr == ""){
+                return null;
+            }
+            JSONObject param = new JSONObject(paramStr);
+            return param;
+        } catch (JSONException e){
+            Log.e("parse json error", e.getMessage());
+            return null;
+        }
+    }
+
     public static boolean StatusOk(JSONObject obj){
         try{
             int status = obj.getInt("status");
