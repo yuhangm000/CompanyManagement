@@ -58,10 +58,13 @@ public class FormListListViewContentAdapter extends BaseAdapter {
             convertView.setTag(viewHolder);
         }
         viewHolder = (ViewHolder) convertView.getTag();
-        viewHolder.table_id.setText(item_id.get(position));
-        viewHolder.table_name.setText(item_title.get(position));
-        viewHolder.table_creator.setText(item_creator.get(position));
-        viewHolder.table_create_time.setText(item_create_time.get(position));
+        if(getCount() != 0)
+        {
+            viewHolder.table_id.setText(item_id.get(position));
+            viewHolder.table_name.setText(item_title.get(position));
+            viewHolder.table_creator.setText(item_creator.get(position));
+            viewHolder.table_create_time.setText(item_create_time.get(position));
+        }
         viewHolder.table_name.setOnClickListener(new ListViewClickListener());
         return convertView;
     }

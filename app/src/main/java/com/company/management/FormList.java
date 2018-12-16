@@ -153,11 +153,11 @@ public class FormList extends AppCompatActivity {
                 for(int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jObject = jsonArray.getJSONObject(i);
                     item_id.add(jObject.getString("table_id"));
-                    if (jObject.getString("table_name") != null)
+                    if (jObject.has("table_name"))
                         item_title.add(jObject.getString("table_name"));
                     else
                         item_title.add(jObject.getString("table_id"));
-                    item_creator.add(jObject.getString("creator"));
+                    item_creator.add(jObject.getString("writer"));
                     item_create_time.add(jObject.getString("create_time"));
                 }
             }
@@ -275,6 +275,7 @@ public class FormList extends AppCompatActivity {
                             handler.sendMessage(message);
                         } else {
                             message.obj = JsonUtils.GetJsonArrayParam(json);
+//                            Log.i("form list", JsonUtils.GetJsonArrayParam(json).toString());
                             handler.sendMessage(message);
                         }
                     } else {
