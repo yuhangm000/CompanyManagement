@@ -75,8 +75,9 @@ public class Conn {
             else{
                 result = "{'code':500, 'msg':'未知错误1'}";
             }
-            reader.close();
-            Log.d("upload", "doJsonPost: conn" + conn.getResponseCode());
+            if (reader != null)
+                reader.close();
+            Log.d("upload", "doJsonPost: conn" + conn.toString());
         }catch (Exception e){
             Log.d("upload", "error:" + e.toString());
             result = "{'code':500, 'msg':'服务器网络错误'}";
@@ -136,6 +137,7 @@ public class Conn {
         if(JsonObj != null)
             Json = JsonObj.toString();
         HttpURLConnection conn = openConnection(urlPath, POST);
+        Log.i("post params", Json);
         result = requestPOST(conn, Json);
         Log.i("result", result);
         //将接收的字符串转换成json格式

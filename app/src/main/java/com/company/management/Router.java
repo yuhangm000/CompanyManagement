@@ -10,10 +10,10 @@ public final class Router {
      * 列表相关路由
      */
     public static final String MATERIAL_OUT_WAREHOUSE_LIST = "/warehouse/out"; // 获取出库单的列表路由
-    public static final String MATERIAL_PURCHASE_APPLY_LIST = "/apply"; // 获取采购单的列表路由
+    public static final String MATERIAL_PURCHASE_APPLY_LIST = "/material/apply"; // 获取采购单的列表路由
     public static final String MATERIAL_IN_WAREHOUSE_LIST = "/warehouse/in"; // 获取入库单的列表路由
     public static final String MATERIAL_PICKING_LIST = "/material/receive/"; // 获取领料单的列表路由
-    public static final String MATERIAL_RETURN_LIST = "/"; // 获取待还料单的列表路由
+    public static final String MATERIAL_RETURN_LIST = MATERIAL_PICKING_LIST; // 获取待还料单的列表路由
     /**
      * 与列表状态更改相关路由
      */
@@ -22,7 +22,7 @@ public final class Router {
      * 与列表创建相关路由
      */
     public static final String MATERIAL_OUT_WAREHOUSE_CREATE = "/warehouse/out"; // 创建出库单的路由
-    public static final String MATERIAL_PURCHASE_APPLY_CREATE = "/apply/material"; // 创建采购单的相关路由
+    public static final String MATERIAL_PURCHASE_APPLY_CREATE = "/material/apply/write_table"; // 创建采购单的相关路由
     public static final String MATERIAL_IN_WAREHOUSE_CREATE = "/warehouse/in"; // 创建入库单的路由
     public static final String MATERIAL_PICKING_CREATE = "/material/receive/write_table"; // 创建领料单的路由
     public static final String MATERIAL_RETURN_CREATE = "/material/back/write_table"; // 创建还料单的路由
@@ -47,7 +47,7 @@ public final class Router {
     /**
      * 获取表单详细内容的路由
      */
-    public static final String MATERIAL_PURCHASE_APPLY_DETAIL = "/apply/material"; // 查看采购申请表的路由
+    public static final String MATERIAL_PURCHASE_APPLY_DETAIL = "/material/apply/detail"; // 查看采购申请表的路由
     public static final String MATERIAL_OUT_WAREHOUSE_DETAIL = "/warehouse/out/detail"; // 查看出库单详情的路由
     public static final String MATERIAL_IN_WAREHOUSE_DETAIL = "/warehouse/in/detail"; // 查看入库单详情的路由
     public static final String MATERIAL_RETURN_DETAIL = "/"; // 查看还料单详情的路由

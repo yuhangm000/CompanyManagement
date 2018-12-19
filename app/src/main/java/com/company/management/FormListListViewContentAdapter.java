@@ -65,24 +65,9 @@ public class FormListListViewContentAdapter extends BaseAdapter {
             viewHolder.table_creator.setText(item_creator.get(position));
             viewHolder.table_create_time.setText(item_create_time.get(position));
         }
-        viewHolder.table_name.setOnClickListener(new ListViewClickListener());
         return convertView;
     }
     static class ViewHolder {
         TextView table_id,table_name, table_creator, table_create_time;
-    }
-    // TODO: 去除点击事件
-    private class ListViewClickListener implements View.OnClickListener {
-
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent();
-            String packagename = context.getPackageName();
-            intent.setClassName(packagename, packagename+".FormDetail");
-            PackageManager packageManager = context.getPackageManager();
-            if (intent.resolveActivity(packageManager) != null) {
-                context.startActivity(intent);
-            }
-        }
     }
 }

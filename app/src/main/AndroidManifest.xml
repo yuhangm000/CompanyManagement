@@ -45,13 +45,6 @@
         <activity
             android:name=".ChangeNickName"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".EditGender"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".EditAddress"
-            android:screenOrientation="portrait" />
-        <activity android:name=".EditName" />
         <activity android:name=".FormList" />
         <activity android:name=".FormDetail" />
         <activity android:name=".FormCreate"></activity>

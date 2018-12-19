@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.TabLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -20,6 +21,7 @@ import android.view.textservice.TextInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -27,9 +29,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -54,6 +58,10 @@ public class FormCreateListContentAdapter extends BaseAdapter {
         }
         return answer;
     }
+    public void setItems(List<TableItem> items) {
+        this.items = items;
+        notifyDataSetChanged();
+    }
     private Handler  handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -67,7 +75,6 @@ public class FormCreateListContentAdapter extends BaseAdapter {
         materialSize = new ArrayList<>();
         name_list = new ArrayList<>();
         size_list = new ArrayList<>();
-        initMaterilaSizeList();
     }
     @Override
     public int getCount() {
@@ -94,6 +101,7 @@ public class FormCreateListContentAdapter extends BaseAdapter {
             viewHolder.name = (TextView) convertView.findViewById(R.id.form_create_list_content_show_material);
             viewHolder.size = (TextView) convertView.findViewById(R.id.form_create_list_content_show_size);
             viewHolder.number = (TextView) convertView.findViewById(R.id.form_create_list_content_show_number);
+            viewHolder.delete = (Button) convertView.findViewById(R.id.form_create_list_content_delete);
             convertView.setTag(viewHolder);
         }
         viewHolder = (ViewHolder) convertView.getTag();
@@ -106,35 +114,45 @@ public class FormCreateListContentAdapter extends BaseAdapter {
         viewHolder.size.setOnClickListener(new OnClickListenerForSize(position));
         // 设置材料数量的adapter
         viewHolder.number.setOnClickListener(new OnClickListenerForNum(position));
+        viewHolder.delete.setOnClickListener(new OnClickListernerForDelete(position));
         return convertView;
-    }
-    public void initMaterilaSizeList() {
-        materialSize.clear();
-        materialSize.add(new MaterialSize("yanhua", "1"));
-        materialSize.add(new MaterialSize("yanhua", "2"));
-        materialSize.add(new MaterialSize("yanhua", "3"));
-        materialSize.add(new MaterialSize("meng", "4"));
-        materialSize.add(4, new MaterialSize("meng", "5"));
-        name_list.add("yanhua");
-        name_list.add("meng");
     }
     // 设置可选内容
     public void setMaterialSize(List<MaterialSize> ms) {
         this.materialSize = ms;
+        for (int i = 0; i < materialSize.size(); i++) {
+            name_list.add(materialSize.get(i).material);
+        }
+        HashSet temp = new HashSet(name_list);
+        name_list.clear();;
+        name_list.addAll(temp);
     }
-
     class ViewHolder{
         TextView name;
         TextView size;
         TextView number;
+        Button delete;
     }
-    public class MaterialSize {
+    public static class MaterialSize {
+        String id;
         String material;
         String material_size;
-        MaterialSize(String m, String mz) {
+        MaterialSize(String id, String m, String mz) {
+            this.id = id;
             material = m;
             material_size = mz;
         }
+    }
+    public String getId(String name, String size) {
+        for (int i = 0; i < materialSize.size(); i++) {
+            if (materialSize.get(i).material.equals(name) && materialSize.get(i).material_size.equals(size)){
+                return materialSize.get(i).id;
+            }
+        }
+        return "-1";
+    }
+    public String getId(int position) {
+        return getId(name_list.get(position), size_list.get(position));
     }
     class OnClickListenerForName implements View.OnClickListener {
         String selected = null;
@@ -252,4 +270,17 @@ public class FormCreateListContentAdapter extends BaseAdapter {
             popupWindow.showAtLocation(v, 1, 50, 50);
         }
     }
+    class OnClickListernerForDelete implements View.OnClickListener{
+
+        int item_position;
+        public OnClickListernerForDelete(int item_position) {
+            this.item_position = item_position;
+        }
+        @Override
+        public void onClick(View v) {
+            items.remove(item_position);
+            notifyDataSetChanged();
+        }
+    }
+
 }

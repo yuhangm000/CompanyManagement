@@ -161,13 +161,6 @@ public class FormList extends AppCompatActivity {
                     item_create_time.add(jObject.getString("create_time"));
                 }
             }
-//            else {
-//                String text = "test";
-//                item_id.add(text);
-//                item_title.add(text);
-//                item_creator.add(text);
-//                item_create_time.add(text);
-//            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -237,12 +230,16 @@ public class FormList extends AppCompatActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent intent = new Intent();
             Bundle bundle = new Bundle();
-            bundle.putString("tableId", item_id.get(position));
-            bundle.putString("username", "yanhua");
+            bundle.putInt("tableId", Integer.valueOf(item_id.get(position)));
             bundle.putInt("originalPage", target_page);
-            intent.putExtras(bundle);
             String packageName = getPackageName();
-            intent.setClassName(packageName, packageName + ".FormDetail");
+            if (target_page == R.string.material_turn_back) {
+                bundle.putString("form-title", "还料表");
+                intent.setClassName(packageName, packageName + ".FormCreate");
+            } else {
+                intent.setClassName(packageName, packageName + ".FormDetail");
+            }
+            intent.putExtras(bundle);
             if (intent.resolveActivity(getPackageManager()) != null) {
                 startActivity(intent);
             }
@@ -272,12 +269,10 @@ public class FormList extends AppCompatActivity {
                         Message message = handler.obtainMessage();
                         if (!JsonUtils.StatusOk(json)){
                             message.arg1 = 1;
-                            handler.sendMessage(message);
                         } else {
                             message.obj = JsonUtils.GetJsonArrayParam(json);
-//                            Log.i("form list", JsonUtils.GetJsonArrayParam(json).toString());
-                            handler.sendMessage(message);
                         }
+                        handler.sendMessage(message);
                     } else {
                         Message message = handler.obtainMessage();
                         message.arg1 = 1;
@@ -299,7 +294,7 @@ public class FormList extends AppCompatActivity {
                 case R.string.material_picking:
                     return Router.MATERIAL_PICKING_LIST;
                 case R.string.material_turn_back:
-                    return Router.MATERIAL_RETURN_LIST;
+                    return Router.MATERIAL_PICKING_LIST;
                 case R.string.material_purchase_apply:
                     return Router.MATERIAL_PURCHASE_APPLY_LIST;
                 default:

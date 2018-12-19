@@ -28,5 +28,11 @@
             android:layout_height="match_parent"
             android:textAlignment="center"
             android:layout_weight="1"/>
+        <Button
+            android:id="@+id/form_create_list_content_delete"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="删除"/>
     </LinearLayout>
 </LinearLayout>

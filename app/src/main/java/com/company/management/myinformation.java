@@ -61,12 +61,6 @@ public class myinformation extends AppCompatActivity {
             }
             address.setText("地址:" + content.getString("address"));
             name.setText("姓名:" + content.getString("name"));
-            level.setOnClickListener(new InformaitonClickLIstern(".ChangeNickName",content.getString("nickname")));
-            gender.setOnClickListener(new InformaitonClickLIstern(".EditGender",content.getString("gender")));
-//            signings.setOnClickListener(new InformaitonClickLIstern(".EditSigning",content.getString("signature")));
-            address.setOnClickListener(new InformaitonClickLIstern(".EditAddress",content.getString("address")));
-//            hoby.setOnClickListener(new InformaitonClickLIstern(".EditHoby",content.getString("habit")));
-            name.setOnClickListener(new InformaitonClickLIstern(".EditName",content.getString("name")));
         }
         catch (Exception e){
             Log.e("error in setInfor",e.toString());
