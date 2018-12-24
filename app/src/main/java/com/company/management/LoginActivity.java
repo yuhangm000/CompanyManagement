@@ -39,6 +39,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -526,6 +527,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 params.put("role", role);
                 JSONObject obj =  Conn.get(Router.ACL_LIST, params);
                 JSONArray permissions = obj.getJSONArray("param");
+                Log.i("permissions", permissions.toString());
                 acl.setUser2Role(username, role);
                 for (int i = 0; i < permissions.length(); i++) {
                     acl.setRole2Acl(role, permissions.get(i).toString());

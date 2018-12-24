@@ -23,8 +23,10 @@ import java.io.IOException;
 import java.security.acl.Acl;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class FormDetail extends AppCompatActivity {
+    private final String [] statusMap = {"pending", "refuse", "success"};
     private ACL acl;
     private Context context;
     private String username;
@@ -36,7 +38,6 @@ public class FormDetail extends AppCompatActivity {
     private TextView tableHeadOperation;
     private List<String> mData = new ArrayList<>(), mSize = new ArrayList<>();
     private List<Integer> mNumber = new ArrayList<>();
-
     String creator_title = null;
     String create_time_title = null;
     String status_title = null;
@@ -102,6 +103,8 @@ public class FormDetail extends AppCompatActivity {
         tableHeadOperation = (TextView) findViewById(R.id.table_head_operation);
         agree = (Button) findViewById(R.id.pass);
         refuse = (Button) findViewById(R.id.reject);
+        agree.setVisibility(View.INVISIBLE);
+        refuse.setVisibility(View.INVISIBLE);
         go_return = (FloatingActionButton) findViewById(R.id.form_detail_turn_back);
         go_return.setVisibility(View.INVISIBLE);
         creator_title = getString(R.string.form_detail_creator);
@@ -127,36 +130,6 @@ public class FormDetail extends AppCompatActivity {
         } else if (originalPage == R.string.material_picking) {
             tableHeadOperation.setText("领取数量");
         }
-        /**
-         * 判断是否显示审查按钮
-         */
-        if (!showCheckoutButton(username, tableId)) {
-            agree.setVisibility(View.INVISIBLE);
-            refuse.setVisibility(View.INVISIBLE);
-            if (showReturnButton(username, status_info, creator_info)) {
-                go_return.setVisibility(View.VISIBLE);
-            }
-//            if (showReturnButton("root", "success", "root")) {
-//                go_return.setVisibility(View.VISIBLE);
-//            }
-        } else {
-            agree.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    refuse.setVisibility(View.INVISIBLE);
-                    agree.setVisibility(View.INVISIBLE);
-                    new TableStatus("pass").run();
-                }
-            });
-            refuse.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    refuse.setVisibility(View.INVISIBLE);
-                    agree.setVisibility(View.INVISIBLE);
-                    new TableStatus("refuse").run();
-                }
-            });
-        }
     }
 
     /**
@@ -176,7 +149,7 @@ public class FormDetail extends AppCompatActivity {
 
     public boolean showCheckoutButton(String username, int page) {
         if (page == R.string.material_purchase_apply) {
-            if (acl.hasPermission(username, "apply_table_check") && !status_info.equals("pending")) {
+            if (acl.hasPermission(username, "material-purchase-form-check") && status_info.equals(statusMap[0])) {
                 return true;
             } else {
                 return false;
@@ -213,7 +186,11 @@ public class FormDetail extends AppCompatActivity {
                  */
                 creator_info = table_msg.getString("writer");
                 create_time_info = table_msg.getString("create_time");
-//                status_info = table_msg.getString("status");
+                try {
+                    status_info = statusMap[table_msg.getInt("status")];
+                } catch (Exception e) {
+                    status_info = table_msg.getString("status");
+                }
                 /**
                  * 获取表的内容
                  */
@@ -222,10 +199,46 @@ public class FormDetail extends AppCompatActivity {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     mData.add(jsonObject.getString("name"));
                     mSize.add(jsonObject.getString("unit"));
-                    mNumber.add(Integer.valueOf(jsonObject.getString("number")));
+                    try{
+                        mNumber.add(Integer.valueOf(jsonObject.getString("num")));
+                    } catch (Exception e) {
+                        try {
+                            mNumber.add(Integer.valueOf(jsonObject.getString("receive_num")));
+                        } catch (Exception ee) {
+                            mNumber.add(Integer.valueOf(jsonObject.getString("number")));
+                        }
+
+                    }
                 }
                 setTableBasicInfo();
                 setTableMaterilaList();
+                /**
+                 * 判断是否显示审查按钮
+                 */
+                if (!showCheckoutButton(username, originalPage)) {
+                    if (showReturnButton(username, status_info, creator_info)) {
+                        go_return.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    agree.setVisibility(View.VISIBLE);
+                    refuse.setVisibility(View.VISIBLE);
+                    agree.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            refuse.setVisibility(View.INVISIBLE);
+                            agree.setVisibility(View.INVISIBLE);
+                            new TableStatus("pass").run();
+                        }
+                    });
+                    refuse.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            refuse.setVisibility(View.INVISIBLE);
+                            agree.setVisibility(View.INVISIBLE);
+                            new TableStatus("refuse").run();
+                        }
+                    });
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -269,7 +282,8 @@ public class FormDetail extends AppCompatActivity {
                 Message msg =handler.obtainMessage();
                 if (JsonUtils.StatusOk(result)){
                     msg.obj = JsonUtils.GetParam(result);
-                    Log.i("form detail", msg.obj.toString());
+                    Log.i("form detail", result.toString());
+                    Log.i("form material detail", msg.obj.toString());
                 }
                 else {
                     Log.e("get detail failed", result.toString());

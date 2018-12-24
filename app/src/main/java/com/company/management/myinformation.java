@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +30,7 @@ public class myinformation extends AppCompatActivity {
     private CircleImageView circleImageView;
     private Bitmap bitmap;
     private Context context;
-    private InformationView level,account,gender,address;
+    private InformationView level,account,gender,role;
     private InformationView name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class myinformation extends AppCompatActivity {
         level = (InformationView) findViewById(R.id.level);
         account = (InformationView) findViewById(R.id.account);
         gender = (InformationView) findViewById(R.id.gender);
-        address = (InformationView) findViewById(R.id.address);
+        role = (InformationView) findViewById(R.id.address);
         name = (InformationView) findViewById(R.id.name);
         new GetContent().start();
     }
@@ -49,18 +50,11 @@ public class myinformation extends AppCompatActivity {
             if(bitmap != null){
                 circleImageView.setImageBitmap(bitmap);
             }
-            level.setText("昵称:" + content.getString("nickname"));
-            account.setText("账号:" + content.getString("phone_number"));
-            gender.setText("性别:" + content.getString("gender"));
-            String sig = "";
-            if(content.getString("signature").length() >= 20){
-                sig = sig + content.getString("signature").substring(0,20)+"...";
-            }
-            else{
-                sig = sig + content.getString("signature");
-            }
-            address.setText("地址:" + content.getString("address"));
-            name.setText("姓名:" + content.getString("name"));
+            name.setText("姓名:" + content.getString("employee_name"));
+            account.setText("账号:" + content.getString("employee_id"));
+            gender.setText("性别:" + content.getString("sex"));
+            role.setText("职位:" + content.getString("position"));
+            level.setVisibility(View.INVISIBLE);
         }
         catch (Exception e){
             Log.e("error in setInfor",e.toString());
@@ -69,17 +63,22 @@ public class myinformation extends AppCompatActivity {
     class  GetContent extends Thread{
         @Override
         public void run() {
-//            Integer user_id = myApp.user_id;
             /**
              * TODO: 需要更改
              */
-            int user_id = 1;
+            String user_id = new UserWR().getUserID(context);
             try {
-                JSONObject param = new JSONObject("{\"id\":"+String.valueOf(user_id)+"}");
-                JSONObject jsonObject = Conn.doJsonPost("/userinfo/get_userinfo_all",param);
+                JSONObject param = new JSONObject();
+                param.put("user_id", Integer.valueOf(user_id));
+                JSONObject jsonObject = Conn.get(Router.USER_INFO, param);
                 Message msg = handler.obtainMessage();
-                jsonObject = jsonObject.getJSONArray("result").getJSONObject(0);
-                msg.obj = jsonObject;
+                if (JsonUtils.StatusOk(jsonObject)) {
+                    msg.arg1 = 2;
+                    jsonObject = JsonUtils.GetJsonObj(jsonObject, "param");
+                    msg.obj = jsonObject;
+                } else {
+                    msg.arg1 = 3;
+                }
                 handler.sendMessage(msg);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -95,6 +94,10 @@ public class myinformation extends AppCompatActivity {
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
+            if (msg.arg1 == 3) {
+                Toast.makeText(context, "服务器开小差啦~", Toast.LENGTH_LONG).show();
+                return;
+            }
             JSONObject jsonObject = (JSONObject) msg.obj;
             setContent(jsonObject);
         }

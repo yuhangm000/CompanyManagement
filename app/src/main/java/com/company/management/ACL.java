@@ -3,7 +3,9 @@ package com.company.management;
 import android.app.Application;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class ACL  extends Application{
     class Role2Acl {
@@ -82,9 +84,21 @@ public class ACL  extends Application{
             return false;
         }
     }
-
+    public Set<String> getPermissions() {
+        Set<String> permissions = new HashSet<>();
+        Set<Role2Acl> ps = permissionMap.keySet();
+        for (Role2Acl r2a: ps) {
+            String p = r2a.getAcl();
+            permissions.add(p);
+        }
+        return permissions;
+    }
     @Override
     public void onCreate() {
         super.onCreate();
+    }
+    public void clear() {
+        user2Role.clear();
+        permissionMap.clear();
     }
 }

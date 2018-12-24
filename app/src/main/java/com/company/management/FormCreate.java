@@ -77,6 +77,7 @@ public class FormCreate extends AppCompatActivity {
                     for (int i = 0; i < size; i++) {
                         JSONObject jsonObject = new JSONObject();
                         TableItem item = (TableItem) formCreateListContentAdapter.getItem(i);
+                        jsonObject.put("id", Integer.valueOf(formCreateListContentAdapter.getId(item.getMaterial(), item.getSize())));
                         jsonObject.put("material_id", Integer.valueOf(formCreateListContentAdapter.getId(item.getMaterial(), item.getSize())));
                         jsonObject.put("num", Integer.valueOf(item.getNumber()));
                         jsonArray.put(jsonObject);
@@ -131,6 +132,7 @@ public class FormCreate extends AppCompatActivity {
         new GetMaterialList().start();
         if (tableId != -1) {
             new GetPickingMaterial().start();
+            add_item.setVisibility(View.INVISIBLE);
         }
 }
     String getRoutes(String form_title) {
@@ -188,6 +190,8 @@ public class FormCreate extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("applier", Integer.valueOf(new UserWR().getUserID(getApplicationContext())));
+                jsonObject.put("receiver", Integer.valueOf(new UserWR().getUserID(getApplicationContext())));
+                jsonObject.put("writer", Integer.valueOf(new UserWR().getUserID(getApplicationContext())));
                 jsonObject.put("material", jsonArray);
                 String routes = getRoutes(form_title);
                 Message msg = handler.obtainMessage();
