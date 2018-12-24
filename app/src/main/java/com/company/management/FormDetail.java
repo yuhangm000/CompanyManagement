@@ -58,37 +58,6 @@ public class FormDetail extends AppCompatActivity {
         /**
          * 设置相应的listview适配器
          */
-        if (originalPage == R.string.material_picking && showReturnButton(username, status_info, creator_info)) {
-            go_return.setVisibility(View.VISIBLE);
-            go_return.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent();
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("tableId", tableId);
-                    bundle.putString("form-title", "还料表");
-                    intent.putExtras(bundle);
-                    intent.setClassName(getPackageName(), getPackageName() + ".FormCreate");
-                    if(intent.resolveActivity(getPackageManager()) != null) {
-                        startActivity(intent);
-                    }
-                }
-            });
-        }
-        go_return.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                Bundle bundle = new Bundle();
-                bundle.putString("tableId", String.valueOf(tableId));
-                bundle.putString("form-title", "还料表");
-                intent.putExtras(bundle);
-                intent.setClassName(getPackageName(), getPackageName()+".FormCreate");
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(intent);
-                }
-            }
-        });
     }
     public void init() {
         context = getBaseContext();
@@ -140,7 +109,7 @@ public class FormDetail extends AppCompatActivity {
      * @return
      */
     public boolean showReturnButton(String username, String status, String creator) {
-        if (username.equals(creator) && status.equals("success") && originalPage == R.string.material_picking) {
+        if (username.equals(creator) && (status.equals("success") || status.equals("pass")) && originalPage == R.string.material_picking) {
             return true;
         } else {
             return false;
@@ -150,6 +119,12 @@ public class FormDetail extends AppCompatActivity {
     public boolean showCheckoutButton(String username, int page) {
         if (page == R.string.material_purchase_apply) {
             if (acl.hasPermission(username, "material-purchase-form-check") && status_info.equals(statusMap[0])) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if(page == R.string.material_picking){
+            if (acl.hasPermission(username, "material-get-form-check") && status_info.equals(statusMap[0])) {
                 return true;
             } else {
                 return false;
@@ -218,6 +193,20 @@ public class FormDetail extends AppCompatActivity {
                 if (!showCheckoutButton(username, originalPage)) {
                     if (showReturnButton(username, status_info, creator_info)) {
                         go_return.setVisibility(View.VISIBLE);
+                        go_return.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent();
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("tableId", tableId);
+                                bundle.putString("form-title", "还料表");
+                                intent.putExtras(bundle);
+                                intent.setClassName(getPackageName(), getPackageName() + ".FormCreate");
+                                if(intent.resolveActivity(getPackageManager()) != null) {
+                                    startActivity(intent);
+                                }
+                            }
+                        });
                     }
                 } else {
                     agree.setVisibility(View.VISIBLE);
@@ -227,7 +216,9 @@ public class FormDetail extends AppCompatActivity {
                         public void onClick(View v) {
                             refuse.setVisibility(View.INVISIBLE);
                             agree.setVisibility(View.INVISIBLE);
-                            new TableStatus("pass").run();
+                            status_info = "pass";
+                            tableStatus.setText(status_title + divider + status_info);
+                            new TableStatus("pass").start();
                         }
                     });
                     refuse.setOnClickListener(new View.OnClickListener() {
@@ -235,7 +226,9 @@ public class FormDetail extends AppCompatActivity {
                         public void onClick(View v) {
                             refuse.setVisibility(View.INVISIBLE);
                             agree.setVisibility(View.INVISIBLE);
-                            new TableStatus("refuse").run();
+                            status_info = "refuse";
+                            tableStatus.setText(status_title + divider + status_info);
+                            new TableStatus("refuse").start();
                         }
                     });
                 }
@@ -306,7 +299,13 @@ public class FormDetail extends AppCompatActivity {
         public void setTableStatus() throws IOException, JSONException {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("status", this.status);
-            Conn.post("/setTableStatus", jsonObject);
+            jsonObject.put("table_id", tableId);
+            if (originalPage == R.string.material_picking) {
+                JSONObject jsonObject1 = Conn.post(Router.MATERIAL_PICKING_CHECK, jsonObject);
+                Log.i("Verify table status", jsonObject1.toString());
+            } else if (originalPage == R.string.material_purchase_apply) {
+                Conn.post(Router.MATERIAL_PURCHASE_CHECK, jsonObject);
+            }
             /**
              * 发送完成之后，向handler发送一个消息，更新表格界面
              */

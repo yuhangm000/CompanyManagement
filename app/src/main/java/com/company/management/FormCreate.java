@@ -152,6 +152,13 @@ public class FormCreate extends AppCompatActivity {
                 return "NaN";
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
     /**
      * 异步函数区域
      * Message 参数说明
@@ -173,6 +180,11 @@ public class FormCreate extends AppCompatActivity {
                 return;
             } else if (msg.arg1 == 2) {
                 formCreateListContentAdapter.setItems((ArrayList<TableItem>)msg.obj);
+            } else if(msg.arg1 == 4) {
+                Toast.makeText(getApplicationContext(), (String)msg.obj, 1000).show();
+                onBackPressed();
+//                Intent intent = new Intent();
+//                intent.setClassName(getPackageName(), getPackageName() + ".FormList");
             } else {
                 Toast.makeText(getApplicationContext(), (String) msg.obj,  1000).show();
                 return;
@@ -253,6 +265,12 @@ public class FormCreate extends AppCompatActivity {
                 JSONObject pickingContent = Conn.get(Router.MATERIAL_PICKING_DETAIL, new JSONObject().put("table_id", tableId));
                 if (JsonUtils.StatusOk(pickingContent)) {
                     pickingContent= JsonUtils.GetJsonObj(pickingContent, "param");
+                    if (!pickingContent.getString("status").equals("pass")) {
+                        msg.arg1 = 4;
+                        msg.obj = "Sorry, this form has not been accepted.";
+                        handler.sendMessage(msg);
+                        return;
+                    }
                     JSONArray materialArray = JsonUtils.GetJsonArray(pickingContent, "material");
                     List<TableItem> items = new ArrayList<>();
                     for (int i = 0; i < materialArray.length(); i++) {

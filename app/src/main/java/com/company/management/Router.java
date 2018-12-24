@@ -17,7 +17,8 @@ public final class Router {
     /**
      * 与列表状态更改相关路由
      */
-    public static final String FORM_STATUS_CHANGE = "/"; // 表单状态更改相关路由
+    public static final String MATERIAL_PURCHASE_CHECK = "/material/apply/verify"; // 物料采购单审核
+    public static final String MATERIAL_PICKING_CHECK = "/material/receive/verify"; //  领料单审核
     /**
      * 与列表创建相关路由
      */

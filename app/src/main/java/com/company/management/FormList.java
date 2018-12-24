@@ -44,6 +44,13 @@ public class FormList extends AppCompatActivity {
      * 常量区
      */
     private final String permissionForward = "CREATE_TABLE_";
+    private final String MATERIAL_PURCHASE_FORM = "物料采购申请表";
+    private final String OUT_WAREHOUSE_FORM = "出库单";
+    private final String IN_WAREHOUSE_FORM = "入库单";
+    private final String LEFT_MATERIAL_FORM = "结余材料申请表";
+    private final String USELESS_OR_OLD_MATERIAL_FORM = "废旧材料登记表";
+    private final String SINGLETON_PROJECT_CHECK_FORM = "单站工程材料考核表";
+    private final String MATERIAL_PICKING_FORM = "领料单";
     /**
      * 变量区域
      */
@@ -57,7 +64,7 @@ public class FormList extends AppCompatActivity {
     private String permissionBackward;
     private Map<Integer, String> pageMap;
     private Map<Integer, List<String>> popMenuItem;
-
+    private Map<String, String> createPermission;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,26 +99,39 @@ public class FormList extends AppCompatActivity {
         pageMap.put(R.string.material_out_warehouse, "out_warehouse");
         pageMap.put(R.string.material_in_warehouse, "in_warehouse");
         pageMap.put(R.string.material_purchase_apply, "purchase_apply");
-
+        /**
+         * 初始化新建按钮
+         */
         popMenuItem = new HashMap<>();
         List<String> createOption = new ArrayList<>();
-        createOption.add("物料采购申请表");
+        createOption.add(MATERIAL_PURCHASE_FORM);
         popMenuItem.put(R.string.material_purchase_apply, createOption);
         List<String> createOption1 = new ArrayList<>();
-        createOption1.add("出库单");
+        createOption1.add(OUT_WAREHOUSE_FORM);
         popMenuItem.put(R.string.material_out_warehouse, createOption1);
         List<String> createOption2 = new ArrayList<>();
-        createOption2.add("入库单");
+        createOption2.add(IN_WAREHOUSE_FORM);
         popMenuItem.put(R.string.material_in_warehouse, createOption2);
         List<String> createOption3 = new ArrayList<>();
-        createOption3.add("结余材料申请表");
-        createOption3.add("废旧材料登记表");
-        createOption3.add("单站工程材料考核表");
+        createOption3.add(LEFT_MATERIAL_FORM);
+        createOption3.add(USELESS_OR_OLD_MATERIAL_FORM);
+        createOption3.add(SINGLETON_PROJECT_CHECK_FORM);
         popMenuItem.put(R.string.material_turn_back, createOption3);
         List<String> createOption4 = new ArrayList<>();
-        createOption4.add("领料单");
+        createOption4.add(MATERIAL_PICKING_FORM);
         popMenuItem.put(R.string.material_picking, createOption4);
         Log.i("popItems", popMenuItem.toString());
+        /**
+         * 初始化创建权限映射
+         */
+        createPermission = new HashMap<>();
+        createPermission.put(MATERIAL_PICKING_FORM, "material-get-form-create");
+        createPermission.put(MATERIAL_PURCHASE_FORM, "material-purchase-form-create");
+        createPermission.put(LEFT_MATERIAL_FORM, "material-return-form-create");
+        createPermission.put(SINGLETON_PROJECT_CHECK_FORM, "project-check-form-create");
+        createPermission.put(USELESS_OR_OLD_MATERIAL_FORM, "material-useless-form-create");
+        createPermission.put(IN_WAREHOUSE_FORM, "material-in-warehouse-form-create");
+        createPermission.put(OUT_WAREHOUSE_FORM, "material-out-warehouse-form-create");
         /**
          * 初始化页面控件
          */
@@ -180,8 +200,11 @@ public class FormList extends AppCompatActivity {
         @SuppressLint("WrongConstant")
         @Override
         public void handleMessage(Message msg) {
-            if (msg.arg1 == 1) {
+            if (msg.arg1 == 3) {
                 Toast.makeText(getApplicationContext(), "服务器开小差了~", 1000).show();
+                return;
+            } else if (msg.arg1 == 2) {
+                Toast.makeText(getApplicationContext(), (String)msg.obj, 1000).show();
                 return;
             }
             JSONArray array = (JSONArray) msg.obj;
@@ -209,6 +232,13 @@ public class FormList extends AppCompatActivity {
             popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
+                    if (!acl.hasPermission(username, createPermission.get((String) item.getTitle()))) {
+                        Message msg = handler.obtainMessage();
+                        msg.arg1 = 2;
+                        msg.obj = "Sorry, You do not have access to do this operation";
+                        handler.sendMessage(msg);
+                        return false;
+                    }
                     Intent intent = new Intent();
                     Bundle bundle = new Bundle();
                     bundle.putString("form-title", (String) item.getTitle());
@@ -234,6 +264,13 @@ public class FormList extends AppCompatActivity {
             bundle.putInt("originalPage", target_page);
             String packageName = getPackageName();
             if (target_page == R.string.material_turn_back) {
+                if (!username.equals(item_creator.get(position))) {
+                    Message msg = handler.obtainMessage();
+                    msg.arg1 = 2;
+                    msg.obj = "Sorry, you do not have access to do this operation.";
+                    handler.sendMessage(msg);
+                    return;
+                }
                 bundle.putString("form-title", "还料表");
                 intent.setClassName(packageName, packageName + ".FormCreate");
             } else {
@@ -254,28 +291,24 @@ public class FormList extends AppCompatActivity {
         @Override
         public void run() {
             try {
-                /**
-                 * TODO： 完善router @meng
-                 */
                 JSONObject json = null;
                 String routes = getRoutes(target_page);
                 if (routes != null) {
                     UserWR userWR = new UserWR();
                     String userId = userWR.getUserID(getApplicationContext());
-
                     json = Conn.get(routes, null);
                     if (json != null) {
                         Log.i("GET TABLES", json.toString());
                         Message message = handler.obtainMessage();
                         if (!JsonUtils.StatusOk(json)){
-                            message.arg1 = 1;
+                            message.arg1 = 3;
                         } else {
                             message.obj = JsonUtils.GetJsonArrayParam(json);
                         }
                         handler.sendMessage(message);
                     } else {
                         Message message = handler.obtainMessage();
-                        message.arg1 = 1;
+                        message.arg1 = 3;
                         handler.sendMessage(message);
                     }
                 } else {
