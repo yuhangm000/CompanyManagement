@@ -14,6 +14,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -40,6 +42,9 @@ public class FormList extends AppCompatActivity {
     FloatingActionButton create;
     ListView form_list;
     private PopupMenu popupMenu;
+    private EditText queryProjectName;
+    private EditText queryCreator;
+    private ImageButton query;
     /**
      * 常量区
      */
@@ -56,15 +61,14 @@ public class FormList extends AppCompatActivity {
      */
     private ACL acl;
     int target_page;
-    private List<String> item_id = new ArrayList<>();
-    private List<String> item_title = new ArrayList<>();
-    private List<String> item_creator = new ArrayList<>();
-    private List<String> item_create_time = new ArrayList<>();
+    private List<ListItem> forms;
+    private List<ListItem> formsInspector;
     private String username;
     private String permissionBackward;
     private Map<Integer, String> pageMap;
     private Map<Integer, List<String>> popMenuItem;
     private Map<String, String> createPermission;
+    private FormListListViewContentAdapter formListListViewContentAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,14 +86,25 @@ public class FormList extends AppCompatActivity {
          * 设置ListView的点击监听事件
          */
         form_list.setOnItemClickListener(new ItemClickListener());
-        /**
-         * TODO: @meng 此函数填充表格内容,与后端链接完成后删掉
-         */
-        setForm_list(null);
+//        queryProjectName.setOnClickListener(new ProjectNameSelected());
+        query.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                formsInspector =  filterForms();
+                Message msg = handler.obtainMessage();
+                msg.arg1 = 4;
+                handler.sendMessage(msg);
+            }
+        });
     }
+
+    /**
+     * 私有方法区域
+     */
     @SuppressLint("WrongConstant")
-    void init(){
+    private void init(){
         acl = (ACL) getApplicationContext();
+        forms = new ArrayList<>();
         /**
          * 初始化，映射参数
          */
@@ -137,7 +152,9 @@ public class FormList extends AppCompatActivity {
          */
         form_list = (ListView) findViewById(R.id.form_list);
         create = (FloatingActionButton) findViewById(R.id.form_list_create);
-
+        queryProjectName = (EditText) findViewById(R.id.queryProjectName);
+        queryCreator = (EditText) findViewById(R.id.queryCreator);
+        query = (ImageButton) findViewById(R.id.verifyQuery);
         try {
             Intent intent = getIntent();
             Bundle bundle = intent.getExtras();
@@ -160,38 +177,61 @@ public class FormList extends AppCompatActivity {
             }
         }
     }
-    public void getDataFromBackward(int target_page) {
+    private void getDataFromBackward(int target_page) {
         /**
          * TODO： 联通后端api后需要取消注释
          */
         new GetData(target_page).start();
     }
 
-    void setForm_list(JSONArray jsonArray) {
+    private void setForm_list(JSONArray jsonArray) {
         try {
             if (jsonArray != null) {
                 for(int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jObject = jsonArray.getJSONObject(i);
-                    item_id.add(jObject.getString("table_id"));
+                    ListItem listItem = new ListItem();
+                    listItem.id = jObject.getString("table_id");
                     if (jObject.has("table_name"))
-                        item_title.add(jObject.getString("table_name"));
+                        listItem.title = jObject.getString("table_name");
                     else
-                        item_title.add(jObject.getString("table_id"));
-                    item_creator.add(jObject.getString("writer"));
-                    item_create_time.add(jObject.getString("create_time"));
+                        listItem.title = jObject.getString("table_id");
+                    listItem.creator = jObject.getString("writer");
+                    listItem.createTime = jObject.getString("create_time");
+                    forms.add(listItem);
                 }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        FormListListViewContentAdapter formListListViewContentAdapter;
-        formListListViewContentAdapter= new FormListListViewContentAdapter(
-                item_id,
-                item_title,
-                item_creator,
-                item_create_time
-        );
+        formsInspector = filterForms();
+        formListListViewContentAdapter= new FormListListViewContentAdapter(formsInspector);
         form_list.setAdapter(formListListViewContentAdapter);
+    }
+    private List<ListItem> filterForms() {
+        final String projectName = queryProjectName.getText().toString().trim().toLowerCase();
+        final String creator = queryCreator.getText().toString().trim().toLowerCase();
+        List<ListItem> items = new ArrayList<>();
+        for (int i = 0; i < forms.size(); i++) {
+            final ListItem item = forms.get(i);
+            String item_title = item.title.toLowerCase().trim();
+            String item_creator = item.creator.toLowerCase().trim();
+            if (item_title.equals(projectName) && item_creator.equals(creator)) {
+                items.add(item);
+            }
+            else if (item_title.equals(projectName)) {
+                items.add(item);
+            }
+            else if (item_creator.equals(creator)){
+                items.add(item);
+            }
+        }
+        Log.i("querySize", String.valueOf(items.size()));
+        if (items.size() == 0 &&
+                projectName.equals("") &&
+                creator.equals("")) {
+            return forms;
+        }
+        return items;
     }
     /**
      * 子线程更新界面
@@ -205,6 +245,10 @@ public class FormList extends AppCompatActivity {
                 return;
             } else if (msg.arg1 == 2) {
                 Toast.makeText(getApplicationContext(), (String)msg.obj, 1000).show();
+                return;
+            } else if (msg.arg1 == 4) {
+                Log.i("formInspector", String.valueOf(formsInspector.size()));
+                formListListViewContentAdapter.notifyDataSetChanged(formsInspector);
                 return;
             }
             JSONArray array = (JSONArray) msg.obj;
@@ -260,11 +304,11 @@ public class FormList extends AppCompatActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent intent = new Intent();
             Bundle bundle = new Bundle();
-            bundle.putInt("tableId", Integer.valueOf(item_id.get(position)));
+            bundle.putInt("tableId", Integer.valueOf(formsInspector.get(position).id));
             bundle.putInt("originalPage", target_page);
             String packageName = getPackageName();
             if (target_page == R.string.material_turn_back) {
-                if (!username.equals(item_creator.get(position))) {
+                if (!username.equals(formsInspector.get(position).creator)) {
                     Message msg = handler.obtainMessage();
                     msg.arg1 = 2;
                     msg.obj = "Sorry, you do not have access to do this operation.";
@@ -334,5 +378,18 @@ public class FormList extends AppCompatActivity {
                     return null;
             }
         }
+    }
+    class ProjectNameSelected implements View.OnClickListener{
+
+        @Override
+        public void onClick(View v) {
+
+        }
+    }
+    public class ListItem {
+        String id;
+        String creator;
+        String createTime;
+        String title;
     }
 }

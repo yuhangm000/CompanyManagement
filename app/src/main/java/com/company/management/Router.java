@@ -43,7 +43,7 @@ public final class Router {
     /**
      * 获取信息的路由
      */
-    public static final String GET_MESSAGE = "/"; // 获取信息的路由
+    public static final String GET_MESSAGE = "/message/"; // 获取信息的路由
 
     /**
      * 获取表单详细内容的路由
