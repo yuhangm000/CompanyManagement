@@ -532,6 +532,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 for (int i = 0; i < permissions.length(); i++) {
                     acl.setRole2Acl(role, permissions.get(i).toString());
                 }
+                acl.saveAcl(getBaseContext());
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {

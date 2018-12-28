@@ -78,7 +78,7 @@ public class FormList extends AppCompatActivity {
         /**
          * 如果没有权限则不展示创建按钮
          */
-        if (target_page == R.string.material_information || !acl.hasPermission(username, permissionForward+permissionBackward) && false)
+        if (target_page == R.string.material_information || !acl.hasPermission(username, permissionForward+permissionBackward, getBaseContext()) && false)
             create.setVisibility(View.INVISIBLE);
         else
             create.setOnClickListener(new ChangeToCreatePage(target_page));
@@ -191,8 +191,8 @@ public class FormList extends AppCompatActivity {
                     JSONObject jObject = jsonArray.getJSONObject(i);
                     ListItem listItem = new ListItem();
                     listItem.id = jObject.getString("table_id");
-                    if (jObject.has("table_name"))
-                        listItem.title = jObject.getString("table_name");
+                    if (jObject.has("project_name"))
+                        listItem.title = jObject.getString("project_name");
                     else
                         listItem.title = jObject.getString("table_id");
                     listItem.creator = jObject.getString("writer");
@@ -215,13 +215,17 @@ public class FormList extends AppCompatActivity {
             ListItem item = forms.get(i);
             String item_title = item.title.toLowerCase().trim();
             String item_creator = item.creator.toLowerCase().trim();
-            if (item_title.equals(projectName) && item_creator.equals(creator)) {
+            Boolean title_match = item_title.equals(projectName);
+            Boolean creator_match = item_creator.equals(creator);
+            if (projectName.length() > 0 && creator.length() > 0){
+                if (title_match && creator_match) {
+                    items.add(item);
+                }
+            }
+            else if (title_match) {
                 items.add(item);
             }
-            else if (item_title.equals(projectName)) {
-                items.add(item);
-            }
-            else if (item_creator.equals(creator)){
+            else if (creator_match){
                 items.add(item);
             }
         }
@@ -276,7 +280,7 @@ public class FormList extends AppCompatActivity {
             popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
-                    if (!acl.hasPermission(username, createPermission.get((String) item.getTitle()))) {
+                    if (!acl.hasPermission(username, createPermission.get((String) item.getTitle()), getBaseContext())) {
                         Message msg = handler.obtainMessage();
                         msg.arg1 = 2;
                         msg.obj = "Sorry, You do not have access to do this operation";

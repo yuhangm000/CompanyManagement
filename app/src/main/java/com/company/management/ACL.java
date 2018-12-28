@@ -1,6 +1,8 @@
 package com.company.management;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -8,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class ACL  extends Application{
+    private final String ACLFILE = "aclFile";
     class Role2Acl {
         private String role;
         private String acl;
@@ -70,12 +73,48 @@ public class ACL  extends Application{
     public void addAcl(String role, String permission) {
         this.setRole2Acl(role, permission);
     }
-    public boolean hasPermission(String username, String permission) {
+    public void saveAcl(Context context) {
+        SharedPreferences sp = context.getSharedPreferences(ACLFILE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        Set<String> roles = getRoles();
+        Set<String> us = user2Role.keySet();
+        String user = null;
+        for (String u: us) {
+            user = u;
+            break;
+        }
+        editor.putStringSet(user, roles);
+        for (String role: roles) {
+            Set<String> permissions = getPermissions(role);
+            editor.putStringSet(role, permissions);
+        }
+        editor.commit();
+    }
+    public void clearAcl(Context context) {
+        SharedPreferences sp = context.getSharedPreferences(ACLFILE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear();
+        editor.commit();
+    }
+    public boolean hasPermission(String username, String permission, Context context) {
         /**
          * username: 用户名
          * permission: 需要检测的权限
          * return: true|false
          */
+        if (user2Role == null || user2Role.isEmpty()) {
+            SharedPreferences sharedPreferences = context.getSharedPreferences(ACLFILE, Context.MODE_PRIVATE);
+            user2Role = new HashMap<>();
+            Set<String> roles = sharedPreferences.getStringSet(username, null);
+            for (String role : roles) {
+                Set<String> permissions = sharedPreferences.getStringSet(role, null);
+                user2Role.put(username, role);
+                for (String perm: permissions) {
+                    Role2Acl role2Acl = new Role2Acl(role, perm);
+                    permissionMap.put(role2Acl, this.permissionMap.size());
+                }
+            }
+        }
         String role = user2Role.get(username);
         Role2Acl role2Acl = new Role2Acl(role, permission);
         if (permissionMap.get(role2Acl) != null) {
@@ -84,14 +123,28 @@ public class ACL  extends Application{
             return false;
         }
     }
-    public Set<String> getPermissions() {
+    public Set<String> getPermissions(String role) {
         Set<String> permissions = new HashSet<>();
         Set<Role2Acl> ps = permissionMap.keySet();
         for (Role2Acl r2a: ps) {
-            String p = r2a.getAcl();
-            permissions.add(p);
+            if (role.equals(r2a.getRole())){
+                String p = r2a.getAcl();
+                permissions.add(p);
+            } else if (role == null) {
+                String p = r2a.getAcl();
+                permissions.add(p);
+            }
         }
         return permissions;
+    }
+    public Set<String> getRoles() {
+        Set<String> roles = new HashSet<>();
+        Set<String> ur = user2Role.keySet();
+        for (String u: ur) {
+            String p = user2Role.get(u);
+            roles.add(p);
+        }
+        return roles;
     }
     @Override
     public void onCreate() {

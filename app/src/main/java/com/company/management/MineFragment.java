@@ -92,6 +92,7 @@ public class MineFragment extends Fragment {
                 userWR.removeUserLogin(getContext());
                 ACL acl = (ACL) context.getApplicationContext();
                 acl.clear();
+                acl.clearAcl(context);
                 Intent intent = new Intent();
                 intent.setClassName("com.company.management",
                         "com.company.management.LoginActivity");

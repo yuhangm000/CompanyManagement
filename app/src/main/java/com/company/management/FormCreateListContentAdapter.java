@@ -23,6 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
@@ -101,7 +102,7 @@ public class FormCreateListContentAdapter extends BaseAdapter {
             viewHolder.name = (TextView) convertView.findViewById(R.id.form_create_list_content_show_material);
             viewHolder.size = (TextView) convertView.findViewById(R.id.form_create_list_content_show_size);
             viewHolder.number = (TextView) convertView.findViewById(R.id.form_create_list_content_show_number);
-            viewHolder.delete = (Button) convertView.findViewById(R.id.form_create_list_content_delete);
+            viewHolder.delete = (ImageButton) convertView.findViewById(R.id.form_create_list_content_delete);
             convertView.setTag(viewHolder);
         }
         viewHolder = (ViewHolder) convertView.getTag();
@@ -126,12 +127,6 @@ public class FormCreateListContentAdapter extends BaseAdapter {
         HashSet temp = new HashSet(name_list);
         name_list.clear();;
         name_list.addAll(temp);
-    }
-    class ViewHolder{
-        TextView name;
-        TextView size;
-        TextView number;
-        Button delete;
     }
     public static class MaterialSize {
         String id;
@@ -282,5 +277,10 @@ public class FormCreateListContentAdapter extends BaseAdapter {
             notifyDataSetChanged();
         }
     }
-
+    class ViewHolder{
+        TextView name;
+        TextView size;
+        TextView number;
+        ImageButton delete;
+    }
 }

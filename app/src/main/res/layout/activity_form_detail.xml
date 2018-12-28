@@ -22,37 +22,38 @@
         android:orientation="vertical"
         android:layout_marginBottom="50dp">
         <android.support.v7.widget.CardView
-            android:layout_height="85dp"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
             app:cardCornerRadius="5dp"
             app:cardBackgroundColor="@color/lightGray"
             android:layout_margin="5dp">
             <LinearLayout
+                android:id="@+id/basic_information"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:orientation="vertical">
-            <TextView
-                android:id="@+id/form_detail_creator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textSize="15dp"
-                android:text="@string/form_detail_creator"/>
-            <TextView
-                android:id="@+id/form_detail_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textSize="15dp"
-                android:text="@string/form_detail_time"/>
-            <TextView
-                android:id="@+id/form_detail_status"
-                android:text="@string/form_detail_status"
-                android:layout_marginTop="5dp"
-                android:textSize="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <!--<TextView-->
+                    <!--android:id="@+id/form_detail_creator"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:textSize="15dp"-->
+                    <!--android:text="@string/form_detail_creator"/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/form_detail_time"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:textSize="15dp"-->
+                    <!--android:text="@string/form_detail_time"/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/form_detail_status"-->
+                    <!--android:text="@string/form_detail_status"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:textSize="15dp"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
             </LinearLayout>
         </android.support.v7.widget.CardView>
         <LinearLayout

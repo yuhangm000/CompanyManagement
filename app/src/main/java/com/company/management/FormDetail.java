@@ -1,6 +1,7 @@
 package com.company.management;
 
 import android.annotation.SuppressLint;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -11,6 +12,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,19 +25,26 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.security.acl.Acl;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class FormDetail extends AppCompatActivity {
+    private final String [] BASICINFO = {
+            "writer", "create_time", "status", "verify",
+            "verifier", "verify_time", "back", "back_time",
+            "backer", "check", "check_time", "checker"
+    };
+    private final Map<String, String> BASIC_INFO_MAP = new HashMap<>();
     private final String [] statusMap = {"pending", "refuse", "success"};
+    private final String [] operationMap = {"否", "是"};
     private ACL acl;
     private Context context;
     private String username;
     private int tableId;
     private ListView listView;
-    private TextView tableCreator;
-    private TextView tableCreateTime;
-    private TextView tableStatus;
+    private LinearLayout basic_info;
     private TextView tableHeadOperation;
     private List<String> mData = new ArrayList<>(), mSize = new ArrayList<>();
     private List<Integer> mNumber = new ArrayList<>();
@@ -66,9 +76,7 @@ public class FormDetail extends AppCompatActivity {
          * 获取页面控件
          */
         listView = (ListView) findViewById(R.id.material_list);
-        tableCreator = (TextView) findViewById(R.id.form_detail_creator);
-        tableCreateTime = (TextView) findViewById(R.id.form_detail_time);
-        tableStatus  = (TextView) findViewById(R.id.form_detail_status);
+        basic_info = (LinearLayout) findViewById(R.id.basic_information);
         tableHeadOperation = (TextView) findViewById(R.id.table_head_operation);
         agree = (Button) findViewById(R.id.pass);
         refuse = (Button) findViewById(R.id.reject);
@@ -79,17 +87,26 @@ public class FormDetail extends AppCompatActivity {
         creator_title = getString(R.string.form_detail_creator);
         create_time_title = getString(R.string.form_detail_time);
         status_title = getString(R.string.form_detail_status);
+        BASIC_INFO_MAP.put(BASICINFO[0], "创建者");
+        BASIC_INFO_MAP.put(BASICINFO[1], "创建时间");
+        BASIC_INFO_MAP.put(BASICINFO[2], "当前状态");
+        BASIC_INFO_MAP.put(BASICINFO[3], "是否确认");
+        BASIC_INFO_MAP.put(BASICINFO[4], "确认人员");
+        BASIC_INFO_MAP.put(BASICINFO[5], "确认时间");
+        BASIC_INFO_MAP.put(BASICINFO[6], "是否归还");
+        BASIC_INFO_MAP.put(BASICINFO[7], "归还时间");
+        BASIC_INFO_MAP.put(BASICINFO[8], "归还者");
+        BASIC_INFO_MAP.put(BASICINFO[9], "是否检查");
+        BASIC_INFO_MAP.put(BASICINFO[10], "检查时间");
+        BASIC_INFO_MAP.put(BASICINFO[11], "检查者");
         /**
          * 获取前一个页面传过来的参数
          */
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        Log.i("bundle in detail", bundle.toString());
         username = new UserWR().getUserName(getApplicationContext());
         tableId = bundle.getInt("tableId");
         originalPage = bundle.getInt("originalPage");
-        Log.i("tableId", String.valueOf(tableId));
-        Log.i("originalPage", String.valueOf(originalPage));
         if (originalPage == R.string.material_purchase_apply) {
             tableHeadOperation.setText("申请数量");
         } else if (originalPage == R.string.material_in_warehouse){
@@ -118,13 +135,13 @@ public class FormDetail extends AppCompatActivity {
 
     public boolean showCheckoutButton(String username, int page) {
         if (page == R.string.material_purchase_apply) {
-            if (acl.hasPermission(username, "material-purchase-form-check") && status_info.equals(statusMap[0])) {
+            if (acl.hasPermission(username, "material-purchase-form-check", getBaseContext()) && status_info.equals(statusMap[0])) {
                 return true;
             } else {
                 return false;
             }
         } else if(page == R.string.material_picking){
-            if (acl.hasPermission(username, "material-get-form-check") && status_info.equals(statusMap[0])) {
+            if (acl.hasPermission(username, "material-get-form-check", getBaseContext()) && status_info.equals(statusMap[0])) {
                 return true;
             } else {
                 return false;
@@ -136,12 +153,63 @@ public class FormDetail extends AppCompatActivity {
     public void getDataFromBackward() {
         new GetFormDetail(String.valueOf(tableId)).start();
     }
-    public void setTableBasicInfo() {
-        tableCreator.setText(creator_title + divider + creator_info);
-        tableCreateTime.setText(create_time_title + divider + create_time_info);
-        tableStatus.setText(status_title + divider + status_info);
+    public void setTableBasicInfo(JSONObject table_msg) {
+        /**
+         * 获取表的基本信息
+         */
+        try {
+            int count = 0;
+            for (int i = 0; i < BASICINFO.length; i++) {
+                String info = null;
+                switch (BASICINFO[i]) {
+                    case "verify":
+                        info = operationMap[table_msg.getInt(BASICINFO[i])];
+                        break;
+                    case "check":
+                        info = operationMap[table_msg.getInt(BASICINFO[i])];
+                        break;
+                    case "back":
+                        info = operationMap[table_msg.getInt(BASICINFO[i])];
+                        break;
+                    default:
+                        info = table_msg.getString(BASICINFO[i]);
+                        break;
+                }
+                if (info.equals("null")) {
+                    continue;
+                }
+                final TextView textView = new TextView(context);
+                textView.setText(BASIC_INFO_MAP.get(BASICINFO[i]) + ":" + info);
+                basic_info.addView(textView);
+                count++;
+            }
+//            FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (count + 1) * 50);
+//            basic_info.setLayoutParams(layoutParams);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
-    public void setTableMaterilaList() {
+    public void setTableMaterilaList(JSONArray jsonArray) {
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = null;
+            try {
+                jsonObject = jsonArray.getJSONObject(i);
+                mData.add(jsonObject.getString("name"));
+                mSize.add(jsonObject.getString("unit"));
+                try{
+                    mNumber.add(Integer.valueOf(jsonObject.getString("num")));
+                } catch (Exception e) {
+                    try {
+                        mNumber.add(Integer.valueOf(jsonObject.getString("receive_num")));
+                    } catch (Exception ee) {
+                        mNumber.add(Integer.valueOf(jsonObject.getString("number")));
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
         lca= new ListContentAdapter(mData, mSize, mNumber);
         listView.setAdapter(lca);
     }
@@ -155,85 +223,56 @@ public class FormDetail extends AppCompatActivity {
                 return;
             }
             JSONObject table_msg = (JSONObject) msg.obj;
-            try {
-                /**
-                 * 获取表的基本信息
-                 */
-                creator_info = table_msg.getString("writer");
-                create_time_info = table_msg.getString("create_time");
-                try {
-                    status_info = statusMap[table_msg.getInt("status")];
-                } catch (Exception e) {
-                    status_info = table_msg.getString("status");
-                }
-                /**
-                 * 获取表的内容
-                 */
-                JSONArray jsonArray = JsonUtils.GetJsonArray(table_msg,"material");
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    mData.add(jsonObject.getString("name"));
-                    mSize.add(jsonObject.getString("unit"));
-                    try{
-                        mNumber.add(Integer.valueOf(jsonObject.getString("num")));
-                    } catch (Exception e) {
-                        try {
-                            mNumber.add(Integer.valueOf(jsonObject.getString("receive_num")));
-                        } catch (Exception ee) {
-                            mNumber.add(Integer.valueOf(jsonObject.getString("number")));
-                        }
-
-                    }
-                }
-                setTableBasicInfo();
-                setTableMaterilaList();
-                /**
-                 * 判断是否显示审查按钮
-                 */
-                if (!showCheckoutButton(username, originalPage)) {
-                    if (showReturnButton(username, status_info, creator_info)) {
-                        go_return.setVisibility(View.VISIBLE);
-                        go_return.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent();
-                                Bundle bundle = new Bundle();
-                                bundle.putInt("tableId", tableId);
-                                bundle.putString("form-title", "还料表");
-                                intent.putExtras(bundle);
-                                intent.setClassName(getPackageName(), getPackageName() + ".FormCreate");
-                                if(intent.resolveActivity(getPackageManager()) != null) {
-                                    startActivity(intent);
-                                }
+            /**
+             * 获取表的内容
+             */
+            JSONArray jsonArray = JsonUtils.GetJsonArray(table_msg,"material");
+            setTableBasicInfo(table_msg);
+            setTableMaterilaList(jsonArray);
+            /**
+             * 判断是否显示审查按钮
+             */
+            if (!showCheckoutButton(username, originalPage)) {
+                if (showReturnButton(username, status_info, creator_info)) {
+                    go_return.setVisibility(View.VISIBLE);
+                    go_return.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent();
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("tableId", tableId);
+                            bundle.putString("form-title", "还料表");
+                            intent.putExtras(bundle);
+                            intent.setClassName(getPackageName(), getPackageName() + ".FormCreate");
+                            if(intent.resolveActivity(getPackageManager()) != null) {
+                                startActivity(intent);
                             }
-                        });
-                    }
-                } else {
-                    agree.setVisibility(View.VISIBLE);
-                    refuse.setVisibility(View.VISIBLE);
-                    agree.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            refuse.setVisibility(View.INVISIBLE);
-                            agree.setVisibility(View.INVISIBLE);
-                            status_info = "pass";
-                            tableStatus.setText(status_title + divider + status_info);
-                            new TableStatus("pass").start();
-                        }
-                    });
-                    refuse.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            refuse.setVisibility(View.INVISIBLE);
-                            agree.setVisibility(View.INVISIBLE);
-                            status_info = "refuse";
-                            tableStatus.setText(status_title + divider + status_info);
-                            new TableStatus("refuse").start();
                         }
                     });
                 }
-            } catch (JSONException e) {
-                e.printStackTrace();
+            } else {
+                agree.setVisibility(View.VISIBLE);
+                refuse.setVisibility(View.VISIBLE);
+                agree.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        refuse.setVisibility(View.INVISIBLE);
+                        agree.setVisibility(View.INVISIBLE);
+                        status_info = "pass";
+//                            tableStatus.setText(status_title + divider + status_info);
+                        new TableStatus("pass").start();
+                    }
+                });
+                refuse.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        refuse.setVisibility(View.INVISIBLE);
+                        agree.setVisibility(View.INVISIBLE);
+                        status_info = "refuse";
+//                            tableStatus.setText(status_title + divider + status_info);
+                        new TableStatus("refuse").start();
+                    }
+                });
             }
 
 
