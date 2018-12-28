@@ -208,11 +208,11 @@ public class FormList extends AppCompatActivity {
         form_list.setAdapter(formListListViewContentAdapter);
     }
     private List<ListItem> filterForms() {
-        final String projectName = queryProjectName.getText().toString().trim().toLowerCase();
-        final String creator = queryCreator.getText().toString().trim().toLowerCase();
+        String projectName = queryProjectName.getText().toString().trim().toLowerCase();
+        String creator = queryCreator.getText().toString().trim().toLowerCase();
         List<ListItem> items = new ArrayList<>();
         for (int i = 0; i < forms.size(); i++) {
-            final ListItem item = forms.get(i);
+            ListItem item = forms.get(i);
             String item_title = item.title.toLowerCase().trim();
             String item_creator = item.creator.toLowerCase().trim();
             if (item_title.equals(projectName) && item_creator.equals(creator)) {
