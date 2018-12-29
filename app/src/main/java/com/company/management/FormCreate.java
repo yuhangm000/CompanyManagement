@@ -35,7 +35,7 @@ public class FormCreate extends AppCompatActivity {
      */
     private TextView creator;
     private TextView status;
-    private TextView form_create_title;
+    private EditText form_create_title, order_num;
     private ListView material_list;
     private Button cancel, complete, add_item;
     /**
@@ -67,9 +67,15 @@ public class FormCreate extends AppCompatActivity {
         complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /**
-                 * TODO: 添加获取listview所有内容的代码, 并且向后端发送请求
-                 */
+                String projectName = form_create_title.getText().toString().trim();
+                String orderNum = order_num.getText().toString().trim();
+                if (projectName.length() == 0 || orderNum.length() == 0) {
+                    Message msg = handler.obtainMessage();
+                    msg.arg1 = 5;
+                    msg.obj = "对不起你还没有填写" + (projectName.length() == 0 ? "项目名" : "单号");
+                    handler.sendMessage(msg);
+                    return;
+                }
                 int size = formCreateListContentAdapter.getCount();
 
                 JSONArray jsonArray = new JSONArray();
@@ -118,7 +124,8 @@ public class FormCreate extends AppCompatActivity {
          */
         creator = (TextView) findViewById(R.id.form_create_creator);
         status = (TextView) findViewById(R.id.form_create_status);
-        form_create_title = (TextView) findViewById(R.id.form_create_title);
+        form_create_title = (EditText) findViewById(R.id.form_create_title);
+        order_num = (EditText) findViewById(R.id.order_num);
         material_list = (ListView) findViewById(R.id.form_create_material_list);
         cancel = (Button) findViewById(R.id.form_create_cancel);
         complete = (Button) findViewById(R.id.form_create_complete);
@@ -126,7 +133,7 @@ public class FormCreate extends AppCompatActivity {
         items = new ArrayList<>();
         items.add(new TableItem());
         formCreateListContentAdapter = new FormCreateListContentAdapter(getBaseContext(),items);
-        form_create_title.setText("新建"+form_title);
+//        form_create_title.setText("新建"+form_title);
         status.setText(status_forward + "申请中");
         creator.setText(creator_forward + (new UserWR().getUserName(getApplicationContext())));
         new GetMaterialList().start();
@@ -165,6 +172,7 @@ public class FormCreate extends AppCompatActivity {
      * arg1 == 1 未开通服务
      * arg1 == 2 为设置初始项内容
      * arg1 == 3 服务器端错误
+     * arg1 == 4 项目没有通过审核，提示返回
      * arg1 == else 提示其余信息
      * obj存放需要操作的对象内容
      */
@@ -183,8 +191,6 @@ public class FormCreate extends AppCompatActivity {
             } else if(msg.arg1 == 4) {
                 Toast.makeText(getApplicationContext(), (String)msg.obj, 1000).show();
                 onBackPressed();
-//                Intent intent = new Intent();
-//                intent.setClassName(getPackageName(), getPackageName() + ".FormList");
             } else {
                 Toast.makeText(getApplicationContext(), (String) msg.obj,  1000).show();
                 return;
@@ -245,6 +251,7 @@ public class FormCreate extends AppCompatActivity {
                     Log.i("material item", jsonObject.toString());
                     FormCreateListContentAdapter.MaterialSize materialSizeOne = new FormCreateListContentAdapter.MaterialSize(jsonObject.getString("id"),
                             jsonObject.getString("name"),
+                            jsonObject.getString("size"),
                             jsonObject.getString("unit"));
                     materialSize.add(materialSizeOne);
                 }
@@ -277,7 +284,8 @@ public class FormCreate extends AppCompatActivity {
                         TableItem item = new TableItem();
                         JSONObject m = materialArray.getJSONObject(i);
                         item.setMaterial(m.getString("name"));
-                        item.setSize(m.getString("unit"));
+                        item.setSize(m.getString("size"));
+                        item.setUnit(m.getString("unit"));
                         items.add(item);
                     }
                     msg.arg1 = 2;

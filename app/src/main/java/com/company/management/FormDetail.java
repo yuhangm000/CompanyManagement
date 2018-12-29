@@ -46,7 +46,7 @@ public class FormDetail extends AppCompatActivity {
     private ListView listView;
     private LinearLayout basic_info;
     private TextView tableHeadOperation;
-    private List<String> mData = new ArrayList<>(), mSize = new ArrayList<>();
+    private List<String> mData = new ArrayList<>(), mSize = new ArrayList<>(), mUnit = new ArrayList<>();
     private List<Integer> mNumber = new ArrayList<>();
     String creator_title = null;
     String create_time_title = null;
@@ -161,20 +161,7 @@ public class FormDetail extends AppCompatActivity {
             int count = 0;
             for (int i = 0; i < BASICINFO.length; i++) {
                 String info = null;
-                switch (BASICINFO[i]) {
-                    case "verify":
-                        info = operationMap[table_msg.getInt(BASICINFO[i])];
-                        break;
-                    case "check":
-                        info = operationMap[table_msg.getInt(BASICINFO[i])];
-                        break;
-                    case "back":
-                        info = operationMap[table_msg.getInt(BASICINFO[i])];
-                        break;
-                    default:
-                        info = table_msg.getString(BASICINFO[i]);
-                        break;
-                }
+                info = table_msg.getString(BASICINFO[i]);
                 if (info.equals("null")) {
                     continue;
                 }
@@ -183,8 +170,6 @@ public class FormDetail extends AppCompatActivity {
                 basic_info.addView(textView);
                 count++;
             }
-//            FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (count + 1) * 50);
-//            basic_info.setLayoutParams(layoutParams);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -195,7 +180,8 @@ public class FormDetail extends AppCompatActivity {
             try {
                 jsonObject = jsonArray.getJSONObject(i);
                 mData.add(jsonObject.getString("name"));
-                mSize.add(jsonObject.getString("unit"));
+                mSize.add(jsonObject.getString("size"));
+                mUnit.add(jsonObject.getString("unit"));
                 try{
                     mNumber.add(Integer.valueOf(jsonObject.getString("num")));
                 } catch (Exception e) {
@@ -210,7 +196,7 @@ public class FormDetail extends AppCompatActivity {
             }
 
         }
-        lca= new ListContentAdapter(mData, mSize, mNumber);
+        lca= new ListContentAdapter(mData, mSize, mNumber, mUnit);
         listView.setAdapter(lca);
     }
     Handler handler = new Handler() {

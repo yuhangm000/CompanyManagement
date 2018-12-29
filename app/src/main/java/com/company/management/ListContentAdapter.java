@@ -21,13 +21,14 @@ public class ListContentAdapter extends BaseAdapter {
     private List<String> mData; // 材料名称List
     private List<String> mSize; // 材料规格List
     private List<Integer> mNumber; // 材料数量List
-
+    private List<String> mUnit;
     ViewHolder viewHolder = null;
 //    自定义构造函数
-    public ListContentAdapter(List<String> mData, List<String> mSize, List<Integer> mNumber){
+    public ListContentAdapter(List<String> mData, List<String> mSize, List<Integer> mNumber, List<String> mUnit){
         this.mData = mData;
         this.mSize = mSize;
         this.mNumber = mNumber;
+        this.mUnit = mUnit;
     }
     @Override
     public int getCount() {
@@ -54,6 +55,7 @@ public class ListContentAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.mName = (TextView) convertView.findViewById(R.id.list_content_material_name);
             viewHolder.mSize = (TextView) convertView.findViewById(R.id.list_content_size);
+            viewHolder.mUnit = (TextView) convertView.findViewById(R.id.list_content_unit);
             viewHolder.mNumber = (TextView) convertView.findViewById(R.id.list_content_number);
             viewHolder.mNumber.addTextChangedListener(new NumberTextWather());
             convertView.setTag(viewHolder);
@@ -62,6 +64,7 @@ public class ListContentAdapter extends BaseAdapter {
 //        设置数据
         viewHolder.mName.setText(mData.get(position));
         viewHolder.mSize.setText(mSize.get(position));
+        viewHolder.mUnit.setText(mUnit.get(position));
         viewHolder.mNumber.setText(mNumber.get(position).toString());
         return convertView;
     }
@@ -69,6 +72,7 @@ public class ListContentAdapter extends BaseAdapter {
         TextView mName;
         TextView mSize;
         TextView mNumber;
+        TextView mUnit;
     }
     class NumberTextWather implements TextWatcher {
 

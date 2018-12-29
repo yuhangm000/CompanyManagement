@@ -101,6 +101,7 @@ public class FormCreateListContentAdapter extends BaseAdapter {
             viewHolder =  new ViewHolder();
             viewHolder.name = (TextView) convertView.findViewById(R.id.form_create_list_content_show_material);
             viewHolder.size = (TextView) convertView.findViewById(R.id.form_create_list_content_show_size);
+            viewHolder.unit = (TextView) convertView.findViewById(R.id.form_create_list_content_unit);
             viewHolder.number = (TextView) convertView.findViewById(R.id.form_create_list_content_show_number);
             viewHolder.delete = (ImageButton) convertView.findViewById(R.id.form_create_list_content_delete);
             convertView.setTag(viewHolder);
@@ -108,6 +109,7 @@ public class FormCreateListContentAdapter extends BaseAdapter {
         viewHolder = (ViewHolder) convertView.getTag();
         viewHolder.number.setText(items.get(position).number);
         viewHolder.name.setText(items.get(position).material);
+        viewHolder.unit.setText(items.get(position).unit);
         viewHolder.size.setText(items.get(position).size);
         // 初始化材料名的adapter
         viewHolder.name.setOnClickListener(new OnClickListenerForName(position));
@@ -132,9 +134,11 @@ public class FormCreateListContentAdapter extends BaseAdapter {
         String id;
         String material;
         String material_size;
-        MaterialSize(String id, String m, String mz) {
+        String unit;
+        MaterialSize(String id, String m, String mz, String unit) {
             this.id = id;
             material = m;
+            this.unit = unit;
             material_size = mz;
         }
     }
@@ -148,6 +152,20 @@ public class FormCreateListContentAdapter extends BaseAdapter {
     }
     public String getId(int position) {
         return getId(name_list.get(position), size_list.get(position));
+    }
+    public void setUnit(int position) {
+        String name = items.get(position).getMaterial();
+        String size = items.get(position).getSize();
+        String unit = "";
+        for(int i = 0; i < materialSize.size(); i++) {
+            if (name.equals(materialSize.get(i).material) &&
+                    size.equals(materialSize.get(i).material_size)) {
+                unit = materialSize.get(i).unit;
+                break;
+            }
+        }
+        items.get(position).setUnit(unit);
+        notifyDataSetChanged();
     }
     class OnClickListenerForName implements View.OnClickListener {
         String selected = null;
@@ -204,7 +222,6 @@ public class FormCreateListContentAdapter extends BaseAdapter {
             lv.setAdapter(arrayAdapter);
             final PopupWindow popupWindow = new PopupWindow(lv, 400, 500);
             popupWindow.setFocusable(true);
-//                    popupWindow.setBackgroundDrawable(new ColorDrawable(Color.argb(1, 147,151,147)));
             lv.setBackgroundColor(context.getColor(R.color.lightGray));
             final TextView text = (TextView) v.findViewById(R.id.form_create_list_content_show_size);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -214,6 +231,7 @@ public class FormCreateListContentAdapter extends BaseAdapter {
                     text.setText(selected);
                     popupWindow.dismiss();
                     items.get(item_position).setSize(selected);
+                    setUnit(item_position);
                 }
             });
             popupWindow.setOutsideTouchable(true);
@@ -281,6 +299,7 @@ public class FormCreateListContentAdapter extends BaseAdapter {
         TextView name;
         TextView size;
         TextView number;
+        TextView unit;
         ImageButton delete;
     }
 }
