@@ -92,6 +92,8 @@ public class FormCreate extends AppCompatActivity {
                         view.findViewById(R.id.form_create_list_content_show_size).setEnabled(false);
                         view.findViewById(R.id.form_create_list_content_show_number).setEnabled(false);
                         view.findViewById(R.id.form_create_list_content_delete).setEnabled(false);
+                        form_create_title.setEnabled(false);
+                        order_num.setEnabled(false);
                     }
                     new SendMaterialRequest(jsonArray).start();
                 } catch (JSONException e) {
@@ -107,6 +109,7 @@ public class FormCreate extends AppCompatActivity {
             public void onClick(View v) {
                 items.clear();
                 formCreateListContentAdapter.notifyDataSetChanged();
+
             }
         });
     }
@@ -207,6 +210,8 @@ public class FormCreate extends AppCompatActivity {
             super.run();
             JSONObject jsonObject = new JSONObject();
             try {
+                jsonObject.put("project_name", form_create_title.getText().toString());
+                jsonObject.put("table_num", String.valueOf(order_num.getText().toString()));
                 jsonObject.put("applier", Integer.valueOf(new UserWR().getUserID(getApplicationContext())));
                 jsonObject.put("receiver", Integer.valueOf(new UserWR().getUserID(getApplicationContext())));
                 jsonObject.put("writer", Integer.valueOf(new UserWR().getUserID(getApplicationContext())));

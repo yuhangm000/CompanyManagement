@@ -34,7 +34,8 @@ public class FormDetail extends AppCompatActivity {
     private final String [] BASICINFO = {
             "writer", "create_time", "status", "verify",
             "verifier", "verify_time", "back", "back_time",
-            "backer", "check", "check_time", "checker"
+            "backer", "check", "check_time", "checker",
+            "waste_back_table_num","waste_back","waste_backer","waste_back_time"
     };
     private final Map<String, String> BASIC_INFO_MAP = new HashMap<>();
     private final String [] statusMap = {"pending", "refuse", "success"};
@@ -99,6 +100,10 @@ public class FormDetail extends AppCompatActivity {
         BASIC_INFO_MAP.put(BASICINFO[9], "是否检查");
         BASIC_INFO_MAP.put(BASICINFO[10], "检查时间");
         BASIC_INFO_MAP.put(BASICINFO[11], "检查者");
+        BASIC_INFO_MAP.put(BASICINFO[12], "废旧材料归还单号");
+        BASIC_INFO_MAP.put(BASICINFO[13], "废料归还状况");
+        BASIC_INFO_MAP.put(BASICINFO[14], "废料归还人");
+        BASIC_INFO_MAP.put(BASICINFO[15], "废料归还时间");
         /**
          * 获取前一个页面传过来的参数
          */

@@ -1,9 +1,12 @@
 package com.company.management;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.RequiresApi;
 import android.support.annotation.VisibleForTesting;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -14,10 +17,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -86,7 +91,10 @@ public class FormList extends AppCompatActivity {
          * 设置ListView的点击监听事件
          */
         form_list.setOnItemClickListener(new ItemClickListener());
-//        queryProjectName.setOnClickListener(new ProjectNameSelected());
+        queryProjectName.setOnClickListener(new ProjectNameSelected());
+        queryProjectName.setCursorVisible(false);
+        queryProjectName.setFocusable(false);
+        queryProjectName.setFocusableInTouchMode(false);
         query.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -385,9 +393,36 @@ public class FormList extends AppCompatActivity {
     }
     class ProjectNameSelected implements View.OnClickListener{
 
+        @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
         public void onClick(View v) {
-
+            Context context = getBaseContext();
+            final ListView lv = new ListView(context);
+            final List<String> projects = new ArrayList<>();
+            projects.add("无");
+            for (int i = 0; i < forms.size(); i++) {
+                projects.add(forms.get(i).title);
+            }
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, projects);
+            lv.setAdapter(arrayAdapter);
+            final PopupWindow popupWindow = new PopupWindow(lv, 400, 500);
+            popupWindow.setFocusable(true);
+//                    popupWindow.setBackgroundDrawable(new ColorDrawable(Color.argb(1, 147,151,147)));
+            lv.setBackgroundColor(context.getColor(R.color.lightGray));
+            final EditText text = (EditText) v.findViewById(R.id.queryProjectName);
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    if (position > 0) {
+                        text.setText(projects.get(position));
+                    } else {
+                        text.setText("");
+                    }
+                    popupWindow.dismiss();
+                }
+            });
+            popupWindow.setOutsideTouchable(true);
+            popupWindow.showAtLocation(v, 1, 50, 50);
         }
     }
     public class ListItem {
