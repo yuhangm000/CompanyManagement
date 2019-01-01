@@ -146,9 +146,17 @@ public class FormDetail extends AppCompatActivity {
                 return false;
             }
         } else if(page == R.string.material_picking){
-            if (acl.hasPermission(username, "material-get-form-check", getBaseContext()) && status_info.equals(statusMap[0])) {
-                return true;
-            } else {
+            try {
+                if (acl.hasPermission(username, "material-get-form-check", getBaseContext()) && status_info.equals(statusMap[0])) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (Exception e) {
+                Log.e("errorInPicking", e.toString());
+                Log.e("errorInPickingAcl", String.valueOf(acl.getRoles().isEmpty()));
+                Log.e("errorInPickingStatusInf", String.valueOf(status_info==null));
+                Log.e("errorInPickingStatusMap", String.valueOf(statusMap==null));
                 return false;
             }
         } else {
@@ -169,6 +177,9 @@ public class FormDetail extends AppCompatActivity {
                 info = table_msg.getString(BASICINFO[i]);
                 if (info.equals("null")) {
                     continue;
+                }
+                if (BASICINFO[i].equals("status")) {
+                    status_info = info;
                 }
                 final TextView textView = new TextView(context);
                 textView.setText(BASIC_INFO_MAP.get(BASICINFO[i]) + ":" + info);

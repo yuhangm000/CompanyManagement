@@ -153,8 +153,8 @@ public class FormList extends AppCompatActivity {
         createPermission.put(LEFT_MATERIAL_FORM, "material-return-form-create");
         createPermission.put(SINGLETON_PROJECT_CHECK_FORM, "project-check-form-create");
         createPermission.put(USELESS_OR_OLD_MATERIAL_FORM, "material-useless-form-create");
-        createPermission.put(IN_WAREHOUSE_FORM, "material-in-warehouse-form-create");
-        createPermission.put(OUT_WAREHOUSE_FORM, "material-out-warehouse-form-create");
+        createPermission.put(IN_WAREHOUSE_FORM, "warehouse-form-create");
+        createPermission.put(OUT_WAREHOUSE_FORM, "warehouse-form-create");
         /**
          * 初始化页面控件
          */
