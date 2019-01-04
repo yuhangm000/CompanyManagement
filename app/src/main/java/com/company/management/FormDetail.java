@@ -341,6 +341,7 @@ public class FormDetail extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("status", this.status);
             jsonObject.put("table_id", tableId);
+            jsonObject.put("verifier", Integer.valueOf(new UserWR().getUserID(context)));
             if (originalPage == R.string.material_picking) {
                 JSONObject jsonObject1 = Conn.post(Router.MATERIAL_PICKING_CHECK, jsonObject);
                 Log.i("Verify table status", jsonObject1.toString());
